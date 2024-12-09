@@ -1,0 +1,7 @@
+{
+    "name": "SMARTi",
+    "content_in_root": false,
+    "domains": ["smarti"],
+    "iot_class": "local_push",
+    "render_readme": true
+  }

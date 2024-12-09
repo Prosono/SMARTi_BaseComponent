@@ -1,0 +1,10 @@
+{
+    "domain": "smarti",
+    "name": "SMARTi",
+    "version": "1.7.01",
+    "documentation": "https://github.com/Prosono/smarti",
+    "dependencies": [],
+    "codeowners": ["@Prosono"],
+    "requirements": [],
+    "config_flow": true
+}
