@@ -3,11 +3,17 @@
         "step": {
             "user": {
                 "title": "Set up SMARTi",
-                "description": "SMARTi integration is being configured automatically. No input is required."
+                "description": "Enter your email and GitHub API token to configure SMARTi.",
+                "data": {
+                    "email": "Email Address",
+                    "api_token": "GitHub API Token"
+                }
             }
         },
         "error": {
-            "unknown_error": "An unknown error occurred during the setup."
+            "invalid_subscription": "The provided email does not have an active subscription.",
+            "invalid_token": "The provided GitHub API token is invalid.",
+            "unknown_error": "An unknown error occurred."
         }
     },
     "title": "SMARTi Integration"

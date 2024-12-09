@@ -13,15 +13,14 @@ _LOGGER = logging.getLogger(__name__)
 
 DOMAIN = "smarti"
 
-GITHUB_REPO_URL = "https://api.github.com/repos/Prosono/smarti/contents/"
+GITHUB_REPO_URL = "https://api.github.com/repos/Prosono/SMARTi_Configuration/contents/"
+
 PACKAGES_URL = GITHUB_REPO_URL + "packages/"
 DASHBOARDS_URL = GITHUB_REPO_URL + "dashboards/"
 SMARTIUPDATER_URL = GITHUB_REPO_URL + "custom_components/smartiupdater/"
 THEMES_URL = GITHUB_REPO_URL + "themes/smarti_themes/"
 IMAGES_URL = GITHUB_REPO_URL + "www/images/smarti_images/"
 CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
-
-VERSION_URL = GITHUB_REPO_URL + "version.json"
 
 PACKAGES_PATH = "/config/packages/"
 THEMES_PATH = "/config/themes/smarti_themes/"
@@ -55,6 +54,20 @@ DASHBOARDS_FILES_TO_DELETE = {
 
 _LOGGER = logging.getLogger(__name__)
 
+async def validate_api_token(api_token: str, session: aiohttp.ClientSession):
+    headers = {"Authorization": f"Bearer {api_token}"}
+    try:
+        async with session.get("https://api.github.com/user", headers=headers) as response:
+            if response.status == 200:
+                _LOGGER.info("API token is valid.")
+                return True
+            else:
+                _LOGGER.error(f"Invalid API token: {response.status}")
+                return False
+    except Exception as e:
+        _LOGGER.error(f"Error validating API token: {str(e)}")
+        return False     
+
 def log_file_size(filepath: str, description: str):
     """Log the size of a file with a description."""
     try:
@@ -80,15 +93,12 @@ def ensure_directory_exists(directory_path: str):
     else:
         _LOGGER.info(f"Directory {directory_path} exists.")
 
-async def download_file(url: str, dest: str, session: aiohttp.ClientSession):
+async def download_file(url: str, dest: str, session: aiohttp.ClientSession, api_token: str):
+    headers = {"Authorization": f"Bearer {api_token}"}
     try:
         _LOGGER.info(f"Attempting to download file from {url} to {dest}")
 
-        # Ensure 'dest' is the full path to a file, not a directory
-        if os.path.isdir(dest):
-            dest = os.path.join(dest, 'flows.json')  # Ensure saving to file, not directory
-
-        async with session.get(url) as response:
+        async with session.get(url, headers=headers) as response:
             response.raise_for_status()
             content = await response.read()
 
@@ -101,21 +111,20 @@ async def download_file(url: str, dest: str, session: aiohttp.ClientSession):
     except Exception as e:
         _LOGGER.error(f"Error occurred while downloading {url}: {str(e)}")
 
-async def get_files_from_github(url: str, session: aiohttp.ClientSession):
+async def get_files_from_github(url: str, session: aiohttp.ClientSession, api_token: str):
+    headers = {"Authorization": f"Bearer {api_token}"}
     try:
         _LOGGER.info(f"Fetching file list from {url}")
-        async with session.get(url) as response:
+        async with session.get(url, headers=headers) as response:
             response.raise_for_status()
             files = await response.json()
 
             _LOGGER.debug(f"API response from {url}: {files}")
 
-            # Check if 'files' is a list (directory) or a dictionary (single file)
             if isinstance(files, list):
                 file_urls = [file['download_url'] for file in files if file.get('type') == 'file']
                 _LOGGER.info(f"Found {len(file_urls)} files at {url}")
             elif isinstance(files, dict):
-                # Handle case where a single file dict is returned
                 if 'download_url' in files:
                     file_urls = [files['download_url']]
                     _LOGGER.info(f"Found a single file at {url}")
@@ -170,8 +179,7 @@ async def clear_directory(directory_path: str):
     except Exception as e:
         _LOGGER.error(f"Failed to clear directory {directory_path}: {str(e)}")
 
-async def update_files(session: aiohttp.ClientSession, config_data: dict):
-    # Clear the packages and dashboards directories before downloading new files
+async def update_files(session: aiohttp.ClientSession, config_data: dict, api_token: str):
     await clear_specific_files(PACKAGES_PATH, PACKAGES_FILES_TO_DELETE)
     await clear_specific_files(DASHBOARDS_PATH, DASHBOARDS_FILES_TO_DELETE)
 
@@ -181,60 +189,59 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict):
     ensure_directory(IMAGES_PATH)
     ensure_directory(CUSTOM_CARD_RADAR_PATH)
 
-    # Get and download package files
-    package_files = await get_files_from_github(PACKAGES_URL, session)
+    package_files = await get_files_from_github(PACKAGES_URL, session, api_token)
     for file_url in package_files:
         if file_url:
             file_name = os.path.basename(file_url)
             dest_path = os.path.join(PACKAGES_PATH, file_name)
             _LOGGER.info(f"Saving package file to {dest_path}")
-            await download_file(file_url, dest_path, session)
+            await download_file(file_url, dest_path, session, api_token)
 
     # Get and download dashboard files
     if config_data.get("update_dashboards"):
-        dashboard_files = await get_files_from_github(DASHBOARDS_URL, session)
+        dashboard_files = await get_files_from_github(DASHBOARDS_URL, session, api_token)
         for file_url in dashboard_files:
             if file_url:
                 file_name = os.path.basename(file_url)
                 dest_path = os.path.join(DASHBOARDS_PATH, file_name)
                 _LOGGER.info(f"Saving dashboard file to {dest_path}")
-                await download_file(file_url, dest_path, session)
+                await download_file(file_url, dest_path, session, api_token)
 
     # Get and download custom component files
-    smartiupdater_files = await get_files_from_github(SMARTIUPDATER_URL, session)
+    smartiupdater_files = await get_files_from_github(SMARTIUPDATER_URL, session, api_token)
     for file_url in smartiupdater_files:
         if file_url:
             file_name = os.path.basename(file_url)
             dest_path = os.path.join(SMARTIUPDATER_PATH, file_name)
             _LOGGER.info(f"Saving SmartiUpdater file to {dest_path}")
-            await download_file(file_url, dest_path, session)
+            await download_file(file_url, dest_path, session, api_token)
 
     # Get and download Themes files
-    themes_files = await get_files_from_github(THEMES_URL, session)
+    themes_files = await get_files_from_github(THEMES_URL, session, api_token)
     for file_url in themes_files:
         if file_url:
             file_name = os.path.basename(file_url)
             dest_path = os.path.join(THEMES_PATH, file_name)
             _LOGGER.info(f"Saving themes file to {dest_path}")
-            await download_file(file_url, dest_path, session)
+            await download_file(file_url, dest_path, session, api_token)
 
     # Get and download IMAGE files
-    image_files = await get_files_from_github(IMAGES_URL, session)
+    image_files = await get_files_from_github(IMAGES_URL, session, api_token)
     for file_url in image_files:
         if file_url:
             file_name = os.path.basename(file_url)
             dest_path = os.path.join(IMAGES_PATH, file_name)
             _LOGGER.info(f"Saving image file to {dest_path}")
-            await download_file(file_url, dest_path, session)
+            await download_file(file_url, dest_path, session, api_token)
 
     # Get and download CUSTOM CARDS files
-    radar_card_files = await get_files_from_github(CUSTOM_CARD_RADAR_URL, session)
+    radar_card_files = await get_files_from_github(CUSTOM_CARD_RADAR_URL, session, api_token)
     for file_url in radar_card_files:
         if file_url:
             file_name = os.path.basename(file_url)
             dest_path = os.path.join(CUSTOM_CARD_RADAR_PATH, file_name)
             _LOGGER.info(f"Saving card files to {dest_path}")
-            await download_file(file_url, dest_path, session)
+            await download_file(file_url, dest_path, session, api_token)
 
 
 

@@ -3,11 +3,17 @@
         "step": {
             "user": {
                 "title": "Konfigurer SMARTi",
-                "description": "SMARTi-integrasjonen blir konfigurert automatisk. Ingen inndata kreves."
+                "description": "Oppgi e-postadressen din og GitHub API-token for å konfigurere SMARTi.",
+                "data": {
+                    "email": "E-postadresse",
+                    "api_token": "GitHub API-token"
+                }
             }
         },
         "error": {
-            "unknown_error": "En ukjent feil oppstod under oppsettet."
+            "invalid_subscription": "Den oppgitte e-posten har ikke et aktivt abonnement.",
+            "invalid_token": "Det oppgitte GitHub API-tokenet er ugyldig.",
+            "unknown_error": "En ukjent feil oppstod."
         }
     },
     "title": "SMARTi Integrasjon"
