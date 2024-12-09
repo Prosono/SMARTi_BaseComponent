@@ -172,17 +172,13 @@ async def clear_directory(directory_path: str):
 
 async def update_files(session: aiohttp.ClientSession, config_data: dict):
     # Clear the packages and dashboards directories before downloading new files
-    #await clear_directory(PACKAGES_PATH)   # Await the coroutine
     await clear_specific_files(PACKAGES_PATH, PACKAGES_FILES_TO_DELETE)
     await clear_specific_files(DASHBOARDS_PATH, DASHBOARDS_FILES_TO_DELETE)
-    #await clear_directory(DASHBOARDS_PATH) # Await the coroutine
 
     ensure_directory(PACKAGES_PATH)
     ensure_directory(DASHBOARDS_PATH)
-    ensure_directory(SMARTIUPDATER_PATH)
     ensure_directory(THEMES_PATH)
     ensure_directory(IMAGES_PATH)
-    #ensure_directory(NODE_RED_PATH)
     ensure_directory(CUSTOM_CARD_RADAR_PATH)
 
     # Get and download package files
@@ -241,54 +237,4 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict):
             await download_file(file_url, dest_path, session)
 
 
-
-async def get_latest_version(session: aiohttp.ClientSession):
-    try:
-        cache_buster = f"?nocache={str(time.time())}"
-        async with session.get(VERSION_URL + cache_buster) as response:
-            response.raise_for_status()
-            version_info = await response.json()
-            _LOGGER.debug(f"Fetched version info: {version_info}")
-
-            # Decode the base64 content
-            encoded_content = version_info.get("content", "")
-            if encoded_content:
-                decoded_content = base64.b64decode(encoded_content).decode("utf-8")
-                version_data = json.loads(decoded_content)
-                latest_version = version_data.get("version", "unknown")
-                return latest_version
-            else:
-                _LOGGER.error("No content found in the version info.")
-                return "unknown"
-    except aiohttp.ClientError as http_err:
-        _LOGGER.error(f"HTTP error occurred while fetching version info: {http_err}")
-        return "unknown"
-    except Exception as e:
-        _LOGGER.error(f"Error occurred while fetching version info: {str(e)}")
-        return "unknown"
-
-async def check_for_update(session: aiohttp.ClientSession, current_version: str):
-    try:
-        latest_version = await get_latest_version(session)
-        _LOGGER.debug(f"Current version: {current_version}, Latest version: {latest_version}")
-        return current_version != latest_version, latest_version
-    except aiohttp.ClientError as http_err:
-        _LOGGER.error(f"HTTP error occurred while checking for update: {http_err}")
-        return False, "unknown"
-    except Exception as e:
-        _LOGGER.error(f"Error occurred while checking for update: {str(e)}")
-        return False, "unknown"
-
-async def update_manifest_version(latest_version: str):
-    manifest_file = "/config/custom_components/smartiupdater/manifest.json"
-    try:
-        async with aiofiles.open(manifest_file, 'r+') as file:
-            manifest_data = json.loads(await file.read())
-            manifest_data['version'] = latest_version
-            await file.seek(0)
-            await file.write(json.dumps(manifest_data, indent=4))
-            await file.truncate()
-        _LOGGER.info(f"Updated manifest file version to {latest_version}")
-    except Exception as e:
-        _LOGGER.error(f"Error updating manifest file: {str(e)}")
 

@@ -1,0 +1,14 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Set up SMARTi",
+                "description": "SMARTi integration is being configured automatically. No input is required."
+            }
+        },
+        "error": {
+            "unknown_error": "An unknown error occurred during the setup."
+        }
+    },
+    "title": "SMARTi Integration"
+}

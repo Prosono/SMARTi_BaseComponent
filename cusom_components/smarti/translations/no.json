@@ -1,0 +1,14 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Konfigurer SMARTi",
+                "description": "SMARTi-integrasjonen blir konfigurert automatisk. Ingen inndata kreves."
+            }
+        },
+        "error": {
+            "unknown_error": "En ukjent feil oppstod under oppsettet."
+        }
+    },
+    "title": "SMARTi Integrasjon"
+}
