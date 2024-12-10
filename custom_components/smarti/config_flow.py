@@ -2,9 +2,29 @@ import logging
 from homeassistant import config_entries
 import voluptuous as vol
 import aiohttp
-from .const import DOMAIN  # Replace with your actual `const` file
+from .const import DOMAIN  # Ensure const.py defines DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
+
+async def validate_token_and_get_pat(email, token):
+    """Validate the token with the backend and return the GitHub PAT on success."""
+    url = "https://smarti.pythonanywhere.com/validate-token"
+    payload = {"email": email, "token": token}
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, json=payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if data.get("status") == "success":
+                        # Extract the GitHub PAT from the response
+                        return data.get("github_pat")
+                else:
+                    _LOGGER.error(f"Subscription validation failed: {response.status}")
+    except aiohttp.ClientError as e:
+        _LOGGER.error(f"Error validating subscription: {e}")
+
+    return None  # Return None if validation fails
 
 @config_entries.HANDLERS.register(DOMAIN)
 class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
@@ -20,10 +40,9 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             email = user_input["email"]
             token = user_input["token"]
 
-            # Validate the token and get the GitHub PAT
             github_pat = await validate_token_and_get_pat(email, token)
             if github_pat:
-                # Store the GitHub PAT in the config entry
+                # Success! Create the entry with the GitHub PAT.
                 return self.async_create_entry(
                     title="SMARTi",
                     data={"email": email, "token": token, "github_pat": github_pat},
@@ -41,21 +60,3 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             data_schema=schema,
             errors=errors,
         )
-
-    async def _validate_subscription(self, email, token):
-        """Validate the email and token with the backend server."""
-        url = "https://your-backend-url/validate-token"
-        payload = {"email": email, "token": token}
-
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.post(url, json=payload) as response:
-                    if response.status == 200:
-                        _LOGGER.info("Subscription validated successfully.")
-                        return True
-                    else:
-                        _LOGGER.error(f"Subscription validation failed: {response.status}")
-                        return False
-        except aiohttp.ClientError as e:
-            _LOGGER.error(f"Error validating subscription: {e}")
-            return False
