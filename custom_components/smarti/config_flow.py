@@ -1,12 +1,13 @@
 import logging
 from homeassistant import config_entries
 import voluptuous as vol
-from .const import DOMAIN
+import aiohttp
+from .const import DOMAIN  # Replace with your actual `const` file
 
 _LOGGER = logging.getLogger(__name__)
 
 @config_entries.HANDLERS.register(DOMAIN)
-class SmartiUpdaterFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for SMARTi."""
 
     VERSION = 1
@@ -16,20 +17,23 @@ class SmartiUpdaterFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         errors = {}
 
         if user_input is not None:
-            email = user_input.get("email")
-            api_token = user_input.get("api_token")
+            email = user_input["email"]
+            token = user_input["token"]
 
-            # Validate the subscription
-            if not await self._validate_subscription(email):
-                errors["email"] = "invalid_subscription"
-            elif not await self._validate_token(api_token):
-                errors["api_token"] = "invalid_token"
+            # Validate the token and get the GitHub PAT
+            github_pat = await validate_token_and_get_pat(email, token)
+            if github_pat:
+                # Store the GitHub PAT in the config entry
+                return self.async_create_entry(
+                    title="SMARTi",
+                    data={"email": email, "token": token, "github_pat": github_pat},
+                )
             else:
-                return self.async_create_entry(title="SMARTi", data=user_input)
+                errors["base"] = "invalid_token"
 
         schema = vol.Schema({
             vol.Required("email"): str,
-            vol.Required("api_token"): str,
+            vol.Required("token"): str,
         })
 
         return self.async_show_form(
@@ -38,16 +42,20 @@ class SmartiUpdaterFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
-    async def _validate_subscription(self, email):
-        """Validate the subscription using your backend."""
-        # Replace this with the actual validation logic
-        _LOGGER.debug(f"Validating subscription for {email}")
-        return True
+    async def _validate_subscription(self, email, token):
+        """Validate the email and token with the backend server."""
+        url = "https://your-backend-url/validate-token"
+        payload = {"email": email, "token": token}
 
-    async def _validate_token(self, api_token):
-        """Validate the GitHub API token."""
-        headers = {"Authorization": f"Bearer {api_token}"}
-        async with self.hass.helpers.aiohttp_client.async_get_clientsession().get(
-            "https://api.github.com/user", headers=headers
-        ) as response:
-            return response.status == 200
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(url, json=payload) as response:
+                    if response.status == 200:
+                        _LOGGER.info("Subscription validated successfully.")
+                        return True
+                    else:
+                        _LOGGER.error(f"Subscription validation failed: {response.status}")
+                        return False
+        except aiohttp.ClientError as e:
+            _LOGGER.error(f"Error validating subscription: {e}")
+            return False
