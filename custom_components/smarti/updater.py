@@ -94,9 +94,13 @@ def ensure_directory_exists(directory_path: str):
 async def download_file(url: str, dest: str, session: aiohttp.ClientSession, github_pat: str):
     headers = {"Authorization": f"Bearer {github_pat}"}
     try:
-        _LOGGER.info(f"Attempting to download file from {url} to {dest}")
+        # Parse the URL to remove query parameters
+        parsed_url = urlparse(url)
+        clean_url = parsed_url._replace(query=None).geturl()
 
-        async with session.get(url, headers=headers) as response:
+        _LOGGER.info(f"Attempting to download file from {clean_url} to {dest}")
+
+        async with session.get(clean_url, headers=headers) as response:
             response.raise_for_status()
             content = await response.read()
 
@@ -182,7 +186,8 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     package_files = await get_files_from_github(PACKAGES_URL, session, github_pat)
     for file_url in package_files:
         if file_url:
-            file_name = os.path.basename(file_url)
+            # Extract the file name without query parameters
+            file_name = os.path.basename(urlparse(file_url).path)
             dest_path = os.path.join(PACKAGES_PATH, file_name)
             _LOGGER.info(f"Saving package file to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
