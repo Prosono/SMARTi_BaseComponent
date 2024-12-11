@@ -27,7 +27,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
     # Start the aiohttp session for GitHub API requests
     session = aiohttp.ClientSession()
-    github_pat = entry.data.get("api_token")
+    github_pat = entry.data.get("github_pat")
     config_data = entry.data
 
     # Define the periodic update function
