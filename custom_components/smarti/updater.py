@@ -197,15 +197,6 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
                 _LOGGER.info(f"Saving dashboard file to {dest_path}")
                 await download_file(file_url, dest_path, session, github_pat)
 
-    # Get and download custom component files
-    smartiupdater_files = await get_files_from_github(SMARTIUPDATER_URL, session, github_pat)
-    for file_url in smartiupdater_files:
-        if file_url:
-            file_name = os.path.basename(file_url)
-            dest_path = os.path.join(SMARTIUPDATER_PATH, file_name)
-            _LOGGER.info(f"Saving SmartiUpdater file to {dest_path}")
-            await download_file(file_url, dest_path, session, github_pat)
-
     # Get and download Themes files
     themes_files = await get_files_from_github(THEMES_URL, session, github_pat)
     for file_url in themes_files:
