@@ -18,6 +18,7 @@ async def validate_token_and_get_pat(email, token):
                     data = await response.json()
                     if data.get("status") == "success":
                         # Extract the GitHub PAT from the response
+                        _LOGGER.info("Subscription validation successful.")
                         return data.get("github_pat")
                 else:
                     _LOGGER.error(f"Subscription validation failed: {response.status}")
@@ -43,6 +44,7 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             github_pat = await validate_token_and_get_pat(email, token)
             if github_pat:
                 # Success! Create the entry with the GitHub PAT.
+                _LOGGER.info("Configuration entry creation successful.")
                 return self.async_create_entry(
                     title="SMARTi",
                     data={"email": email, "token": token, "github_pat": github_pat},

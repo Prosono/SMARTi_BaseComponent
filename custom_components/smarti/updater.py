@@ -114,21 +114,18 @@ async def download_file(url: str, dest: str, session: aiohttp.ClientSession, git
 async def get_files_from_github(url: str, session: aiohttp.ClientSession, github_pat: str):
     headers = {"Authorization": f"Bearer {github_pat}"}
     try:
-        _LOGGER.info(f"Fetching file list from {url}")
         async with session.get(url, headers=headers) as response:
             response.raise_for_status()
             files = await response.json()
-
             if isinstance(files, list):
-                file_urls = [file["download_url"] for file in files if file.get("type") == "file"]
-                _LOGGER.info(f"Found {len(file_urls)} files at {url}")
-            return file_urls
+                return [file["download_url"] for file in files if file.get("type") == "file"]
     except aiohttp.ClientError as http_err:
         _LOGGER.error(f"HTTP error occurred while fetching file list from {url}: {http_err}")
-        return []
+        raise
     except Exception as e:
-        _LOGGER.error(f"Error occurred while fetching file list from {url}: {str(e)}")
-        return []
+        _LOGGER.error(f"Unexpected error occurred while fetching file list: {str(e)}")
+        raise
+    return []
 
 def ensure_directory(path: str):
     try:
@@ -142,7 +139,9 @@ def ensure_directory(path: str):
 
 
 async def clear_specific_files(directory: str, files_to_delete: list):
-    """Delete only specific files in the given directory."""
+    if not os.path.exists(directory):
+        _LOGGER.warning(f"Directory {directory} does not exist, skipping file deletion.")
+        return
     for filename in files_to_delete:
         file_path = os.path.join(directory, filename)
         if os.path.isfile(file_path):

@@ -1,7 +1,7 @@
 {
   "domain": "smarti",
   "name": "SMARTi",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "documentation": "https://github.com/Prosono/SMARTi_BaseComponent",
   "requirements": [],
   "dependencies": [],
