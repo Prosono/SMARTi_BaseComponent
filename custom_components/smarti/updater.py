@@ -17,7 +17,6 @@ GITHUB_REPO_URL = "https://api.github.com/repos/Prosono/SMARTi_Configuration/con
 
 PACKAGES_URL = GITHUB_REPO_URL + "packages/"
 DASHBOARDS_URL = GITHUB_REPO_URL + "dashboards/"
-SMARTIUPDATER_URL = GITHUB_REPO_URL + "custom_components/smartiupdater/"
 THEMES_URL = GITHUB_REPO_URL + "themes/smarti_themes/"
 IMAGES_URL = GITHUB_REPO_URL + "www/images/smarti_images/"
 CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
@@ -25,7 +24,6 @@ CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
 PACKAGES_PATH = "/config/packages/"
 THEMES_PATH = "/config/themes/smarti_themes/"
 DASHBOARDS_PATH = "/config/dashboards/"
-SMARTIUPDATER_PATH = "/config/custom_components/smartiupdater/"
 IMAGES_PATH = "/config/www/images/smarti_images"
 CUSTOM_CARD_RADAR_PATH = "/config/www/community/weather-radar-card/"
 
