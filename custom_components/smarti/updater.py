@@ -8,6 +8,7 @@ import time  # Import for cache-busting
 import stat  # Import for file permissions
 import shutil
 import asyncio
+from urllib.parse import urlparse
 
 _LOGGER = logging.getLogger(__name__)
 
