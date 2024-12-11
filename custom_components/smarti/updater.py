@@ -19,13 +19,13 @@ PACKAGES_URL = GITHUB_REPO_URL + "packages/"
 DASHBOARDS_URL = GITHUB_REPO_URL + "dashboards/"
 THEMES_URL = GITHUB_REPO_URL + "themes/smarti_themes/"
 IMAGES_URL = GITHUB_REPO_URL + "www/images/smarti_images/"
-CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
+#CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
 
 PACKAGES_PATH = "/config/packages/"
 THEMES_PATH = "/config/themes/smarti_themes/"
 DASHBOARDS_PATH = "/config/dashboards/"
 IMAGES_PATH = "/config/www/images/smarti_images"
-CUSTOM_CARD_RADAR_PATH = "/config/www/community/weather-radar-card/"
+#CUSTOM_CARD_RADAR_PATH = "/config/www/community/weather-radar-card/"
 
 PACKAGES_FILES_TO_DELETE = [
     "smarti_custom_cards_package.yaml", 
@@ -176,7 +176,7 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     ensure_directory(DASHBOARDS_PATH)
     ensure_directory(THEMES_PATH)
     ensure_directory(IMAGES_PATH)
-    ensure_directory(CUSTOM_CARD_RADAR_PATH)
+    #ensure_directory(CUSTOM_CARD_RADAR_PATH)
 
 
     package_files = await get_files_from_github(PACKAGES_URL, session, github_pat)
@@ -216,13 +216,13 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
             await download_file(file_url, dest_path, session, github_pat)
 
     # Get and download CUSTOM CARDS files
-    radar_card_files = await get_files_from_github(CUSTOM_CARD_RADAR_URL, session, github_pat)
-    for file_url in radar_card_files:
-        if file_url:
-            file_name = os.path.basename(file_url)
-            dest_path = os.path.join(CUSTOM_CARD_RADAR_PATH, file_name)
-            _LOGGER.info(f"Saving card files to {dest_path}")
-            await download_file(file_url, dest_path, session, github_pat)
+    #radar_card_files = await get_files_from_github(CUSTOM_CARD_RADAR_URL, session, github_pat)
+    #for file_url in radar_card_files:
+    #    if file_url:
+    #        file_name = os.path.basename(file_url)
+    #        dest_path = os.path.join(CUSTOM_CARD_RADAR_PATH, file_name)
+    #        _LOGGER.info(f"Saving card files to {dest_path}")
+    #        await download_file(file_url, dest_path, session, github_pat)
 
 
 
