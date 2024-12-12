@@ -14,23 +14,18 @@ async def validate_token_and_get_pat(email, token):
     try:
         async with aiohttp.ClientSession() as session:
             async with session.post(url, json=payload) as response:
-                _LOGGER.debug(f"Response status: {response.status}")
-                response_text = await response.text()
-                _LOGGER.debug(f"Raw response: {response_text}")
                 if response.status == 200:
                     data = await response.json()
-                    _LOGGER.debug(f"Parsed JSON: {data}")
                     if data.get("status") == "success":
+                        # Extract the GitHub PAT from the response
                         _LOGGER.info("Subscription validation successful.")
                         return data.get("github_pat")
-                    else:
-                        _LOGGER.error("Invalid subscription status in response.")
                 else:
-                    _LOGGER.error(f"Failed with HTTP status: {response.status}")
+                    _LOGGER.error(f"Subscription validation failed: {response.status}")
     except aiohttp.ClientError as e:
-        _LOGGER.error(f"Error during token validation: {e}")
+        _LOGGER.error(f"Error validating subscription: {e}")
 
-    return None
+    return None  # Return None if validation fails
 
 @config_entries.HANDLERS.register(DOMAIN)
 class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
