@@ -6,10 +6,10 @@ from .const import DOMAIN  # Ensure const.py defines DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
-async def validate_token_and_get_pat(email, token):
+async def validate_token_and_get_pat(email, token, integration):
     """Validate the token with the backend and return the GitHub PAT on success."""
     url = "https://smarti.pythonanywhere.com/validate-token"
-    payload = {"email": email, "token": token}
+    payload = {"email": email, "token": token, "integration": integration}
 
     try:
         async with aiohttp.ClientSession() as session:
@@ -17,13 +17,12 @@ async def validate_token_and_get_pat(email, token):
                 if response.status == 200:
                     data = await response.json()
                     if data.get("status") == "success":
-                        # Extract the GitHub PAT from the response
-                        _LOGGER.info("Subscription validation successful.")
+                        _LOGGER.info(f"Validation successful for {integration}.")
                         return data.get("github_pat")
                 else:
-                    _LOGGER.error(f"Subscription validation failed: {response.status}")
+                    _LOGGER.error(f"Validation failed for {integration}: {response.status}")
     except aiohttp.ClientError as e:
-        _LOGGER.error(f"Error validating subscription: {e}")
+        _LOGGER.error(f"Error validating subscription for {integration}: {e}")
 
     return None  # Return None if validation fails
 
@@ -41,15 +40,15 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             email = user_input["email"]
             token = user_input["token"]
 
-            github_pat = await validate_token_and_get_pat(email, token)
+            # Pass the specific integration identifier
+            github_pat = await validate_token_and_get_pat(email, token, "smarti")
             if github_pat:
                 # Success! Create the entry with the GitHub PAT.
-                _LOGGER.info("Configuration entry creation successful.")
+                _LOGGER.info("Configuration entry for smarti created successfully.")
                 return self.async_create_entry(
                     title="SMARTi",
                     data={"email": email, "token": token, "github_pat": github_pat},
                 )
-            
             else:
                 errors["base"] = "invalid_token"
 
