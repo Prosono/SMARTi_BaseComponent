@@ -252,29 +252,28 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
             await download_file(file_url, dest_path, session, github_pat)
 
     # Get and download dashboard files
-    if config_data.get("update_dashboards"):
-        dashboard_files = await get_files_from_github(DASHBOARDS_URL, session, github_pat)
-        for file_url in dashboard_files:
-            if file_url:
-                file_name = os.path.basename(file_url)
-                dest_path = os.path.join(DASHBOARDS_PATH, file_name)
-                _LOGGER.info(f"Saving dashboard files to {dest_path}")
-                await download_file(file_url, dest_path, session, github_pat)
+    dashboard_files = await get_files_from_github(DASHBOARDS_URL, session, github_pat)
+    for file_url in dashboard_files:
+        if file_url:
+            file_name = os.path.basename(urlparse(file_url).path)
+            dest_path = os.path.join(DASHBOARDS_PATH, file_name)
+            _LOGGER.info(f"Saving dashboard files to {dest_path}")
+            await download_file(file_url, dest_path, session, github_pat)
 
     # Get and download Themes files
     themes_files = await get_files_from_github(THEMES_URL, session, github_pat)
     for file_url in themes_files:
         if file_url:
-            file_name = os.path.basename(file_url)
+            file_name = os.path.basename(urlparse(file_url).path)
             dest_path = os.path.join(THEMES_PATH, file_name)
             _LOGGER.info(f"Saving themes files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
 
-    # Get and download IMAGE files
+    # Get and download image files
     image_files = await get_files_from_github(IMAGES_URL, session, github_pat)
     for file_url in image_files:
         if file_url:
-            file_name = os.path.basename(file_url)
+            file_name = os.path.basename(urlparse(file_url).path)
             dest_path = os.path.join(IMAGES_PATH, file_name)
             _LOGGER.info(f"Saving image files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
@@ -294,7 +293,7 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
 
     for file_url in custom_card_files:
         if file_url:
-            file_name = os.path.basename(file_url)
+            file_name = os.path.basename(urlparse(file_url).path)
             dest_path = os.path.join(CUSTOM_CARDS_PATH, file_name)
             
             # Check if the file already exists
@@ -309,7 +308,7 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     animation_files = await get_files_from_github(ANIMATIONS_URL, session, github_pat)
     for file_url in animation_files:
         if file_url:
-            file_name = os.path.basename(file_url)
+            file_name = os.path.basename(urlparse(file_url).path)
             dest_path = os.path.join(ANIMATIONS_PATH, file_name)
             _LOGGER.info(f"Saving animation files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
