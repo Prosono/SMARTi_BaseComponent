@@ -23,7 +23,7 @@ IMAGES_URL = GITHUB_REPO_URL + "www/images/smarti_images/"
 CUSTOM_CARDS_URL = GITHUB_REPO_URL + "www/community/"
 ANIMATIONS_URL = GITHUB_REPO_URL + "www/animations/"
 
-#CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
+# CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
 
 PACKAGES_PATH = "/config/packages/"
 THEMES_PATH = "/config/themes/smarti_themes/"
@@ -34,15 +34,15 @@ CUSTOM_CARDS_PATH = "/config/www/community/"
 ANIMATIONS_PATH = "/config/www/animations/"
 
 PACKAGES_FILES_TO_DELETE = [
-    "smarti_custom_cards_package.yaml", 
-    "smarti_dashboard_package.yaml", 
+    "smarti_custom_cards_package.yaml",
+    "smarti_dashboard_package.yaml",
     "smarti_dashboard_settings.yaml",
     "smarti_dynamic_power_sensor_package.yaml",
-    "smarti_general_automations.yaml", 
-    "smarti_general_package.yaml", 
+    "smarti_general_automations.yaml",
+    "smarti_general_package.yaml",
     "smarti_location_package.yaml",
-    "smarti_navbar_package.yaml", 
-    "smarti_power_control_package.yaml", 
+    "smarti_navbar_package.yaml",
+    "smarti_power_control_package.yaml",
     "smarti_power_price_package.yaml",
     "smarti_powerflow_gridfee_package.yaml",
     "smarti_template_sensors.yaml",
@@ -116,6 +116,7 @@ def get_existing_files(directory: str) -> set:
     return {file for file in os.listdir(directory) if os.path.isfile(os.path.join(directory, file))}
 
 async def download_file(url: str, dest: str, session: aiohttp.ClientSession, github_pat: str):
+    """Download a single file from GitHub to a local destination, skipping if it exists."""
     headers = {"Authorization": f"Bearer {github_pat}"}
     try:
         # Skip downloading if the file already exists
@@ -143,31 +144,8 @@ async def download_file(url: str, dest: str, session: aiohttp.ClientSession, git
         _LOGGER.error(f"Error occurred while downloading {url}: {str(e)}")
 
 
-async def update_files(session: aiohttp.ClientSession, config_data: dict, github_pat: str):
-    """Update files by fetching from GitHub and saving locally."""
-    if not await validate_api_token(github_pat, session):
-        _LOGGER.error("Invalid GitHub PAT. Aborting update process.")
-        return
-
-    ensure_directory(CUSTOM_CARDS_PATH)
-
-    # Get the list of existing files
-    existing_files = get_existing_files(CUSTOM_CARDS_PATH)
-
-    # Fetch list of files from GitHub
-    custom_card_files = await get_files_from_github(CUSTOM_CARDS_URL, session, github_pat)
-    for file_url in custom_card_files:
-        if file_url:
-            file_name = os.path.basename(urlparse(file_url).path)
-            if file_name in existing_files:
-                _LOGGER.info(f"Skipping {file_name} as it already exists in {CUSTOM_CARDS_PATH}.")
-                continue  # Skip files that already exist
-            dest_path = os.path.join(CUSTOM_CARDS_PATH, file_name)
-            _LOGGER.info(f"Downloading custom card file {file_name} to {dest_path}")
-            await download_file(file_url, dest_path, session, github_pat)
-
-
 async def get_files_from_github(url: str, session: aiohttp.ClientSession, github_pat: str):
+    """Return a list of download URLs for 'file' items at a specific GitHub folder level (non-recursive)."""
     headers = {"Authorization": f"Bearer {github_pat}"}
     try:
         async with session.get(url, headers=headers) as response:
@@ -184,6 +162,7 @@ async def get_files_from_github(url: str, session: aiohttp.ClientSession, github
     return []
 
 def ensure_directory(path: str):
+    """Create a directory if it doesn't exist."""
     try:
         if not os.path.exists(path):
             os.makedirs(path)
@@ -195,6 +174,7 @@ def ensure_directory(path: str):
 
 
 async def clear_specific_files(directory: str, files_to_delete: list):
+    """Delete specific files in a directory asynchronously."""
     if not os.path.exists(directory):
         _LOGGER.warning(f"Directory {directory} does not exist, skipping file deletion.")
         return
@@ -206,9 +186,8 @@ async def clear_specific_files(directory: str, files_to_delete: list):
         else:
             _LOGGER.info(f"File {file_path} does not exist or is not a file.")
 
-
 async def clear_directory(directory_path: str):
-    """Delete all files in the specified directory asynchronously."""
+    """Delete all files in the specified directory asynchronously, then recreate it."""
     try:
         if os.path.exists(directory_path):
             # Use asyncio.to_thread to run the blocking shutil.rmtree call in a separate thread
@@ -221,19 +200,86 @@ async def clear_directory(directory_path: str):
     except Exception as e:
         _LOGGER.error(f"Failed to clear directory {directory_path}: {str(e)}")
 
+
+#
+# NEW: Recursively download directories from GitHub, skipping files that exist locally.
+#
+async def download_directory_from_github(
+    github_url: str,
+    local_path: str,
+    session: aiohttp.ClientSession,
+    github_pat: str
+):
+    """Recursively download the GitHub folder contents from `github_url`
+       into `local_path`, preserving sub-folder structure and skipping
+       any files that already exist.
+    """
+    headers = {"Authorization": f"Bearer {github_pat}"}
+    try:
+        async with session.get(github_url, headers=headers) as response:
+            response.raise_for_status()
+            items = await response.json()
+
+            # `items` should be a list of files/folders in this directory
+            for item in items:
+                item_name = item["name"]
+                item_type = item["type"]  # "file" or "dir"
+                dest_path = os.path.join(local_path, item_name)
+
+                if item_type == "file":
+                    download_url = item.get("download_url")
+                    if not download_url:
+                        _LOGGER.warning(f"No download_url for {item_name}, skipping.")
+                        continue
+
+                    # Skip if file already exists
+                    if os.path.exists(dest_path):
+                        _LOGGER.info(f"File {dest_path} already exists, skipping download.")
+                        continue
+
+                    _LOGGER.info(f"Downloading file: {download_url} -> {dest_path}")
+                    await download_file(download_url, dest_path, session, github_pat)
+
+                elif item_type == "dir":
+                    # Create the local sub-directory if needed
+                    if not os.path.exists(dest_path):
+                        os.makedirs(dest_path, exist_ok=True)
+
+                    # Recursively download the sub-directory
+                    sub_dir_url = item["url"]  # Another GitHub API `contents/` endpoint
+                    await download_directory_from_github(sub_dir_url, dest_path, session, github_pat)
+
+                else:
+                    _LOGGER.warning(f"Unknown item type '{item_type}' for {item_name}, skipping.")
+
+    except aiohttp.ClientError as http_err:
+        _LOGGER.error(f"HTTP error while fetching directory from {github_url}: {http_err}")
+        raise
+    except Exception as e:
+        _LOGGER.error(f"Unexpected error while fetching directory from {github_url}: {str(e)}")
+        raise
+
+
 async def update_files(session: aiohttp.ClientSession, config_data: dict, github_pat: str):
     """Update files by fetching from GitHub and saving locally."""
+    # Validate token first
     if not await validate_api_token(github_pat, session):
         _LOGGER.error("Invalid GitHub PAT. Aborting update process.")
         return
 
+    #
+    # 1) Clear specific files from each directory
+    #
     await clear_specific_files(PACKAGES_PATH, PACKAGES_FILES_TO_DELETE)
     await clear_specific_files(DASHBOARDS_PATH, PACKAGES_FILES_TO_DELETE)
     await clear_specific_files(THEMES_PATH, THEME_FILES_TO_DELETE)
-    await clear_specific_files(IMAGES_PATH, IMAGE_FILES_TO_DELETE)   
+    await clear_specific_files(IMAGES_PATH, IMAGE_FILES_TO_DELETE)
     await clear_specific_files(ANIMATIONS_PATH, ANIMATION_FILES_TO_DELETE)
     await clear_specific_files(CUSTOM_CARDS_PATH, CUSTOM_CARDS_FILES_TO_DELETE)
 
+    #
+    # 2) Ensure all required directories exist
+    #
     ensure_directory(PACKAGES_PATH)
     ensure_directory(DASHBOARDS_PATH)
     ensure_directory(THEMES_PATH)
@@ -242,16 +288,20 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     ensure_directory(ANIMATIONS_PATH)
     ensure_directory(CUSTOM_CARDS_PATH)
 
+    #
+    # 3) Download package files
+    #
     package_files = await get_files_from_github(PACKAGES_URL, session, github_pat)
     for file_url in package_files:
         if file_url:
-            # Extract the file name without query parameters
             file_name = os.path.basename(urlparse(file_url).path)
             dest_path = os.path.join(PACKAGES_PATH, file_name)
             _LOGGER.info(f"Saving package files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
 
-    # Get and download dashboard files
+    #
+    # 4) Download dashboard files
+    #
     dashboard_files = await get_files_from_github(DASHBOARDS_URL, session, github_pat)
     for file_url in dashboard_files:
         if file_url:
@@ -260,16 +310,20 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
             _LOGGER.info(f"Saving dashboard files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
 
-    # Get and download Themes files
+    #
+    # 5) Download theme files
+    #
     themes_files = await get_files_from_github(THEMES_URL, session, github_pat)
     for file_url in themes_files:
         if file_url:
             file_name = os.path.basename(urlparse(file_url).path)
             dest_path = os.path.join(THEMES_PATH, file_name)
-            _LOGGER.info(f"Saving themes files to {dest_path}")
+            _LOGGER.info(f"Saving theme files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
 
-    # Get and download image files
+    #
+    # 6) Download image files
+    #
     image_files = await get_files_from_github(IMAGES_URL, session, github_pat)
     for file_url in image_files:
         if file_url:
@@ -278,33 +332,32 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
             _LOGGER.info(f"Saving image files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
 
-    # Get and download CUSTOM CARD RADAR CARD files
-    #radar_card_files = await get_files_from_github(CUSTOM_CARD_RADAR_URL, session, github_pat)
-    #for file_url in radar_card_files:
-    #    if file_url:
-    #        file_name = os.path.basename(file_url)
-    #        dest_path = os.path.join(CUSTOM_CARD_RADAR_PATH, file_name)
-    #        _LOGGER.info(f"Saving custom card files to {dest_path}")
-    #        await download_file(file_url, dest_path, session, github_pat)
+    #
+    # 7) Download optional weather-radar-card files (commented out by default)
+    #
+    # radar_card_files = await get_files_from_github(CUSTOM_CARD_RADAR_URL, session, github_pat)
+    # for file_url in radar_card_files:
+    #     if file_url:
+    #         file_name = os.path.basename(file_url)
+    #         dest_path = os.path.join(CUSTOM_CARD_RADAR_PATH, file_name)
+    #         _LOGGER.info(f"Saving custom card files to {dest_path}")
+    #         await download_file(file_url, dest_path, session, github_pat)
 
-       # Get and download CUSTOM CARDS files
-    custom_card_files = await get_files_from_github(CUSTOM_CARDS_URL, session, github_pat)
-    existing_custom_cards_files = get_existing_files(CUSTOM_CARDS_PATH)  # Get existing files in the directory
+    #
+    # 8) Recursively download entire custom cards directory (www/community/), skipping existing files
+    #
+    _LOGGER.info("Recursively downloading all custom cards from GitHub...")
+    await download_directory_from_github(
+        CUSTOM_CARDS_URL,
+        CUSTOM_CARDS_PATH,
+        session,
+        github_pat
+    )
+    _LOGGER.info("Custom cards download complete.")
 
-    for file_url in custom_card_files:
-        if file_url:
-            file_name = os.path.basename(urlparse(file_url).path)
-            dest_path = os.path.join(CUSTOM_CARDS_PATH, file_name)
-            
-            # Check if the file already exists
-            if file_name in existing_custom_cards_files:
-                _LOGGER.info(f"Skipping {file_name} as it already exists in {CUSTOM_CARDS_PATH}.")
-                continue  # Skip downloading the file if it already exists
-
-            _LOGGER.info(f"Saving custom card file {file_name} to {dest_path}")
-            await download_file(file_url, dest_path, session, github_pat) 
-
-    # Get and download ANIMATIONS files
+    #
+    # 9) Download animations files (non-recursive as originally implemented)
+    #
     animation_files = await get_files_from_github(ANIMATIONS_URL, session, github_pat)
     for file_url in animation_files:
         if file_url:
@@ -313,3 +366,4 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
             _LOGGER.info(f"Saving animation files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
 
+    _LOGGER.info("All updates completed successfully.")
