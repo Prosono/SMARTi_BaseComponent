@@ -51,7 +51,7 @@ A: In order to fully dedicate to an enviroment that is constantly changing and t
 
 
 
-## Installation
+# Installation
 
 Installation
 Via HACS
