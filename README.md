@@ -1,16 +1,19 @@
-Presenting the SMARTi Integration for Home Asssitant - The Home Assistant Revolution. 
+#Presenting the SMARTi Integration for Home Asssitant - How Home Asssitant dashboards should be done!
 
 - Do you find it challenging to create a comprehensive dashboard that meets the needs of everyone in your household?  
 - Are you frustrated with having to update your dashboard every time you add a new device to Home Assistant?  
 - Do you wish your dashboard could feature a sleek, professional, and clean design?  
 - Are you looking for a single dashboard solution that works seamlessly across all your devices—phones, tablets, and desktops? 
+- Are you tired of having to update all your custom cards from HACS manually?
 
+If the answer is yes to any one of the questions above, SMARTi is the integration for you!
 
+SMARTi delivers a complete, hassle-free maintenance experience with a seamless and intuitive dashboard for Home Assistant. By harnessing the full potential of Home Assistant, SMARTi automatically gathers all your devices into a single, auto-populated dashboard—designed for multiple devices and available in multiple languages.
 
-If the answer is yes to one of the questions above, SMARTi is the integration for you!
+##That’s right! With SMARTi, you only need one dashboard to meet the needs of your entire household, across all devices.
 
-SMARTi is the most complete out-of-the-box solution for a care-free maintenance and seamless dashboard experience for Home Assitant. 
-Utilizing the powers of Home assitant, HACs, Automations and the like, SMARTi gathers all your devices into one seamless smart home experience.
+From stunning animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
+
 
 SMARTi Comes in a FREE (SMARTi Basic) verison and a PAID version (SMARTi PRO) which has a monthly subscription cost
 
@@ -40,12 +43,19 @@ The table below highlights the differences:
 
 
 Q: Why is there a monthly subscription cost for the PRO verison?
-A: In order to fully dedicate to an enviroment that is constantly changing, provide usefull updates to the usabvility of the dashboard and its automations, a monthly cost is needed to run the developemnt, but this also comes with 
+A: In order to fully dedicate to an enviroment that is constantly changing and to provide usefull updates to the usabviliusability ty of the SMARTi dashboard and its automations, a monthly cost is needed to run the developemnt.
+
+
+## Installation
+SMARTi can be installed in two seperate ways ()
+
 
 Energy Management: Dynamically monitor energy usage with categorized devices.
 Seamless Updates: Now fully compatible with HACS for effortless installation and updates.
 Localization: Supports multiple languages, including Norwegian and English.
 Pre-configured Settings: Easy setup with minimal user input required.
+
+
 
 Installation
 Via HACS
@@ -59,11 +69,7 @@ Add this repository as a custom repository:
 Search for SMARTi in HACS and click Install.
 Restart Home Assistant.
 
-Manual Installation
 
-Clone this repository or download it as a ZIP file.
-Extract the contents and copy the custom_components/smarti directory to your Home Assistant config/custom_components/ directory.
-Restart Home Assistant.
 
 Setup
 
