@@ -51,7 +51,7 @@ SMARTi can be installed in two seperate ways (for both the Basic and Pro Verison
 
 ### Manual
 
-If selecting manual mode when settign up the integration, SMARTi will NOT download any of the required cards from HACS. This will have to be done manually by the end user. T
+If selecting manual mode when settign up the integration, SMARTi will NOT download any of the required cards from HACS. This will have to be done manually by the end user. The cards required by the SMARTi integration is listed below
 
 ### Automatic
 
@@ -111,3 +111,39 @@ Support
 If you encounter any issues, please open an issue in the GitHub repository.
 
 Let me know if you want to customize specific sections or add additional details!
+
+##Required Cards:
+
+- Alarmo Card
+- ApexCharts Card
+- Bar Card
+- Bubble Card
+- Button Card
+- Button Text Card
+- Clock Weather Card
+- Comfortable Environment Card
+- Config Template Card
+- HA Sankey Chart
+- Logbook Card
+- Lottie Card
+- Auto Entities
+- Card Mod
+- Card Templater
+- Card Tools
+- Home Feed Card
+- Hourly Weather Card
+- Hui Element
+- Layout Card
+- Mushroom Card
+- Mini Graph Card
+- Numberbox Card
+- Slider Button Card
+- Stack-in-Card
+- Tabbed Card
+- Time Bar Card
+- Uptime Card
+- Vertical Stack-in-Card
+- Weather Chart Card
+- Better Moment Card
+- Maxi Media Player
+- Swipe Card
