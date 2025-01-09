@@ -1,7 +1,40 @@
-SMARTi Integration for Home Assistant
+Presenting the SMARTi Integration for Home Asssitant.
 
-SMARTi is a powerful Home Assistant integration designed to enhance your smart home experience. It simplifies energy management, device control, and automation setup while providing seamless updates through HACS.
-Features
+Do you find is difficult to set up a new complete dashboard that covers the needs of everyone on the home?
+Are you tired of modifying your dashboard each time you add a new device to Home Assistant?
+Do you wish you could have a better designet dashboard view?
+
+If the andwer is yes to one of the questions above, SMARTi is the integration for you!
+
+SMARTi is the most complete out-of-the-box solution for a care-free maintenance and seamless dashboard experience for Home Assitant. 
+Utilizing the powers of Home assitant, HACs, Automations and the like, SMARTi gathers all your devices into one seamless smart home experience.
+
+SMARTi Comes in a FREE (SMARTi Basic) verison and a PAID version (SMARTi PRO) which has a monthly subscription cost
+
+The table below highlights the differences:
+# SMARTi Feature Comparison
+
+| Category                  | SMARTi Basic - Free                                                                                          | SMARTi Pro - 2.99 EUR/month                                                                                  |
+|---------------------------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| **Dashboard**             | **Auto-Populated**                                                                                         | **Auto-Populated**                                                                                           |
+|                           | _Description:_ Automatically generates dashboards with basic information.                                  | _Description:_ Provides fully automated, dynamic dashboards for a seamless experience.                       |
+| **Dashboard Device Support** | **Desktops, Tablets**                                                                                     | **Desktops, Tablets, Phones**                                                                                |
+|                           | _Description:_ Optimized for use on desktop computers and tablets.                                         | _Description:_ Fully compatible with desktops, tablets, and mobile phones.                                   |
+| **Automations**           | **None**                                                                                                   | **Water Leak Alert, Fire Alert, Smoke Alert, Gas Alert**                                                     |
+|                           | _Description:_ No automation options are included in the free version.                                     | _Description:_ Includes pre-configured automations for common safety alerts.                                 |
+| **Customizations**        | **None**                                                                                                   | **Full Customization**                                                                                       |
+|                           | _Description:_ No customization options for dashboard layout or content.                                   | _Description:_ Allows complete control over dashboard layout and content.                                    |
+| **Language**              | **English**                                                                                                | **English, French, German, Spanish, Norwegian, Dutch**                                                      |
+|                           | _Description:_ Only English is available in the free version.                                              | _Description:_ Offers support for multiple languages for a global audience.                                  |
+| **Power Control**         | **None**                                                                                                   | **PowerFlow**                                                                                                |
+|                           | _Description:_ No tools for monitoring or managing energy usage.                                           | _Description:_ Includes advanced tools for energy monitoring and management.                                 |
+| **Themes**                | **Single Theme**                                                                                           | **Multiple Themes**                                                                                          |
+|                           | _Description:_ Only one default theme is available.                                                       | _Description:_ Offers five distinct themes for visual customization.                                         |
+| **Feature Updates**       | **Yearly**                                                                                                 | **Monthly**                                                                                                  |
+|                           | _Description:_ Features are updated only once per year.                                                   | _Description:_ Features are updated every month with new capabilities.                                       |
+| **Updates**               | **Quarterly**                                                                                              | **Continuous**                                                                                               |
+|                           | _Description:_ Bugs are addressed every three months in the free version.                                  | _Description:_ Bugs are fixed on an ongoing basis for faster resolutions.                                    |
+
 
 Energy Management: Dynamically monitor energy usage with categorized devices.
 Seamless Updates: Now fully compatible with HACS for effortless installation and updates.
