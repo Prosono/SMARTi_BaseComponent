@@ -104,33 +104,6 @@ This integration will allow for some popups to function as designed, but it is m
 - Alarmo
 This integration will allow the user to set up their own alarm system and is integrated into SMARTi. 
 
-
-
-Setup
-
-Go to Settings > Devices & Services > Add Integration in Home Assistant.
-Search for SMARTi and select it.
-SMARTi will be automatically configured—no additional input required.
-
-SMARTi supports multiple languages:
-
-    English (default)
-    Norwegian (Norsk)
-
-More languages can be added upon request.
-Contributing
-
-We welcome contributions! If you'd like to add features or report bugs:
-
-Fork this repository.
-Create a new branch.
-Submit a pull request with your changes.
-
-License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-Support
-
 If you encounter any issues, please open an issue in the GitHub repository.
 
 Let me know if you want to customize specific sections or add additional details!
