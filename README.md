@@ -112,7 +112,7 @@ If you encounter any issues, please open an issue in the GitHub repository.
 
 Let me know if you want to customize specific sections or add additional details!
 
-##Required Cards:
+## Required Cards:
 
 - Alarmo Card
 - ApexCharts Card
