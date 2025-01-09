@@ -143,3 +143,7 @@ Let me know if you want to customize specific sections or add additional details
 - Better Moment Card
 - Maxi Media Player
 - Swipe Card
+
+# Disclaimer
+
+This integration adds multiple automations, sensors, entities and helpers to your Home Assistant installation. They are all named "SMARTi_xxx" for easy filtering and not to conflict with existing helpers, entities, automations etc you might already have present and will not affect your current installation. Please do note that if you are bothered by this, then the SMARTi integrtion is not for you. 
