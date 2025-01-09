@@ -26,6 +26,26 @@ async def validate_token_and_get_pat(email, token, integration):
 
     return None  # Return None if validation fails
 
+async def generate_token(email):
+    """Generate a token for Basic users by calling the backend."""
+    url = "https://smarti.pythonanywhere.com/generate-token"
+    payload = {"email": email}
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, json=payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if data.get("status") == "success":
+                        _LOGGER.info("Token generated successfully. Please check you email")
+                        return data.get("token")
+                else:
+                    _LOGGER.error(f"Failed to generate token: {response.status}")
+    except aiohttp.ClientError as e:
+        _LOGGER.error(f"Error generating token: {e}")
+
+    return None  # Return None if token generation fails
+
 @config_entries.HANDLERS.register(DOMAIN)
 class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for SMARTi."""
@@ -38,32 +58,20 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             email = user_input["email"]
-            token = user_input["token"]
             version = user_input["version"]
             mode = user_input["mode"]
 
-            # Validate the token with the backend
-            github_pat = await validate_token_and_get_pat(email, token, version)
-            if github_pat:
-                # Success! Create the entry with all data
-                _LOGGER.info("Configuration entry for SMARTi created successfully.")
-                return self.async_create_entry(
-                    title="SMARTi",
-                    data={
-                        "email": email,
-                        "token": token,
-                        "version": version,
-                        "mode": mode,
-                        "github_pat": github_pat,
-                    },
-                )
-            else:
-                errors["base"] = "invalid_token"
+            # Save the selected version, email, and mode for the next step
+            self.version = version
+            self.email = email
+            self.mode = mode
+
+            # Move to the token step
+            return await self.async_step_token()
 
         # Define the schema for the form
         schema = vol.Schema({
             vol.Required("email"): str,
-            vol.Required("token"): str,
             vol.Required("version", default="basic"): vol.In(["basic", "pro"]),
             vol.Required("mode", default="automatic"): vol.In(["automatic", "manual"]),
         })
@@ -73,3 +81,68 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             data_schema=schema,
             errors=errors,
         )
+
+    async def async_step_token(self, user_input=None):
+        """Handle token input or generation based on the selected version."""
+        errors = {}
+
+        if user_input is not None:
+            if self.version == "basic":
+                # Generate a token for Basic users
+                token = await generate_token(self.email)
+                if token:
+                    _LOGGER.info("Token generated for Basic version.")
+                    github_pat = await validate_token_and_get_pat(self.email, token, "basic")
+                    if github_pat:
+                        return self.async_create_entry(
+                            title="SMARTi Basic",
+                            data={
+                                "email": self.email,
+                                "basic_token": token,
+                                "version": self.version,
+                                "mode": self.mode,
+                                "github_pat": github_pat,
+                            },
+                        )
+                    else:
+                        errors["base"] = "invalid_token"
+                else:
+                    errors["base"] = "token_generation_failed"
+
+            elif self.version == "pro":
+                # Validate the provided Pro token
+                pro_token = user_input.get("pro_token")
+                github_pat = await validate_token_and_get_pat(self.email, pro_token, "pro")
+                if github_pat:
+                    return self.async_create_entry(
+                        title="SMARTi Pro",
+                        data={
+                            "email": self.email,
+                            "pro_token": pro_token,
+                            "version": self.version,
+                            "mode": self.mode,
+                            "github_pat": github_pat,
+                        },
+                    )
+                else:
+                    errors["base"] = "invalid_token"
+
+        # Define the schema for the form
+        if self.version == "basic":
+            # Basic version does not require manual token input
+            return self.async_show_form(
+                step_id="token",
+                data_schema=vol.Schema({}),  # No additional fields for Basic
+                description_placeholders={"message": "Token will be generated automatically."},
+                errors=errors,
+            )
+        else:
+            # Pro version requires a token input
+            schema = vol.Schema({
+                vol.Required("pro_token"): str,
+            })
+            return self.async_show_form(
+                step_id="token",
+                data_schema=schema,
+                errors=errors,
+            )
