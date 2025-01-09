@@ -14,44 +14,16 @@ _LOGGER = logging.getLogger(__name__)
 # Interval for periodic updates (e.g., every hour)
 UPDATE_INTERVAL = timedelta(hours=1)
 
-# Paths and files to clean up
+# Paths to clean up
 PATHS_TO_CLEAN = [
     "/config/packages/",
     "/config/themes/smarti_themes/",
     "/config/dashboards/",
     "/config/www/images/smarti_images/",
-    "/config/www/community/",
+    "/config/www/smarticards/",
     "/config/www/animations/",
     "/config/www/smartilicense/",
 ]
-
-FILES_TO_DELETE = {
-    "/config/packages/": [
-        "smarti_custom_cards_package.yaml",
-        "smarti_dashboard_package.yaml",
-        "smarti_dashboard_settings.yaml",
-        "smarti_dynamic_power_sensor_package.yaml",
-        "smarti_general_automations.yaml",
-        "smarti_general_package.yaml",
-        "smarti_location_package.yaml",
-        "smarti_navbar_package.yaml",
-        "smarti_power_control_package.yaml",
-        "smarti_power_price_package.yaml",
-        "smarti_powerflow_gridfee_package.yaml",
-        "smarti_template_sensors.yaml",
-        "smarti_weather_package.yaml",
-        "smarti_translation_package.yaml",
-        "smarti_powerflow_gridfee_automations",
-    ],
-    "/config/dashboards/": [
-        "smarti-custom-cards-test.yaml",
-    ],
-    "/config/themes/smarti_themes/": [],
-    "/config/www/images/smarti_images/": [],
-    "/config/www/community/": [],
-    "/config/www/animations/": [],
-    "/config/www/smartilicense/": [],
-}
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up the SMARTi integration."""
@@ -104,29 +76,17 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
 
 async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Handle cleanup when the SMARTi integration is uninstalled."""
-    _LOGGER.info("Cleaning up files and directories for SMARTi integration.")
+    _LOGGER.info("Cleaning up directories for SMARTi integration.")
 
-    for path, files in FILES_TO_DELETE.items():
-        # Delete specific files in the directory
-        for file_name in files:
-            file_path = os.path.join(path, file_name)
-            if os.path.isfile(file_path):
-                try:
-                    os.remove(file_path)
-                    _LOGGER.info(f"Deleted file: {file_path}")
-                except Exception as e:
-                    _LOGGER.error(f"Failed to delete file {file_path}: {e}")
-
-        # Delete the directory if it's empty
+    for path in PATHS_TO_CLEAN:
         if os.path.exists(path):
             try:
-                if not os.listdir(path):  # Check if the directory is empty
-                    shutil.rmtree(path)
-                    _LOGGER.info(f"Deleted empty directory: {path}")
-                else:
-                    _LOGGER.info(f"Directory {path} is not empty, skipping deletion.")
+                shutil.rmtree(path)  # Recursively delete the directory and its contents
+                _LOGGER.info(f"Deleted directory: {path}")
             except Exception as e:
                 _LOGGER.error(f"Failed to delete directory {path}: {e}")
+        else:
+            _LOGGER.info(f"Directory {path} does not exist, skipping.")
 
     _LOGGER.info("Cleanup completed for SMARTi integration.")
 
