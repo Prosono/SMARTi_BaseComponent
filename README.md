@@ -64,12 +64,10 @@ Add this repository as a custom repository:
    - Set the category to Integration and click Add.
    - Search for SMARTi in HACS and click Install.
    - Restart Home Assistant.
-   - GO into "Setings"
-   - Click on "Devies And Services"
-   - Clikc on "Add Device" and search for SMARTi
-
-
-After the integraion has been installed, SMARTi can be set up in two seperate ways (for both the Basic and Pro Verison)
+   - Go to Settings > Devices & Services > Add Integration in Home Assistant.
+Search for SMARTi and select it.
+   - You now have to select the SMARTi Basic or the SMARTi Pro option.
+   - After that you now hae the following two choices:
 
 ### Manual
 
