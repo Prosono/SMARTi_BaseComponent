@@ -58,12 +58,15 @@ Via HACS
 
 Ensure you have HACS installed in your Home Assistant instance.
 Add this repository as a custom repository:
-    Open HACS in Home Assistant.
-    Go to Settings > Custom Repositories.
-    Add the repository URL: https://github.com/yourusername/smarti.
-    Set the category to Integration and click Add.
-Search for SMARTi in HACS and click Install.
-Restart Home Assistant.
+   - Open HACS in Home Assistant.
+   - Go to Settings > Custom Repositories.
+   - Add the repository URL: https://github.com/Prosono/SMARTi_BaseComponent
+   - Set the category to Integration and click Add.
+   - Search for SMARTi in HACS and click Install.
+   - Restart Home Assistant.
+   - GO into "Setings"
+   - Click on "Devies And Services"
+   - Clikc on "Add Device" and search for SMARTi
 
 
 After the integraion has been installed, SMARTi can be set up in two seperate ways (for both the Basic and Pro Verison)
