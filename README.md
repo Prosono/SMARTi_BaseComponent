@@ -1,4 +1,4 @@
-# Presenting the SMARTi Integration for Home Asssitant - How Home Asssitant dashboards should be done!
+# Presenting the SMARTi Integration for Home Asssitant - How Home Asssitant dashboards should be!
 
 - Do you find it challenging to create a comprehensive dashboard that meets the needs of everyone in your household?  
 - Are you frustrated with having to update your dashboard every time you add a new device to Home Assistant?  
@@ -12,12 +12,13 @@ SMARTi delivers a complete, hassle-free maintenance experience with a seamless a
 
 ##That’s right! With SMARTi, you only need one dashboard to meet the needs of your entire household, across all devices.
 
-From stunning animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
+From beautiful animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
 
+# Versions
 
 SMARTi Comes in a FREE (SMARTi Basic) verison and a PAID version (SMARTi PRO) which has a monthly subscription cost
 
-The table below highlights the differences:
+The table below highlights the feature of the SMARTi dashboard and thje differences between the Basic and Pro version:
 # SMARTi Feature Comparison
 
 | Category                  | SMARTi Basic - Free                                                                                          | SMARTi Pro - 2.99 EUR/month                                                                                  |
@@ -46,8 +47,26 @@ Q: Why is there a monthly subscription cost for the PRO verison?
 A: In order to fully dedicate to an enviroment that is constantly changing and to provide usefull updates to the usabviliusability ty of the SMARTi dashboard and its automations, a monthly cost is needed to run the developemnt.
 
 
+
+
+
+
 ## Installation
-SMARTi can be installed in two seperate ways (for both the Basic and Pro Verison)
+
+Installation
+Via HACS
+
+Ensure you have HACS installed in your Home Assistant instance.
+Add this repository as a custom repository:
+    Open HACS in Home Assistant.
+    Go to Settings > Custom Repositories.
+    Add the repository URL: https://github.com/yourusername/smarti.
+    Set the category to Integration and click Add.
+Search for SMARTi in HACS and click Install.
+Restart Home Assistant.
+
+
+After the integraion has been installed, SMARTi can be set up in two seperate ways (for both the Basic and Pro Verison)
 
 ### Manual
 
@@ -64,18 +83,15 @@ Lets say that you want to download another custom card not included with the SMA
 
 What thsi also means is that the SMARTi integration is now repsonsible for maintining theese cards and keeping them updated, adding/removing them etc. 
 
+# Dependencies:
 
-Installation
-Via HACS
+The SMARTi integration does not reqire any integrations to function, but for the full potential usage, it is reccomended to install the following integrations:
 
-Ensure you have HACS installed in your Home Assistant instance.
-Add this repository as a custom repository:
-    Open HACS in Home Assistant.
-    Go to Settings > Custom Repositories.
-    Add the repository URL: https://github.com/yourusername/smarti.
-    Set the category to Integration and click Add.
-Search for SMARTi in HACS and click Install.
-Restart Home Assistant.
+- Browser Mod
+This integration will allow for some popups to function as designed, but it is mainly used for looking into the active devices showing in the SMARTi navigation bar
+
+- Alarmo
+This integration will allow the user to set up their own alarm system and is integrated into SMARTi. 
 
 
 
