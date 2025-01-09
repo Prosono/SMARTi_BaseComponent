@@ -54,6 +54,15 @@ A: In order to fully dedicate to an enviroment that is constantly changing and t
 # Installation
 
 Installation
+
+Pre-requisties:
+
+* This integration only supports Home Assistant 2024.8 and above. Installing and configuring this integration on a Home Assistant installation with a lower version than this will result in errors and the integration will not work properly.
+
+Before starting you installation, make sure you have the two following lines in you configuration.yaml file:
+<pre> homeassistant:
+        packages: !include_dir_named packages  </pre>
+
 Via HACS
 
 Ensure you have HACS installed in your Home Assistant instance.
