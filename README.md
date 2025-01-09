@@ -51,22 +51,18 @@ SMARTi can be installed in two seperate ways (for both the Basic and Pro Verison
 
 ### Manual
 
-If selecting manual mode when settign up the integration, SMARTi will NOT download any of the required cards from HACS. This will have to be done manually by the end user. The cards required by the SMARTi integration is listed below
+If selecting manual mode when setting up the integration, SMARTi will NOT download any of the required cards from HACS. This will have to be done manually by the end user. The cards required by the SMARTi integration is listed below
 
 ### Automatic
 
-If selecting automatic mode when setting up the integraiton, SMARTi will enable .yaml mode for you HOme Assistant installation and download all the cards required by the SMARTi dashboard. The also means that your Home Assistant isntalltion will now be in .yaml mode meaning that if you are to download more cards form HACS (or have other cards form HACS installed that is not included in the SMARTi integration), you will have to add theese manually to your configuration.yaml file after installing form HACS. 
+If selecting automatic mode when setting up the integraiton, SMARTi will enable .yaml mode for you Home Assistant installation and download all the cards required by the SMARTi dashboard. The also means that your Home Assistant isntalltion will now be in .yaml mode meaning that if you are to download more cards from HACS (or have other cards form HACS installed that is not included in the SMARTi integration), you will have to add theese manually to your configuration.yaml file after installing form HACS. 
 
 #### Example:
 Lets say that you want to download another custom card not included with the SMARTi integration - e.g the "lovelace-dual-gauge-card" you will then have to add the following line to your configuration.yaml:
 
 <pre> ```yaml - url: /community_plugin/dual-gauge-card/dual-gauge-card.js type: js ``` </pre>
 
-Energy Management: Dynamically monitor energy usage with categorized devices.
-Seamless Updates: Now fully compatible with HACS for effortless installation and updates.
-Localization: Supports multiple languages, including Norwegian and English.
-Pre-configured Settings: Easy setup with minimal user input required.
-
+What thsi also means is that the SMARTi integration is now repsonsible for maintining theese cards and keeping them updated, adding/removing them etc. 
 
 
 Installation
