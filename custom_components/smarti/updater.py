@@ -52,8 +52,7 @@ PACKAGES_FILES_TO_DELETE = [
 ]
 
 DASHBOARDS_FILES_TO_DELETE = {
-    "SMARTi_Language_Norsk.yaml",
-    "SMARTi_Language_English.yaml"
+    "smarti-custom-cards-test.yaml"
 }
 
 ANIMATION_FILES_TO_DELETE = {
