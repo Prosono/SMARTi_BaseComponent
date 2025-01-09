@@ -1,10 +1,13 @@
-Presenting the SMARTi Integration for Home Asssitant.
+Presenting the SMARTi Integration for Home Asssitant - The Home Assistant Revolution. 
 
-Do you find is difficult to set up a new complete dashboard that covers the needs of everyone on the home?
-Are you tired of modifying your dashboard each time you add a new device to Home Assistant?
-Do you wish you could have a better designet dashboard view?
+- Do you find it challenging to create a comprehensive dashboard that meets the needs of everyone in your household?  
+- Are you frustrated with having to update your dashboard every time you add a new device to Home Assistant?  
+- Do you wish your dashboard could feature a sleek, professional, and clean design?  
+- Are you looking for a single dashboard solution that works seamlessly across all your devices—phones, tablets, and desktops? 
 
-If the andwer is yes to one of the questions above, SMARTi is the integration for you!
+
+
+If the answer is yes to one of the questions above, SMARTi is the integration for you!
 
 SMARTi is the most complete out-of-the-box solution for a care-free maintenance and seamless dashboard experience for Home Assitant. 
 Utilizing the powers of Home assitant, HACs, Automations and the like, SMARTi gathers all your devices into one seamless smart home experience.
@@ -35,6 +38,9 @@ The table below highlights the differences:
 | **Updates**               | **Quarterly**                                                                                              | **Continuous**                                                                                               |
 |                           | _Description:_ Bugs are addressed every three months in the free version.                                  | _Description:_ Bugs are fixed on an ongoing basis for faster resolutions.                                    |
 
+
+Q: Why is there a monthly subscription cost for the PRO verison?
+A: In order to fully dedicate to an enviroment that is constantly changing, provide usefull updates to the usabvility of the dashboard and its automations, a monthly cost is needed to run the developemnt, but this also comes with 
 
 Energy Management: Dynamically monitor energy usage with categorized devices.
 Seamless Updates: Now fully compatible with HACS for effortless installation and updates.
