@@ -22,6 +22,7 @@ THEMES_URL = GITHUB_REPO_URL + "themes/smarti_themes/"
 IMAGES_URL = GITHUB_REPO_URL + "www/images/smarti_images/"
 CUSTOM_CARDS_URL = GITHUB_REPO_URL + "www/community/"
 ANIMATIONS_URL = GITHUB_REPO_URL + "www/animations/"
+LICENSE_URL = GITHUB_REPO_URL + "www/smartilicense/"
 
 # CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
 
@@ -29,9 +30,10 @@ PACKAGES_PATH = "/config/packages/"
 THEMES_PATH = "/config/themes/smarti_themes/"
 DASHBOARDS_PATH = "/config/dashboards/"
 IMAGES_PATH = "/config/www/images/smarti_images"
-CUSTOM_CARD_RADAR_PATH = "/config/www/community/weather-radar-card/"
+# CUSTOM_CARD_RADAR_PATH = "/config/www/community/weather-radar-card/"
 CUSTOM_CARDS_PATH = "/config/www/community/"
 ANIMATIONS_PATH = "/config/www/animations/"
+LICENSE_PATH = "/config/www/smartilicense/"
 
 PACKAGES_FILES_TO_DELETE = [
     "smarti_custom_cards_package.yaml",
@@ -65,6 +67,9 @@ IMAGE_FILES_TO_DELETE = {
 }
 
 CUSTOM_CARDS_FILES_TO_DELETE = {
+}
+
+SMARTI_LICENSES_TO_DELETE = {
 }
 
 _LOGGER = logging.getLogger(__name__)
@@ -275,6 +280,7 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     await clear_specific_files(IMAGES_PATH, IMAGE_FILES_TO_DELETE)
     await clear_specific_files(ANIMATIONS_PATH, ANIMATION_FILES_TO_DELETE)
     await clear_specific_files(CUSTOM_CARDS_PATH, CUSTOM_CARDS_FILES_TO_DELETE)
+    await clear_specific_files(LICENSE_PATH, SMARTI_LICENSES_TO_DELETE)
 
     #
     # 2) Ensure all required directories exist
@@ -283,10 +289,10 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     ensure_directory(DASHBOARDS_PATH)
     ensure_directory(THEMES_PATH)
     ensure_directory(IMAGES_PATH)
-    ensure_directory(CUSTOM_CARD_RADAR_PATH)
+    #ensure_directory(CUSTOM_CARD_RADAR_PATH)
     ensure_directory(ANIMATIONS_PATH)
     ensure_directory(CUSTOM_CARDS_PATH)
-
+    ensure_directory(LICENSE_PATH)
     #
     # 3) Download package files
     #
@@ -364,5 +370,13 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
             dest_path = os.path.join(ANIMATIONS_PATH, file_name)
             _LOGGER.info(f"Saving animation files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
+
+    license_files = await get_files_from_github(LICENSE_URL, session, github_pat)
+    for file_url in license_files:
+        if file_url:
+            file_name = os.path.basename(urlparse(file_url).path)
+            dest_path = os.path.join(LICENSE_PATH, file_name)
+            _LOGGER.info(f"Saving license files to {dest_path}")
+            await download_file(file_url, dest_path, session, github_pat)            
 
     _LOGGER.info("All updates completed successfully.")
