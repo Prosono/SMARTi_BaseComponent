@@ -80,7 +80,8 @@ If selecting automatic mode when setting up the integraiton, SMARTi will enable 
 #### Example:
 Lets say that you want to download another custom card not included with the SMARTi integration - e.g the "lovelace-dual-gauge-card" you will then have to add the following line to your configuration.yaml:
 
-<pre> ```yaml - url: /community_plugin/dual-gauge-card/dual-gauge-card.js type: js ``` </pre>
+<pre> url: /community_plugin/dual-gauge-card/dual-gauge-card.js 
+      type: js  </pre>
 
 What thsi also means is that the SMARTi integration is now repsonsible for maintining theese cards and keeping them updated, adding/removing them etc. 
 
