@@ -11,7 +11,7 @@
 
 <br>
 
-<div align="center">
+
 
 - Do you find it challenging to create a comprehensive dashboard that **meets the needs** of everyone in your household?  
 
@@ -28,7 +28,7 @@
 
 - Are you tired of having to update all your custom cards from HACS manually?
 
-</div>
+
 If the answer is yes to any one of the questions above, SMARTi is the integration for you!
 
 SMARTi delivers a complete, hassle-free maintenance experience with a seamless and intuitive dashboard for Home Assistant. By harnessing the full potential of Home Assistant, SMARTi automatically gathers all your devices into a single, auto-populated dashboard—designed for multiple devices and available in multiple languages.
