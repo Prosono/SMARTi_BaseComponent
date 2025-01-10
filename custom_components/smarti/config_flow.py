@@ -6,13 +6,16 @@ from .const import DOMAIN  # Ensure const.py defines DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
+# Timeout for API calls
+TIMEOUT = aiohttp.ClientTimeout(total=10)
+
 async def validate_token_and_get_pat(email, token, integration):
     """Validate the token with the backend and return the GitHub PAT on success."""
     url = "https://smarti.pythonanywhere.com/validate-token"
     payload = {"email": email, "token": token, "integration": integration}
 
     try:
-        async with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession(timeout=TIMEOUT) as session:
             async with session.post(url, json=payload) as response:
                 if response.status == 200:
                     data = await response.json()
@@ -32,12 +35,12 @@ async def generate_token(email):
     payload = {"email": email}
 
     try:
-        async with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession(timeout=TIMEOUT) as session:
             async with session.post(url, json=payload) as response:
                 if response.status == 200:
                     data = await response.json()
                     if data.get("status") == "success":
-                        _LOGGER.info("Token generated successfully. Please check you email")
+                        _LOGGER.info("Token generated successfully. Please check your email.")
                         return data.get("token")
                 else:
                     _LOGGER.error(f"Failed to generate token: {response.status}")
@@ -94,6 +97,7 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     _LOGGER.info("Token generated for Basic version.")
                     github_pat = await validate_token_and_get_pat(self.email, token, "basic")
                     if github_pat:
+                        _LOGGER.info("Token validated successfully. Integration is ready to use.")
                         return self.async_create_entry(
                             title="SMARTi Basic",
                             data={
@@ -114,6 +118,7 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 pro_token = user_input.get("pro_token")
                 github_pat = await validate_token_and_get_pat(self.email, pro_token, "pro")
                 if github_pat:
+                    _LOGGER.info("Token validated successfully. Integration is ready to use.")
                     return self.async_create_entry(
                         title="SMARTi Pro",
                         data={
@@ -133,7 +138,12 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_show_form(
                 step_id="token",
                 data_schema=vol.Schema({}),  # No additional fields for Basic
-                description_placeholders={"message": "Token will be generated automatically."},
+                description_placeholders={
+                    "message": (
+                        "A token will be generated automatically and sent to your email. "
+                        "Please wait a few minutes if you haven’t received it yet."
+                    )
+                },
                 errors=errors,
             )
         else:
@@ -144,5 +154,12 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_show_form(
                 step_id="token",
                 data_schema=schema,
+                description_placeholders={
+                    "message": (
+                        "Please enter the token you received after purchasing SMARTi Pro.<br>"
+                        "Do you want to upgrade to the PRO version? "
+                        "Purchase a subscription here: <a href='https://www.smarti.dev' target='_blank'>https://www.smarti.dev</a>"
+                    )
+                },
                 errors=errors,
             )
