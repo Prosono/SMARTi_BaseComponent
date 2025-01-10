@@ -16,7 +16,7 @@ DOMAIN = "smarti"
 
 GITHUB_REPO_URL = "https://api.github.com/repos/Prosono/SMARTi_Configuration/contents/"
 
-PACKAGES_URL = GITHUB_REPO_URL + "packages/"
+PACKAGES_URL = GITHUB_REPO_URL + "packages/smartipackages/"
 DASHBOARDS_URL = GITHUB_REPO_URL + "dashboards/"
 THEMES_URL = GITHUB_REPO_URL + "themes/smarti_themes/"
 IMAGES_URL = GITHUB_REPO_URL + "www/images/smarti_images/"
@@ -24,13 +24,10 @@ CUSTOM_CARDS_URL = GITHUB_REPO_URL + "www/smarticards/"
 ANIMATIONS_URL = GITHUB_REPO_URL + "www/animations/"
 LICENSE_URL = GITHUB_REPO_URL + "www/smartilicense/"
 
-# CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
-
 PACKAGES_PATH = "/config/smartipackages/"
 THEMES_PATH = "/config/themes/smarti_themes/"
 DASHBOARDS_PATH = "/config/smartidashboards/"
 IMAGES_PATH = "/config/www/images/smarti_images"
-# CUSTOM_CARD_RADAR_PATH = "/config/www/community/weather-radar-card/"
 CUSTOM_CARDS_PATH = "/config/www/smarticards/"
 ANIMATIONS_PATH = "/config/www/smartianimations/"
 LICENSE_PATH = "/config/www/smartilicense/"
@@ -358,6 +355,9 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
             _LOGGER.info(f"Saving animation files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
 
+    #
+    # 9) Download License files (non-recursive as originally implemented)
+    #
     license_files = await get_files_from_github(LICENSE_URL, session, github_pat)
     for file_url in license_files:
         if file_url:
