@@ -26,13 +26,13 @@ LICENSE_URL = GITHUB_REPO_URL + "www/smartilicense/"
 
 # CUSTOM_CARD_RADAR_URL = GITHUB_REPO_URL + "www/community/weather-radar-card/"
 
-PACKAGES_PATH = "/config/packages/"
+PACKAGES_PATH = "/config/smartipackages/"
 THEMES_PATH = "/config/themes/smarti_themes/"
-DASHBOARDS_PATH = "/config/dashboards/"
+DASHBOARDS_PATH = "/config/smartidashboards/"
 IMAGES_PATH = "/config/www/images/smarti_images"
 # CUSTOM_CARD_RADAR_PATH = "/config/www/community/weather-radar-card/"
 CUSTOM_CARDS_PATH = "/config/www/smarticards/"
-ANIMATIONS_PATH = "/config/www/animations/"
+ANIMATIONS_PATH = "/config/www/smartianimations/"
 LICENSE_PATH = "/config/www/smartilicense/"
 
 PACKAGES_FILES_TO_DELETE = [
@@ -289,7 +289,6 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     ensure_directory(DASHBOARDS_PATH)
     ensure_directory(THEMES_PATH)
     ensure_directory(IMAGES_PATH)
-    #ensure_directory(CUSTOM_CARD_RADAR_PATH)
     ensure_directory(ANIMATIONS_PATH)
     ensure_directory(CUSTOM_CARDS_PATH)
     ensure_directory(LICENSE_PATH)
@@ -337,19 +336,7 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
             _LOGGER.info(f"Saving image files to {dest_path}")
             await download_file(file_url, dest_path, session, github_pat)
 
-    #
-    # 7) Download optional weather-radar-card files (commented out by default)
-    #
-    # radar_card_files = await get_files_from_github(CUSTOM_CARD_RADAR_URL, session, github_pat)
-    # for file_url in radar_card_files:
-    #     if file_url:
-    #         file_name = os.path.basename(file_url)
-    #         dest_path = os.path.join(CUSTOM_CARD_RADAR_PATH, file_name)
-    #         _LOGGER.info(f"Saving custom card files to {dest_path}")
-    #         await download_file(file_url, dest_path, session, github_pat)
-
-    #
-    # 8) Recursively download entire custom cards directory (www/community/), skipping existing files
+    # 7) Recursively download entire custom cards directory (www/community/), skipping existing files
     #
     _LOGGER.info("Recursively downloading all custom cards from GitHub...")
     await download_directory_from_github(
@@ -361,7 +348,7 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     _LOGGER.info("Custom cards download complete.")
 
     #
-    # 9) Download animations files (non-recursive as originally implemented)
+    # 8) Download animations files (non-recursive as originally implemented)
     #
     animation_files = await get_files_from_github(ANIMATIONS_URL, session, github_pat)
     for file_url in animation_files:
