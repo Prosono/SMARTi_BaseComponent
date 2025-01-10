@@ -148,12 +148,19 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_pro_link(self, user_input=None):
         """Step for Pro: Provide a purchase link."""
+        if user_input is not None:
+            # Redirect to the Pro token input step
+            return await self.async_step_pro_token_input()
+
+        # Show the form with the purchase link
         return self.async_show_form(
             step_id="pro_link",
+            data_schema=vol.Schema({}),  # No input fields here
             description_placeholders={
                 "link": "<a href='https://www.smarti.dev' target='_blank'>Purchase SMARTi Pro</a>"
             },
         )
+
 
     async def async_step_pro_token_input(self, user_input=None):
         """Step for Pro: Input the token."""
