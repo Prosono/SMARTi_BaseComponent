@@ -85,12 +85,13 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
-    async def async_step_token(self, user_input=None):
-        """Handle token input or generation based on the selected version."""
-        errors = {}
+async def async_step_token(self, user_input=None):
+    """Handle token input or generation based on the selected version."""
+    errors = {}
 
-        if user_input is not None:
-            if self.version == "basic":
+    if user_input is not None:
+        if self.version == "basic":
+            if "generate_token" in user_input:
                 # Generate a token for Basic users
                 token = await generate_token(self.email)
                 if token:
@@ -112,54 +113,56 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                         errors["base"] = "invalid_token"
                 else:
                     errors["base"] = "token_generation_failed"
+        elif self.version == "pro":
+            # Validate the provided Pro token
+            pro_token = user_input.get("pro_token")
+            github_pat = await validate_token_and_get_pat(self.email, pro_token, "pro")
+            if github_pat:
+                _LOGGER.info("Token validated successfully. Integration is ready to use.")
+                return self.async_create_entry(
+                    title="SMARTi Pro",
+                    data={
+                        "email": self.email,
+                        "pro_token": pro_token,
+                        "version": self.version,
+                        "mode": self.mode,
+                        "github_pat": github_pat,
+                    },
+                )
+            else:
+                errors["base"] = "invalid_token"
 
-            elif self.version == "pro":
-                # Validate the provided Pro token
-                pro_token = user_input.get("pro_token")
-                github_pat = await validate_token_and_get_pat(self.email, pro_token, "pro")
-                if github_pat:
-                    _LOGGER.info("Token validated successfully. Integration is ready to use.")
-                    return self.async_create_entry(
-                        title="SMARTi Pro",
-                        data={
-                            "email": self.email,
-                            "pro_token": pro_token,
-                            "version": self.version,
-                            "mode": self.mode,
-                            "github_pat": github_pat,
-                        },
-                    )
-                else:
-                    errors["base"] = "invalid_token"
-
-        # Define the schema for the form
-        if self.version == "basic":
-            # Basic version does not require manual token input
-            return self.async_show_form(
-                step_id="token",
-                data_schema=vol.Schema({}),  # No additional fields for Basic
-                description_placeholders={
-                    "message": (
-                        "A token will be generated automatically and sent to your email. "
-                        "Please wait a few minutes if you haven’t received it yet."
-                    )
-                },
-                errors=errors,
-            )
-        else:
-            # Pro version requires a token input
-            schema = vol.Schema({
-                vol.Required("pro_token"): str,
-            })
-            return self.async_show_form(
-                step_id="token",
-                data_schema=schema,
-                description_placeholders={
-                    "message": (
-                        "Please enter the token you received after purchasing SMARTi Pro.<br>"
-                        "Do you want to upgrade to the PRO version? "
-                        "Purchase a subscription here: <a href='https://www.smarti.dev' target='_blank'>https://www.smarti.dev</a>"
-                    )
-                },
-                errors=errors,
-            )
+    # Define the schema for the form
+    if self.version == "basic":
+        # Basic version allows generating a token
+        schema = vol.Schema({
+            vol.Optional("generate_token", default=True): bool,  # Add a button-like checkbox
+        })
+        return self.async_show_form(
+            step_id="token",
+            data_schema=schema,
+            description_placeholders={
+                "message": (
+                    "Click below to generate a token for the Basic version. "
+                    "The token will be sent to your email."
+                )
+            },
+            errors=errors,
+        )
+    else:
+        # Pro version requires a token input
+        schema = vol.Schema({
+            vol.Required("pro_token"): str,
+        })
+        return self.async_show_form(
+            step_id="token",
+            data_schema=schema,
+            description_placeholders={
+                "message": (
+                    "Please enter the token you received after purchasing SMARTi Pro.<br>"
+                    "Do you want to upgrade to the PRO version? "
+                    "Purchase a subscription here: <a href='https://www.smarti.dev' target='_blank'>https://www.smarti.dev</a>"
+                )
+            },
+            errors=errors,
+        )
