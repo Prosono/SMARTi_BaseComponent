@@ -146,7 +146,7 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     GITHUB_REPO_URL = get_github_repo_url(version)
 
     PACKAGES_URL = GITHUB_REPO_URL + "packages/smartipackages/"
-    DASHBOARDS_URL = GITHUB_REPO_URL + "dashboards/smartidashboards/"
+    DASHBOARDS_URL = GITHUB_REPO_URL + "smartidashboards/"
     THEMES_URL = GITHUB_REPO_URL + "themes/smarti_themes/"
     IMAGES_URL = GITHUB_REPO_URL + "www/images/smarti_images/"
     CUSTOM_CARDS_URL = GITHUB_REPO_URL + "www/smarticards/"
