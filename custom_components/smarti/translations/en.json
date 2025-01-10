@@ -3,16 +3,55 @@
         "step": {
             "user": {
                 "title": "Set up SMARTi",
-                "description": "Enter your email and GitHub API token to configure SMARTi.",
+                "description": "Select the version of SMARTi you want to configure.",
                 "data": {
-                    "email": "Email Address",
-                    "api_token": "GitHub API Token"
+                    "version": "Version"
+                }
+            },
+            "basic_token_choice": {
+                "title": "Basic Version: Token Setup",
+                "description": "Do you already have a token?",
+                "data": {
+                    "has_token": "Have you generated a token?"
+                }
+            },
+            "generate_token": {
+                "title": "Generate Basic Token",
+                "description": "Enter your email address to generate a token for the Basic version. The token will be sent to your email.",
+                "data": {
+                    "email": "Email Address"
+                }
+            },
+            "basic_token_input": {
+                "title": "Enter Basic Token",
+                "description": "Input the token you received for the Basic version.",
+                "data": {
+                    "basic_token": "Basic Token"
+                }
+            },
+            "pro_link": {
+                "title": "Purchase SMARTi Pro",
+                "description": "Click the link below to purchase SMARTi Pro: {link}"
+            },
+            "pro_token_input": {
+                "title": "Enter Pro Token",
+                "description": "Input the token you received after purchasing SMARTi Pro.",
+                "data": {
+                    "pro_token": "Pro Token"
+                }
+            },
+            "mode": {
+                "title": "Select Mode",
+                "description": "Choose how SMARTi will operate:\n\n- {automatic_description}\n- {manual_description}",
+                "data": {
+                    "mode": "Mode"
                 }
             }
         },
         "error": {
             "invalid_subscription": "The provided email does not have an active subscription.",
-            "invalid_token": "The provided GitHub API token is invalid.",
+            "invalid_token": "The provided token is invalid.",
+            "token_generation_failed": "Failed to generate token. Please try again.",
             "unknown_error": "An unknown error occurred."
         }
     },
