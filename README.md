@@ -33,10 +33,10 @@
 If the answer is yes to any one of the questions above, SMARTi is the integration for you!
 
 <div align="center">
-  <img src="assets/homepage.png" alt="SMARTi Logo" width="500">
-  <img src="assets/weatherpage.png" alt="SMARTi Logo" width="500">
-  <img src="assets/lightpage.png" alt="SMARTi Logo" width="500">
-  <img src="assets/climate.png" alt="SMARTi Logo" width="500">
+  <img src="assets/homepage.png" width="500">
+  <img src="assets/weatherpage.png"  width="500">
+  <img src="assets/lightpage.png" width="500">
+  <img src="assets/climate.png" width="500">
 </div>
 
 
