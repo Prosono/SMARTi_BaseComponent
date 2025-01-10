@@ -33,24 +33,32 @@
 If the answer is yes to any one of the questions above, SMARTi is the integration for you!
 
 <div align="center">
-  <img src="assets/homepage.png" width="500">
-  <img src="assets/homepagephone.jpeg" width="500">
-  <p>Homepage - An overview of your entire Home Assistant setup at a glance.</p>
+  <div>
+    <img src="assets/homepage.png" width="400" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
+    <p>Homepage - An overview of your entire Home Assistant setup at a glance.</p>
+  </div>
   <br>
 
-  <img src="assets/weatherpage.png" width="500">
-  <img src="assets/weatherpagephone.jpeg" width="500">
-  <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
+  <div>
+    <img src="assets/weatherpage.png" width="400" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/weatherpagephone.jpeg" width="200" style="display: inline-block;">
+    <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
+  </div>
   <br>
 
-  <img src="assets/lightpage.png" width="500">
-  <img src="assets/lightspagephone.jpeg" width="500">
-  <p>Light Page - Control all your lights effortlessly from one place.</p>
+  <div>
+    <img src="assets/lightpage.png" width="400" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/lightspagephone.jpeg" width="200" style="display: inline-block;">
+    <p>Light Page - Control all your lights effortlessly from one place.</p>
+  </div>
   <br>
 
-  <img src="assets/climatepage.png" width="500">
-  <img src="assets/climatepagephone.jpeg" width="500">
-  <p>Climate Page - Manage your home's temperature and climate controls seamlessly.</p>
+  <div>
+    <img src="assets/climatepage.png" width="400" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/climatepagephone.jpeg" width="200" style="display: inline-block;">
+    <p>Climate Page - Manage your home's temperature and climate controls seamlessly.</p>
+  </div>
 </div>
 
 
