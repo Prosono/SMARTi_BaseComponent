@@ -34,9 +34,12 @@ If the answer is yes to any one of the questions above, SMARTi is the integratio
 
 <div align="center">
   <img src="assets/homepage.png" width="500">
+  <br>
   <img src="assets/weatherpage.png"  width="500">
+  <br>
   <img src="assets/lightpage.png" width="500">
-  <img src="assets/climate.png" width="500">
+  <br>
+  <img src="assets/climatepage.png" width="500">
 </div>
 
 
