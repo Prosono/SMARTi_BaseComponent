@@ -11,9 +11,7 @@
 
 <br>
 
-<div align="center">
-  <img src="assets/lightpage.png" alt="SMARTi Logo" width="200">
-</div>
+
 
 - Do you find it challenging to create a comprehensive dashboard that **meets the needs** of everyone in your household?  
 
@@ -31,7 +29,7 @@
 - Are you tired of having to update all your custom cards from HACS manually?
 
 <div align="center">
-  <img src="assets/smarti_logo.png" alt="SMARTi Logo" width="200">
+  <img src="assets/lightpage.png" alt="SMARTi Logo" width="200">
 </div>
 
 If the answer is yes to any one of the questions above, SMARTi is the integration for you!
