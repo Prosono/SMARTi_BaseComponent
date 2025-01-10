@@ -20,7 +20,7 @@ def get_github_repo_url(version):
     return GITHUB_REPO_URL_PRO if version == "pro" else GITHUB_REPO_URL_BASIC
 
 # Common local paths where files will be saved
-PACKAGES_PATH = "/config/smartipackages/"
+PACKAGES_PATH = "/config/packages/smartipackages/"
 THEMES_PATH = "/config/themes/smarti_themes/"
 DASHBOARDS_PATH = "/config/smartidashboards/"
 IMAGES_PATH = "/config/www/images/smarti_images"
