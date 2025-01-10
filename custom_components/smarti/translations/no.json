@@ -3,16 +3,59 @@
         "step": {
             "user": {
                 "title": "Konfigurer SMARTi",
-                "description": "Oppgi e-postadressen din og GitHub API-token for å konfigurere SMARTi.",
+                "description": "Velg versjonen av SMARTi du vil konfigurere.",
                 "data": {
+                    "version": "Versjon",
                     "email": "E-postadresse",
-                    "api_token": "GitHub API-token"
+                    "basic_token": "Basic Token",
+                    "pro_token": "Pro Token",
+                    "mode": "Modus"
+                }
+            },
+            "basic_token_choice": {
+                "title": "Basic Versjon: Token-oppsett",
+                "description": "Har du allerede en token?",
+                "data": {
+                    "has_token": "Har du generert en token?"
+                }
+            },
+            "generate_token": {
+                "title": "Generer Basic Token",
+                "description": "Skriv inn e-postadressen din for å generere en token for Basic-versjonen. Token vil bli sendt til e-posten din.",
+                "data": {
+                    "email": "E-postadresse"
+                }
+            },
+            "basic_token_input": {
+                "title": "Skriv inn Basic Token",
+                "description": "Skriv inn token du mottok for Basic-versjonen.",
+                "data": {
+                    "basic_token": "Basic Token"
+                }
+            },
+            "pro_link": {
+                "title": "Kjøp SMARTi Pro",
+                "description": "Klikk på lenken nedenfor for å kjøpe SMARTi Pro.\n\n<a href='https://www.smarti.dev' target='_blank'>Kjøp SMARTi Pro</a>"
+            },
+            "pro_token_input": {
+                "title": "Skriv inn Pro Token",
+                "description": "Skriv inn token du mottok etter å ha kjøpt SMARTi Pro.",
+                "data": {
+                    "pro_token": "Pro Token"
+                }
+            },
+            "mode": {
+                "title": "Velg Modus",
+                "description": "Velg hvordan SMARTi skal operere:\n\n- **Automatisk**: Filer oppdateres automatisk.\n- **Manuell**: Du kontrollerer når filer oppdateres.",
+                "data": {
+                    "mode": "Modus"
                 }
             }
         },
         "error": {
             "invalid_subscription": "Den oppgitte e-posten har ikke et aktivt abonnement.",
-            "invalid_token": "Det oppgitte GitHub API-tokenet er ugyldig.",
+            "invalid_token": "Den oppgitte token er ugyldig.",
+            "token_generation_failed": "Kunne ikke generere token. Prøv igjen.",
             "unknown_error": "En ukjent feil oppstod."
         }
     },

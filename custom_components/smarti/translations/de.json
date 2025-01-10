@@ -1,0 +1,63 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "SMARTi einrichten",
+                "description": "Wählen Sie die Version von SMARTi aus, die Sie konfigurieren möchten.",
+                "data": {
+                    "version": "Version",
+                    "email": "E-Mail-Adresse",
+                    "basic_token": "Basic Token",
+                    "pro_token": "Pro Token",
+                    "mode": "Modus"
+                }
+            },
+            "basic_token_choice": {
+                "title": "Basic-Version: Token-Einrichtung",
+                "description": "Haben Sie bereits ein Token?",
+                "data": {
+                    "has_token": "Haben Sie ein Token generiert?"
+                }
+            },
+            "generate_token": {
+                "title": "Basic Token generieren",
+                "description": "Geben Sie Ihre E-Mail-Adresse ein, um ein Token für die Basic-Version zu generieren. Das Token wird an Ihre E-Mail gesendet.",
+                "data": {
+                    "email": "E-Mail-Adresse"
+                }
+            },
+            "basic_token_input": {
+                "title": "Basic Token eingeben",
+                "description": "Geben Sie das Token ein, das Sie für die Basic-Version erhalten haben.",
+                "data": {
+                    "basic_token": "Basic Token"
+                }
+            },
+            "pro_link": {
+                "title": "SMARTi Pro kaufen",
+                "description": "Klicken Sie auf den untenstehenden Link, um SMARTi Pro zu kaufen.\n\n<a href='https://www.smarti.dev' target='_blank'>SMARTi Pro kaufen</a>"
+            },
+            "pro_token_input": {
+                "title": "Pro Token eingeben",
+                "description": "Geben Sie das Token ein, das Sie nach dem Kauf von SMARTi Pro erhalten haben.",
+                "data": {
+                    "pro_token": "Pro Token"
+                }
+            },
+            "mode": {
+                "title": "Modus auswählen",
+                "description": "Wählen Sie, wie SMARTi betrieben werden soll:\n\n- **Automatisch**: Dateien werden automatisch aktualisiert.\n- **Manuell**: Sie entscheiden, wann Dateien aktualisiert werden.",
+                "data": {
+                    "mode": "Modus"
+                }
+            }
+        },
+        "error": {
+            "invalid_subscription": "Die angegebene E-Mail hat kein aktives Abonnement.",
+            "invalid_token": "Das angegebene Token ist ungültig.",
+            "token_generation_failed": "Token konnte nicht generiert werden. Bitte versuchen Sie es erneut.",
+            "unknown_error": "Ein unbekannter Fehler ist aufgetreten."
+        }
+    },
+    "title": "SMARTi-Integration"
+}

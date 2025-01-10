@@ -1,0 +1,63 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configurer SMARTi",
+                "description": "Sélectionnez la version de SMARTi que vous souhaitez configurer.",
+                "data": {
+                    "version": "Version",
+                    "email": "Adresse e-mail",
+                    "basic_token": "Jeton Basic",
+                    "pro_token": "Jeton Pro",
+                    "mode": "Mode"
+                }
+            },
+            "basic_token_choice": {
+                "title": "Version Basic : Configuration du Jeton",
+                "description": "Avez-vous déjà un jeton?",
+                "data": {
+                    "has_token": "Avez-vous généré un jeton ?"
+                }
+            },
+            "generate_token": {
+                "title": "Générer un Jeton Basic",
+                "description": "Entrez votre adresse e-mail pour générer un jeton pour la version Basic. Le jeton sera envoyé à votre e-mail.",
+                "data": {
+                    "email": "Adresse e-mail"
+                }
+            },
+            "basic_token_input": {
+                "title": "Entrer le Jeton Basic",
+                "description": "Entrez le jeton que vous avez reçu pour la version Basic.",
+                "data": {
+                    "basic_token": "Jeton Basic"
+                }
+            },
+            "pro_link": {
+                "title": "Acheter SMARTi Pro",
+                "description": "Cliquez sur le lien ci-dessous pour acheter SMARTi Pro.\n\n<a href='https://www.smarti.dev' target='_blank'>Acheter SMARTi Pro</a>"
+            },
+            "pro_token_input": {
+                "title": "Entrer le Jeton Pro",
+                "description": "Entrez le jeton que vous avez reçu après avoir acheté SMARTi Pro.",
+                "data": {
+                    "pro_token": "Jeton Pro"
+                }
+            },
+            "mode": {
+                "title": "Sélectionner le Mode",
+                "description": "Choisissez comment SMARTi fonctionnera:\n\n- **Automatique**: Les fichiers seront mis à jour automatiquement.\n- **Manuel**: Vous contrôlez quand les fichiers sont mis à jour.",
+                "data": {
+                    "mode": "Mode"
+                }
+            }
+        },
+        "error": {
+            "invalid_subscription": "L'adresse e-mail fournie n'a pas d'abonnement actif.",
+            "invalid_token": "Le jeton fourni est invalide.",
+            "token_generation_failed": "Échec de la génération du jeton. Veuillez réessayer.",
+            "unknown_error": "Une erreur inconnue s'est produite."
+        }
+    },
+    "title": "Intégration SMARTi"
+}

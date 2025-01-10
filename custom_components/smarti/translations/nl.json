@@ -1,0 +1,63 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "SMARTi instellen",
+                "description": "Selecteer de versie van SMARTi die u wilt configureren.",
+                "data": {
+                    "version": "Versie",
+                    "email": "E-mailadres",
+                    "basic_token": "Basis Token",
+                    "pro_token": "Pro Token",
+                    "mode": "Modus"
+                }
+            },
+            "basic_token_choice": {
+                "title": "Basisversie: Token Configuratie",
+                "description": "Heeft u al een token?",
+                "data": {
+                    "has_token": "Heeft u een token gegenereerd?"
+                }
+            },
+            "generate_token": {
+                "title": "Basis Token genereren",
+                "description": "Voer uw e-mailadres in om een token voor de basisversie te genereren. De token wordt naar uw e-mailadres verzonden.",
+                "data": {
+                    "email": "E-mailadres"
+                }
+            },
+            "basic_token_input": {
+                "title": "Basis Token invoeren",
+                "description": "Voer de token in die u heeft ontvangen voor de basisversie.",
+                "data": {
+                    "basic_token": "Basis Token"
+                }
+            },
+            "pro_link": {
+                "title": "SMARTi Pro kopen",
+                "description": "Klik op de onderstaande link om SMARTi Pro te kopen.\n\n<a href='https://www.smarti.dev' target='_blank'>SMARTi Pro kopen</a>"
+            },
+            "pro_token_input": {
+                "title": "Pro Token invoeren",
+                "description": "Voer de token in die u heeft ontvangen na de aankoop van SMARTi Pro.",
+                "data": {
+                    "pro_token": "Pro Token"
+                }
+            },
+            "mode": {
+                "title": "Modus selecteren",
+                "description": "Kies hoe SMARTi zal werken:\n\n- **Automatisch**: Bestanden worden automatisch bijgewerkt.\n- **Handmatig**: U bepaalt wanneer bestanden worden bijgewerkt.",
+                "data": {
+                    "mode": "Modus"
+                }
+            }
+        },
+        "error": {
+            "invalid_subscription": "Het opgegeven e-mailadres heeft geen actief abonnement.",
+            "invalid_token": "De opgegeven token is ongeldig.",
+            "token_generation_failed": "Kan token niet genereren. Probeer het opnieuw.",
+            "unknown_error": "Er is een onbekende fout opgetreden."
+        }
+    },
+    "title": "SMARTi Integratie"
+}
