@@ -163,21 +163,24 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
 
     async def async_step_pro_token_input(self, user_input=None):
-        """Step for Pro: Input the token."""
+        """Step for Pro: Input email and token."""
         errors = {}
 
         if user_input is not None:
+            email = user_input["email"]
             token = user_input["pro_token"]
-            github_pat = await validate_token_and_get_pat(self.email, token, "pro")
+            github_pat = await validate_token_and_get_pat(email, token, "pro")
             if github_pat:
                 _LOGGER.info("Token validated successfully. Integration is ready to use.")
+                self.email = email
                 self.github_pat = github_pat
                 return await self.async_step_mode()
             else:
                 errors["base"] = "invalid_token"
 
         schema = vol.Schema({
-            vol.Required("pro_token"): str,
+            vol.Required("email"): str,  # Add email field for Pro users
+            vol.Required("pro_token"): str,  # Token input for Pro users
         })
 
         return self.async_show_form(
