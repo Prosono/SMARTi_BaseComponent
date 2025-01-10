@@ -104,6 +104,9 @@ This integration will allow for some popups to function as designed, but it is m
 - Alarmo
 This integration will allow the user to set up their own alarm system and is integrated into SMARTi. 
 
+- Ping (ICMP)
+Adding a ping sensor in the ui caled "smarti_internet" will also provide you with statistics of your internet connection as well as a status icon in the navbar
+
 If you encounter any issues, please open an issue in the GitHub repository.
 
 Let me know if you want to customize specific sections or add additional details!
