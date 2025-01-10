@@ -34,22 +34,22 @@ If the answer is yes to any one of the questions above, SMARTi is the integratio
 
 <div align="center">
   <img src="assets/homepage.png" width="500">
-  <img src="assets/homepagephone.png" width="500">
+  <img src="assets/homepagephone.jpeg" width="500">
   <p>Homepage - An overview of your entire Home Assistant setup at a glance.</p>
   <br>
 
   <img src="assets/weatherpage.png" width="500">
-  <img src="assets/weatherpagephone.png" width="500">
+  <img src="assets/weatherpagephone.jpeg" width="500">
   <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
   <br>
 
   <img src="assets/lightpage.png" width="500">
-  <img src="assets/lightspagephone.png" width="500">
+  <img src="assets/lightspagephone.jpeg" width="500">
   <p>Light Page - Control all your lights effortlessly from one place.</p>
   <br>
 
   <img src="assets/climatepage.png" width="500">
-  <img src="assets/climatepagephone.png" width="500">
+  <img src="assets/climatepagephone.jpeg" width="500">
   <p>Climate Page - Manage your home's temperature and climate controls seamlessly.</p>
 </div>
 
