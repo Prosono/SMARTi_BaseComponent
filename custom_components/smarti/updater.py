@@ -97,22 +97,34 @@ async def download_file(url: str, dest: str, session: aiohttp.ClientSession, git
     except Exception as e:
         _LOGGER.error(f"Error occurred while downloading {url}: {str(e)}")
 
-async def get_files_from_github(url: str, session: aiohttp.ClientSession, github_pat: str):
-    """Return a list of download URLs for 'file' items at a specific GitHub folder level (non-recursive)."""
+async def get_files_from_github(url: str, session: aiohttp.ClientSession, github_pat: str, base_path=""):
+    """Recursively fetch all files from a GitHub repository starting at the given URL."""
     headers = {"Authorization": f"Bearer {github_pat}"}
+    all_files = []
+
     try:
         async with session.get(url, headers=headers) as response:
             response.raise_for_status()
-            files = await response.json()
-            if isinstance(files, list):
-                return [file["download_url"] for file in files if file.get("type") == "file"]
+            items = await response.json()
+
+            for item in items:
+                if item.get("type") == "file":
+                    download_url = item["download_url"]
+                    file_path = os.path.join(base_path, item["name"])
+                    all_files.append((download_url, file_path))
+                elif item.get("type") == "dir":
+                    # Recurse into subdirectory
+                    sub_dir_url = item["url"]
+                    sub_dir_files = await get_files_from_github(sub_dir_url, session, github_pat, os.path.join(base_path, item["name"]))
+                    all_files.extend(sub_dir_files)
     except aiohttp.ClientError as http_err:
-        _LOGGER.error(f"HTTP error occurred while fetching file list from {url}: {http_err}")
+        _LOGGER.error(f"HTTP error occurred while fetching files from {url}: {http_err}")
         raise
     except Exception as e:
-        _LOGGER.error(f"Unexpected error occurred while fetching file list: {str(e)}")
+        _LOGGER.error(f"Unexpected error occurred while fetching files: {str(e)}")
         raise
-    return []
+
+    return all_files
 
 def ensure_directory(path: str):
     """Create a directory if it doesn't exist."""
@@ -185,47 +197,78 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
 
     # Download package files
     package_files = await get_files_from_github(PACKAGES_URL, session, github_pat)
-    for file_url in package_files:
-        file_name = os.path.basename(urlparse(file_url).path)
-        if mode == "manual" and file_name == "smarti_custom_cards_package.yaml":
-            _LOGGER.info(f"Skipping file {file_name} in manual mode.")
-            continue
-        dest_path = os.path.join(PACKAGES_PATH, file_name)
-        await download_file(file_url, dest_path, session, github_pat)
+    if not package_files:
+        _LOGGER.warning(f"No package files found at {PACKAGES_URL}.")
+    else:
+        for file_url, relative_path in package_files:
+            file_name = os.path.basename(urlparse(file_url).path)
+            # Skip "smarti_custom_cards_package.yaml" in manual mode
+            if mode == "manual" and file_name == "smarti_custom_cards_package.yaml":
+                _LOGGER.info(f"Skipping file {file_name} in manual mode.")
+                continue
+            dest_path = os.path.join(PACKAGES_PATH, relative_path)
+            ensure_directory(os.path.dirname(dest_path))  # Ensure parent directories exist
+            await download_file(file_url, dest_path, session, github_pat)
+
+    # Download custom card files (only in automatic mode)
+    if mode == "automatic":
+        custom_card_files = await get_files_from_github(CUSTOM_CARDS_URL, session, github_pat)
+        if not custom_card_files:
+            _LOGGER.warning(f"No custom card files found at {CUSTOM_CARDS_URL}.")
+        else:
+            for file_url, relative_path in custom_card_files:
+                dest_path = os.path.join(CUSTOM_CARDS_PATH, relative_path)
+                ensure_directory(os.path.dirname(dest_path))  # Ensure parent directories exist
+                await download_file(file_url, dest_path, session, github_pat)
 
     # Download dashboard files
     dashboard_files = await get_files_from_github(DASHBOARDS_URL, session, github_pat)
-    for file_url in dashboard_files:
-        file_name = os.path.basename(urlparse(file_url).path)
-        dest_path = os.path.join(DASHBOARDS_PATH, file_name)
-        await download_file(file_url, dest_path, session, github_pat, force_update=True)
+    if not dashboard_files:
+        _LOGGER.warning(f"No dashboard files found at {DASHBOARDS_URL}.")
+    else:
+        for file_url, relative_path in dashboard_files:
+            dest_path = os.path.join(DASHBOARDS_PATH, relative_path)
+            ensure_directory(os.path.dirname(dest_path))
+            await download_file(file_url, dest_path, session, github_pat, force_update=True)
 
     # Download theme files
     themes_files = await get_files_from_github(THEMES_URL, session, github_pat)
-    for file_url in themes_files:
-        file_name = os.path.basename(urlparse(file_url).path)
-        dest_path = os.path.join(THEMES_PATH, file_name)
-        await download_file(file_url, dest_path, session, github_pat)
+    if not themes_files:
+        _LOGGER.warning(f"No theme files found at {THEMES_URL}.")
+    else:
+        for file_url, relative_path in themes_files:
+            dest_path = os.path.join(THEMES_PATH, relative_path)
+            ensure_directory(os.path.dirname(dest_path))
+            await download_file(file_url, dest_path, session, github_pat)
 
     # Download image files
     image_files = await get_files_from_github(IMAGES_URL, session, github_pat)
-    for file_url in image_files:
-        file_name = os.path.basename(urlparse(file_url).path)
-        dest_path = os.path.join(IMAGES_PATH, file_name)
-        await download_file(file_url, dest_path, session, github_pat)
+    if not image_files:
+        _LOGGER.warning(f"No image files found at {IMAGES_URL}.")
+    else:
+        for file_url, relative_path in image_files:
+            dest_path = os.path.join(IMAGES_PATH, relative_path)
+            ensure_directory(os.path.dirname(dest_path))
+            await download_file(file_url, dest_path, session, github_pat)
 
     # Download animations files
     animation_files = await get_files_from_github(ANIMATIONS_URL, session, github_pat)
-    for file_url in animation_files:
-        file_name = os.path.basename(urlparse(file_url).path)
-        dest_path = os.path.join(ANIMATIONS_PATH, file_name)
-        await download_file(file_url, dest_path, session, github_pat)
+    if not animation_files:
+        _LOGGER.warning(f"No animation files found at {ANIMATIONS_URL}.")
+    else:
+        for file_url, relative_path in animation_files:
+            dest_path = os.path.join(ANIMATIONS_PATH, relative_path)
+            ensure_directory(os.path.dirname(dest_path))
+            await download_file(file_url, dest_path, session, github_pat)
 
     # Download license files
     license_files = await get_files_from_github(LICENSE_URL, session, github_pat)
-    for file_url in license_files:
-        file_name = os.path.basename(urlparse(file_url).path)
-        dest_path = os.path.join(LICENSE_PATH, file_name)
-        await download_file(file_url, dest_path, session, github_pat)
+    if not license_files:
+        _LOGGER.warning(f"No license files found at {LICENSE_URL}.")
+    else:
+        for file_url, relative_path in license_files:
+            dest_path = os.path.join(LICENSE_PATH, relative_path)
+            ensure_directory(os.path.dirname(dest_path))
+            await download_file(file_url, dest_path, session, github_pat)
 
     _LOGGER.info("All updates completed successfully.")
