@@ -56,79 +56,156 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
 
     async def async_step_user(self, user_input=None):
-        """Handle the initial configuration screen."""
+        """Initial step: Select Basic or Pro."""
         errors = {}
 
         if user_input is not None:
-            if user_input.get("generate_token_email"):
-                email = user_input["generate_token_email"]
-                # Generate a Basic token
-                token = await generate_token(email)
-                if token:
-                    _LOGGER.info("Token generated successfully.")
-                    return self.async_show_form(
-                        step_id="user",
-                        data_schema=vol.Schema({
-                            vol.Required("email", default=""): str,
-                            vol.Required("version", default="basic"): vol.In(["basic", "pro"]),
-                            vol.Required("mode", default="automatic"): vol.In(["automatic", "manual"]),
-                            vol.Optional("basic_token", default=token): str,
-                            vol.Optional("generate_token_email", default=""): str,
-                        }),
-                        description_placeholders={
-                            "message": (
-                                f"A token has been sent to {email}. Please check your email."
-                            )
-                        },
-                        errors=errors,
-                    )
-                else:
-                    errors["base"] = "token_generation_failed"
+            self.version = user_input["version"]
 
-            # Handle form submission for other fields
-            email = user_input["email"]
-            version = user_input["version"]
-            mode = user_input["mode"]
-            token = user_input.get("basic_token", "").strip()
+            if self.version == "basic":
+                return await self.async_step_basic_token_choice()
+            else:  # Pro
+                return await self.async_step_pro_link()
 
-            # Save the selected configuration
-            self.version = version
-            self.email = email
-            self.mode = mode
-            self.token = token
-
-            # Validate the token directly if entered
-            if token:
-                github_pat = await validate_token_and_get_pat(email, token, version)
-                if github_pat:
-                    _LOGGER.info("Token validated successfully. Integration is ready to use.")
-                    return self.async_create_entry(
-                        title=f"SMARTi {version.capitalize()}",
-                        data={
-                            "email": email,
-                            "token": token,
-                            "version": version,
-                            "mode": mode,
-                            "github_pat": github_pat,
-                        },
-                    )
-                else:
-                    errors["base"] = "invalid_token"
-
-        # Define the schema for the form
         schema = vol.Schema({
-            vol.Required("email", default=""): str,
             vol.Required("version", default="basic"): vol.In(["basic", "pro"]),
-            vol.Required("mode", default="automatic"): vol.In(["automatic", "manual"]),
-            vol.Optional("basic_token", default=""): str,  # Field for entering an existing Basic token
-            vol.Optional("generate_token_email", default=""): str,  # Email field for generating a token
         })
 
         return self.async_show_form(
             step_id="user",
             data_schema=schema,
+            errors=errors,
+        )
+
+    async def async_step_basic_token_choice(self, user_input=None):
+        """Step for Basic: Ask if the user has generated a token."""
+        errors = {}
+
+        if user_input is not None:
+            if user_input["has_token"] == "no":
+                return await self.async_step_generate_token()
+            else:
+                return await self.async_step_basic_token_input()
+
+        schema = vol.Schema({
+            vol.Required("has_token", default="no"): vol.In(["yes", "no"]),
+        })
+
+        return self.async_show_form(
+            step_id="basic_token_choice",
+            data_schema=schema,
+            errors=errors,
+        )
+
+    async def async_step_generate_token(self, user_input=None):
+        """Step for Basic: Generate a token."""
+        errors = {}
+
+        if user_input is not None:
+            email = user_input["email"]
+            token = await generate_token(email)
+            if token:
+                _LOGGER.info("Token generated successfully.")
+                self.email = email
+                self.token = token
+                return await self.async_step_basic_token_input()
+            else:
+                errors["base"] = "token_generation_failed"
+
+        schema = vol.Schema({
+            vol.Required("email"): str,
+        })
+
+        return self.async_show_form(
+            step_id="generate_token",
+            data_schema=schema,
+            errors=errors,
+        )
+
+    async def async_step_basic_token_input(self, user_input=None):
+        """Step for Basic: Input the token."""
+        errors = {}
+
+        if user_input is not None:
+            token = user_input["basic_token"]
+            github_pat = await validate_token_and_get_pat(self.email, token, "basic")
+            if github_pat:
+                _LOGGER.info("Token validated successfully. Integration is ready to use.")
+                self.github_pat = github_pat
+                return await self.async_step_mode()
+            else:
+                errors["base"] = "invalid_token"
+
+        schema = vol.Schema({
+            vol.Required("basic_token", default=self.token if hasattr(self, "token") else ""): str,
+        })
+
+        return self.async_show_form(
+            step_id="basic_token_input",
+            data_schema=schema,
+            errors=errors,
+        )
+
+    async def async_step_pro_link(self, user_input=None):
+        """Step for Pro: Provide a purchase link."""
+        return self.async_show_form(
+            step_id="pro_link",
             description_placeholders={
-                "headline": "No token? Generate one for free for the Basic version.",
+                "link": "<a href='https://www.smarti.dev' target='_blank'>Purchase SMARTi Pro</a>"
+            },
+        )
+
+    async def async_step_pro_token_input(self, user_input=None):
+        """Step for Pro: Input the token."""
+        errors = {}
+
+        if user_input is not None:
+            token = user_input["pro_token"]
+            github_pat = await validate_token_and_get_pat(self.email, token, "pro")
+            if github_pat:
+                _LOGGER.info("Token validated successfully. Integration is ready to use.")
+                self.github_pat = github_pat
+                return await self.async_step_mode()
+            else:
+                errors["base"] = "invalid_token"
+
+        schema = vol.Schema({
+            vol.Required("pro_token"): str,
+        })
+
+        return self.async_show_form(
+            step_id="pro_token_input",
+            data_schema=schema,
+            errors=errors,
+        )
+
+    async def async_step_mode(self, user_input=None):
+        """Step for selecting mode: Automatic or Manual."""
+        errors = {}
+
+        if user_input is not None:
+            mode = user_input["mode"]
+            return self.async_create_entry(
+                title=f"SMARTi {self.version.capitalize()}",
+                data={
+                    "email": self.email,
+                    "token": self.token,
+                    "version": self.version,
+                    "mode": mode,
+                    "github_pat": self.github_pat,
+                },
+            )
+
+        schema = vol.Schema({
+            vol.Required("mode", default="automatic"): vol.In(["automatic", "manual"]),
+        })
+
+        return self.async_show_form(
+            step_id="mode",
+            data_schema=schema,
+            description_placeholders={
+                "automatic_description": "Files will automatically update.",
+                "manual_description": "You control when files are updated.",
             },
             errors=errors,
         )
