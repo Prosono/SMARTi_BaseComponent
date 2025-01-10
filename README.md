@@ -34,13 +34,21 @@ If the answer is yes to any one of the questions above, SMARTi is the integratio
 
 <div align="center">
   <img src="assets/homepage.png" width="500">
+  <p>Homepage - An overview of your entire Home Assistant setup at a glance.</p>
   <br>
-  <img src="assets/weatherpage.png"  width="500">
+
+  <img src="assets/weatherpage.png" width="500">
+  <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
   <br>
+
   <img src="assets/lightpage.png" width="500">
+  <p>Light Page - Control all your lights effortlessly from one place.</p>
   <br>
+
   <img src="assets/climatepage.png" width="500">
+  <p>Climate Page - Manage your home's temperature and climate controls seamlessly.</p>
 </div>
+
 
 
 SMARTi delivers a complete, hassle-free maintenance experience with a seamless and intuitive dashboard for Home Assistant. By harnessing the full potential of Home Assistant, SMARTi automatically gathers all your devices into a single, auto-populated dashboard—designed for multiple devices and available in multiple languages.
