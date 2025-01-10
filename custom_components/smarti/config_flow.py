@@ -55,6 +55,12 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
+    def __init__(self):
+        self.token = None
+        self.github_pat = None
+        self.email = None
+        self.version = None
+
     async def async_step_user(self, user_input=None):
         """Initial step: Select Basic or Pro."""
         errors = {}
@@ -83,10 +89,8 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             if user_input["has_token"] == "yes":
-                # Redirect to token input step
                 return await self.async_step_basic_token_input()
             else:
-                # Redirect to generate token step
                 return await self.async_step_generate_token()
 
         schema = vol.Schema({
@@ -117,7 +121,7 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 errors["base"] = "token_generation_failed"
 
         schema = vol.Schema({
-            vol.Required("email"): str,  # Empty field for email
+            vol.Required("email"): str,
         })
 
         return self.async_show_form(
@@ -125,7 +129,6 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             data_schema=schema,
             errors=errors,
         )
-
 
     async def async_step_basic_token_input(self, user_input=None):
         """Step for Basic: Input email and token."""
@@ -140,14 +143,15 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             if github_pat:
                 _LOGGER.info("Token validated successfully. Integration is ready to use.")
                 self.email = email
+                self.token = token  # Set token for use in the final step
                 self.github_pat = github_pat
                 return await self.async_step_mode()  # Automatically move to the next step
             else:
                 errors["base"] = "invalid_token"
 
         schema = vol.Schema({
-            vol.Required("email"): str,  # Empty field for email
-            vol.Required("basic_token"): str,  # Empty field for token
+            vol.Required("email"): str,
+            vol.Required("basic_token"): str,
         })
 
         return self.async_show_form(
@@ -156,14 +160,11 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
-
     async def async_step_pro_link(self, user_input=None):
         """Step for Pro: Provide a purchase link."""
         if user_input is not None:
-            # Redirect to the Pro token input step
             return await self.async_step_pro_token_input()
 
-        # Show the form with the purchase link
         return self.async_show_form(
             step_id="pro_link",
             data_schema=vol.Schema({}),  # No input fields here
@@ -172,7 +173,6 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             },
         )
 
-
     async def async_step_pro_token_input(self, user_input=None):
         """Step for Pro: Input email and token."""
         errors = {}
@@ -180,18 +180,20 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             email = user_input["email"]
             token = user_input["pro_token"]
+
             github_pat = await validate_token_and_get_pat(email, token, "pro")
             if github_pat:
                 _LOGGER.info("Token validated successfully. Integration is ready to use.")
                 self.email = email
+                self.token = token  # Set token for use in the final step
                 self.github_pat = github_pat
                 return await self.async_step_mode()
             else:
                 errors["base"] = "invalid_token"
 
         schema = vol.Schema({
-            vol.Required("email"): str,  # Add email field for Pro users
-            vol.Required("pro_token"): str,  # Token input for Pro users
+            vol.Required("email"): str,
+            vol.Required("pro_token"): str,
         })
 
         return self.async_show_form(
@@ -210,7 +212,7 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 title=f"SMARTi {self.version.capitalize()}",
                 data={
                     "email": self.email,
-                    "token": self.token,
+                    "token": self.token,  # This is now properly set
                     "version": self.version,
                     "mode": mode,
                     "github_pat": self.github_pat,
