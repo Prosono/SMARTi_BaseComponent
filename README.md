@@ -102,7 +102,7 @@ The SMARTi integration does not reqire any integrations to function, but for the
 This integration will allow for some popups to function as designed, but it is mainly used for looking into the active devices showing in the SMARTi navigation bar
 
 - Alarmo
-This integration will allow the user to set up their own alarm system and is integrated into SMARTi. 
+This integration will allow the user to set up their own alarm system and Alarmo is fully integrated into SMARTi and is required for the alarm panels and alerts to function as designed. 
 
 - Ping (ICMP)
 Adding a ping sensor in the ui caled "smarti_internet" will also provide you with statistics of your internet connection as well as a status icon in the navbar
