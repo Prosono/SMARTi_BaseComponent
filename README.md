@@ -13,9 +13,18 @@
 <div align="center">
 
 - Do you find it challenging to create a comprehensive dashboard that **meets the needs** of everyone in your household?  
+
+<br>
+
 - Are you **frustrated** with having to update your dashboard every time you add a new device to Home Assistant?  
+<br>
+
 - Do you wish your dashboard could feature a **sleek, professional, and clean design**?  
+<br>
+
 - Are you looking for a **single dashboard solution** that works seamlessly across all your devices—phones, tablets, and desktops? 
+<br>
+
 - Are you tired of having to update all your custom cards from HACS manually?
 
 </div>
