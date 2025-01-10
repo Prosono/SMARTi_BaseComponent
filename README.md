@@ -1,5 +1,7 @@
 # Presenting the SMARTi Integration for Home Asssitant - How Home Asssitant dashboards should be!
 
+![SMARTi Logo](assets/smarti_logo.png)
+
 - Do you find it challenging to create a comprehensive dashboard that meets the needs of everyone in your household?  
 - Are you frustrated with having to update your dashboard every time you add a new device to Home Assistant?  
 - Do you wish your dashboard could feature a sleek, professional, and clean design?  
