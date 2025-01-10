@@ -16,12 +16,12 @@ UPDATE_INTERVAL = timedelta(hours=1)
 
 # Paths to clean up
 PATHS_TO_CLEAN = [
-    "/config/packages/",
+    "/config/packages/smartipackages",
     "/config/themes/smarti_themes/",
-    "/config/dashboards/",
+    "/config/smartidashboards/",
     "/config/www/images/smarti_images/",
     "/config/www/smarticards/",
-    "/config/www/animations/",
+    "/config/www/smartianimations/",
     "/config/www/smartilicense/",
 ]
 
