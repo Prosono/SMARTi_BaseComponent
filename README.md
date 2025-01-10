@@ -42,7 +42,7 @@ If the answer is yes to any one of the questions above, SMARTi is the integratio
 
   <div>
     <img src="assets/weatherpage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/weatherpagephone.jpeg" width="200" style="display: inline-block;">
+    <img src="assets/wetatherpagephone.jpeg" width="200" style="display: inline-block;">
     <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
   </div>
   <br>
