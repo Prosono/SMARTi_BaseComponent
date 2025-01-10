@@ -82,10 +82,12 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors = {}
 
         if user_input is not None:
-            if user_input["has_token"] == "no":
-                return await self.async_step_generate_token()
-            else:
+            if user_input["has_token"] == "yes":
+                # Redirect to token input step
                 return await self.async_step_basic_token_input()
+            else:
+                # Redirect to generate token step
+                return await self.async_step_generate_token()
 
         schema = vol.Schema({
             vol.Required("has_token", default="no"): vol.In(["yes", "no"]),
@@ -98,22 +100,24 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
     async def async_step_generate_token(self, user_input=None):
-        """Step for Basic: Generate a token."""
+        """Step for Basic: Generate a new token."""
         errors = {}
 
         if user_input is not None:
             email = user_input["email"]
+
+            # Generate or fetch a token
             token = await generate_token(email)
             if token:
-                _LOGGER.info("Token generated successfully.")
+                _LOGGER.info("Token generated successfully. Please check your email.")
                 self.email = email
                 self.token = token
-                return await self.async_step_basic_token_input()
+                return await self.async_step_basic_token_input()  # Redirect to token input step for validation
             else:
                 errors["base"] = "token_generation_failed"
 
         schema = vol.Schema({
-            vol.Required("email"): str,
+            vol.Required("email"): str,  # Empty field for email
         })
 
         return self.async_show_form(
@@ -122,22 +126,28 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
+
     async def async_step_basic_token_input(self, user_input=None):
-        """Step for Basic: Input the token."""
+        """Step for Basic: Input email and token."""
         errors = {}
 
         if user_input is not None:
+            email = user_input["email"]
             token = user_input["basic_token"]
-            github_pat = await validate_token_and_get_pat(self.email, token, "basic")
+
+            # Validate the provided token
+            github_pat = await validate_token_and_get_pat(email, token, "basic")
             if github_pat:
                 _LOGGER.info("Token validated successfully. Integration is ready to use.")
+                self.email = email
                 self.github_pat = github_pat
-                return await self.async_step_mode()
+                return await self.async_step_mode()  # Automatically move to the next step
             else:
                 errors["base"] = "invalid_token"
 
         schema = vol.Schema({
-            vol.Required("basic_token", default=self.token if hasattr(self, "token") else ""): str,
+            vol.Required("email"): str,  # Empty field for email
+            vol.Required("basic_token"): str,  # Empty field for token
         })
 
         return self.async_show_form(
@@ -145,6 +155,7 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             data_schema=schema,
             errors=errors,
         )
+
 
     async def async_step_pro_link(self, user_input=None):
         """Step for Pro: Provide a purchase link."""
