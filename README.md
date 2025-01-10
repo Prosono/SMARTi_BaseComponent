@@ -34,28 +34,28 @@ If the answer is yes to any one of the questions above, SMARTi is the integratio
 
 <div align="center">
   <div>
-    <img src="assets/homepage.png" width="400" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/homepage.png" width="600" style="display: inline-block; margin-right: 20px;">
     <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
     <p>Homepage - An overview of your entire Home Assistant setup at a glance.</p>
   </div>
   <br>
 
   <div>
-    <img src="assets/weatherpage.png" width="400" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/weatherpage.png" width="600" style="display: inline-block; margin-right: 20px;">
     <img src="assets/weatherpagephone.jpeg" width="200" style="display: inline-block;">
     <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
   </div>
   <br>
 
   <div>
-    <img src="assets/lightpage.png" width="400" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/lightspagephone.jpeg" width="200" style="display: inline-block;">
+    <img src="assets/lightpage.png" width="600" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/lightpagephone.jpeg" width="200" style="display: inline-block;">
     <p>Light Page - Control all your lights effortlessly from one place.</p>
   </div>
   <br>
 
   <div>
-    <img src="assets/climatepage.png" width="400" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/climatepage.png" width="600" style="display: inline-block; margin-right: 20px;">
     <img src="assets/climatepagephone.jpeg" width="200" style="display: inline-block;">
     <p>Climate Page - Manage your home's temperature and climate controls seamlessly.</p>
   </div>
