@@ -146,11 +146,11 @@ async def update_files(session: aiohttp.ClientSession, config_data: dict, github
     GITHUB_REPO_URL = get_github_repo_url(version)
 
     PACKAGES_URL = GITHUB_REPO_URL + "packages/smartipackages/"
-    DASHBOARDS_URL = GITHUB_REPO_URL + "dashboards/"
+    DASHBOARDS_URL = GITHUB_REPO_URL + "dashboards/smartidashboards/"
     THEMES_URL = GITHUB_REPO_URL + "themes/smarti_themes/"
     IMAGES_URL = GITHUB_REPO_URL + "www/images/smarti_images/"
     CUSTOM_CARDS_URL = GITHUB_REPO_URL + "www/smarticards/"
-    ANIMATIONS_URL = GITHUB_REPO_URL + "www/animations/"
+    ANIMATIONS_URL = GITHUB_REPO_URL + "www/smartianimations/"
     LICENSE_URL = GITHUB_REPO_URL + "www/smartilicense/"
 
     if not await validate_api_token(github_pat, session):
