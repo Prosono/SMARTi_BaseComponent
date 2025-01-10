@@ -63,20 +63,46 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             email = user_input["email"]
             version = user_input["version"]
             mode = user_input["mode"]
+            token = user_input.get("basic_token") if version == "basic" else None
 
-            # Save the selected version, email, and mode for the next step
+            # Save the selected version, email, mode, and token for the next step
             self.version = version
             self.email = email
             self.mode = mode
+            self.token = token
 
-            # Move to the token step
-            return await self.async_step_token()
+            if version == "basic" and not token:
+                # Move to the token step for Basic users without a token
+                return await self.async_step_token()
+
+            if version == "pro":
+                # Move to the token step for Pro users
+                return await self.async_step_token()
+
+            # Validate the token directly if entered in the initial step
+            if version == "basic" and token:
+                github_pat = await validate_token_and_get_pat(email, token, "basic")
+                if github_pat:
+                    _LOGGER.info("Token validated successfully. Integration is ready to use.")
+                    return self.async_create_entry(
+                        title="SMARTi Basic",
+                        data={
+                            "email": email,
+                            "basic_token": token,
+                            "version": version,
+                            "mode": mode,
+                            "github_pat": github_pat,
+                        },
+                    )
+                else:
+                    errors["base"] = "invalid_token"
 
         # Define the schema for the form
         schema = vol.Schema({
             vol.Required("email"): str,
             vol.Required("version", default="basic"): vol.In(["basic", "pro"]),
             vol.Required("mode", default="automatic"): vol.In(["automatic", "manual"]),
+            vol.Optional("basic_token", default=""): str,  # Field for entering an existing Basic token
         })
 
         return self.async_show_form(
