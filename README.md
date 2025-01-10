@@ -1,4 +1,5 @@
-# Presenting the SMARTi Integration for Home Asssitant - How Home Asssitant dashboards should be!
+# Presenting the SMARTi Integration for Home Asssitant
+## How Home Asssitant dashboards should be!
 
 <div align="center">
   <img src="assets/smarti_logo.png" alt="SMARTi Logo" width="200">
