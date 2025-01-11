@@ -8,15 +8,11 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.event import async_track_time_interval
 from .const import DOMAIN
 from .updater import update_files
-from .helpers import validate_token_and_get_pat  # Import the helper for token validation
 
 _LOGGER = logging.getLogger(__name__)
 
 # Interval for periodic updates (e.g., every hour)
 UPDATE_INTERVAL = timedelta(hours=1)
-
-# Interval for periodic token validation (e.g., every 24 hours)
-VALIDATION_INTERVAL = timedelta(hours=24)
 
 # Paths to clean up
 PATHS_TO_CLEAN = [
@@ -45,44 +41,15 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     session = aiohttp.ClientSession()
     github_pat = entry.data.get("github_pat")
     config_data = entry.data
-    email = config_data.get("email")
-    token = config_data.get("token")
-    version = config_data.get("version")  # 'basic' or 'pro'
 
     # Define the periodic update function
     async def periodic_update(_):
         _LOGGER.info("Running periodic update for SMARTi integration.")
         await update_files(session, config_data, github_pat)
 
-    # Define the periodic token validation function
-    async def periodic_validation(_):
-        _LOGGER.info("Running periodic token validation for SMARTi integration.")
-
-        # Validate the token
-        is_valid = await validate_token_and_get_pat(email, token, version)
-        if not is_valid:
-            _LOGGER.error("Token is invalid or expired. Pausing updates until reconfigured.")
-            hass.services.async_call(
-                "persistent_notification",
-                "create",
-                {
-                    "title": "SMARTi Token Expired",
-                    "message": f"Your {version.capitalize()} token is invalid or expired. Please reconfigure the integration for a Basic token or upgrade to a Pro token.",
-                    "notification_id": "smarti_token_error",
-                },
-            )
-            return  # Skip further updates until reconfigured
-
-        _LOGGER.info("Token validation successful.")
-
     # Schedule periodic updates
     hass.data[DOMAIN][entry.entry_id]["update_job"] = async_track_time_interval(
         hass, periodic_update, UPDATE_INTERVAL
-    )
-
-    # Schedule periodic token validation
-    hass.data[DOMAIN][entry.entry_id]["validation_job"] = async_track_time_interval(
-        hass, periodic_validation, VALIDATION_INTERVAL
     )
 
     # Run the initial update
@@ -98,11 +65,6 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     update_job = hass.data[DOMAIN][entry.entry_id].get("update_job")
     if update_job:
         update_job()
-
-    # Cancel periodic token validation
-    validation_job = hass.data[DOMAIN][entry.entry_id].get("validation_job")
-    if validation_job:
-        validation_job()
 
     # Close the aiohttp session
     session = aiohttp.ClientSession()
