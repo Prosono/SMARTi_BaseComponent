@@ -31,7 +31,8 @@
 
 If the answer is **YES** to any one of the questions above, then **SMARTi** is the integration for you!
 
-
+<br>
+<br>
 
 <div align="center">
   <div>
