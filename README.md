@@ -9,6 +9,10 @@
   <img src="assets/smarti_logo.png" alt="SMARTi Logo" width="200">
 </div>
 
+<div align="center">
+  <img src="assets/mockup.png" alt="SMARTi Logo" width="200">
+</div>
+
 <br>
 
 
