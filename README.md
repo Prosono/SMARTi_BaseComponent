@@ -113,7 +113,15 @@ Q: Why is there a monthly subscription cost for the PRO verison?
 A: In order to fully dedicate to an enviroment that is constantly changing and to provide usefull updates to the usabviliusability ty of the SMARTi dashboard and its automations, a monthly cost is needed to run the developemnt.
 
 
+# Different colors
 
+<div align="center">
+  <div>
+    <p> Homepage - An overview of your Home at a glance.</p>
+    <img src="assets/colors.png" width="600" style="display: inline-block; margin-right: 20px;">
+    <p>SMARTi Themes</p>
+  </div>
+  <br>
 
 
 
