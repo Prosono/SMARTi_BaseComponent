@@ -34,12 +34,13 @@ If the answer is yes to any one of the questions above, SMARTi is the integratio
 
 <div align="center">
   <div>
+    <p> Homepage - An overview of your Home at a glance.</p>
     <img src="assets/homepage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <p>SMARTi on a phone</p>
-    <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
     <p>SMARTi on a tablet</p>
+    <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
+    <p>SMARTi on a phone</p>
     <div align="center">
-    <p>Homepage - An overview of your entire Home Assistant setup at a glance.</p>
+
     </div>
   </div>
   <br>
