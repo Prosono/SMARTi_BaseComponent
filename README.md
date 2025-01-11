@@ -181,13 +181,16 @@ We reccomend that you do the automatic installation for the initial installation
 
 The SMARTi integration does not reqire any integrations to function, but for the full potential usage, it is reccomended to install the following integrations:
 
-- Browser Mod
+- ## Browser Mod
+<br>
 This integration will allow for some popups to function as designed, but it is mainly used for looking into the active devices showing in the SMARTi navigation bar
 
-- Alarmo
+- ## Alarmo
+<br>
 This integration will allow the user to set up their own alarm system and Alarmo is fully integrated into SMARTi and is required for the alarm panels and alerts to function as designed. 
 
-- Ping (ICMP)
+- ## Ping (ICMP)
+<br>
 Adding a ping sensor in the ui caled "smarti_internet" will also provide you with statistics of your internet connection as well as a status icon in the navbar
 
 If you encounter any issues, please open an issue in the GitHub repository.
