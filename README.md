@@ -34,6 +34,9 @@ If the answer is **YES** to any one of the questions above, then **SMARTi** is t
 <br>
 <br>
 
+
+# Lets look at some examples
+
 <div align="center">
   <div>
     <p> Homepage - An overview of your Home at a glance.</p>
