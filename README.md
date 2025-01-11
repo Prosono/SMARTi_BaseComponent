@@ -111,25 +111,30 @@ A SMARTi Basic token is generated and sent to you by email upon initial configur
 
 A SMARTi Pro token must be pruchased forom our website at https://www.smarti.dev/smarti-store/p/smarti-powerflow-xe7ft
 
-After you have selected your version and you have sucessfully entered your token and email, you now have the two following installation options:
+After you have selected your SMARTi version and you have sucessfully entered your token and email, you will have the two following installation options:
 
 - ### Manual
 
-If selecting manual mode when setting up the integration, SMARTi will NOT download any of the required cards from HACS. This will have to be done manually by the end user. The cards required by the SMARTi integration is listed below
+If selecting manual mode when setting up the integration, SMARTi will NOT download any of the required cards from HACS. This will have to be done manually by the end user manually or via HACS. The cards required by the SMARTi integration is listed below at the end of this readme.
 
 - ### Automatic
 
-If selecting automatic mode when setting up the integraiton, SMARTi will enable .yaml mode for you Home Assistant installation and download all the cards required by the SMARTi dashboard. The also means that your Home Assistant isntalltion will now be in .yaml mode meaning that if you are to download more cards from HACS (or have other cards form HACS installed that is not included in the SMARTi integration), you will have to add theese manually to your configuration.yaml file after installing form HACS. 
+If selecting automatic mode when setting up the integraiton, SMARTi will enable .yaml mode for your Home Assistant installation and download all the cards required by the SMARTi dashboard. This also means that your Home Assistant instalaltion will now be in .yaml mode ( it is set to storage mode by default) meaning that if you are to download more cards from HACS (or have other cards from HACS installed that is not included in the SMARTi integration - again, check the included cards at the bottom of the readme), you will have to add theese manually to your configuration.yaml file after installing from HACS. 
 
 #### Example:
 Lets say that you want to download another custom card not included with the SMARTi integration - e.g the "lovelace-dual-gauge-card" you will then have to add the following line to your configuration.yaml:
 
-<pre> url: /community_plugin/dual-gauge-card/dual-gauge-card.js 
-      type: js  </pre>
+<pre>
+lovelace:
+mode: yaml
+resources: 
+    url: /community_plugin/dual-gauge-card/dual-gauge-card.js 
+    type: js  
+</pre>
 
-What this also means is that the SMARTi integration is now repsonsible for maintining theese cards and keeping them updated, adding/removing them etc. 
+What this also means is that the SMARTi integration is now repsonsible for maintining the supplied cards and keeping them updated, adding/removing them etc. 
 
-We reccomend that you do the automatic installation for the initial instalaltion of the integration to verify that all works as it should. YOu can always uninstall the integration and then re-install it in manual mode if some of your pre-existing dashboard are using cards that the SMARTi integration is not providing. 
+We reccomend that you do the automatic installation for the initial installation of the SMARTi integration to verify that everything works as it should. You can always uninstall the integration and then re-install it in manual mode if some of your pre-existing dashboard are using cards that the SMARTi integration is not providing. 
 
 ## When uninstalling the integration ALL settings, files, dashboards, automations etc related to the SMARTi integration is deleted and your installation will return to its original state. 
 
