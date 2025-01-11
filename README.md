@@ -35,41 +35,6 @@ If the answer is **YES** to any one of the questions above, then **SMARTi** is t
 <br>
 
 
-# Lets look at some examples
-
-<div align="center">
-  <div>
-    <p> Homepage - An overview of your Home at a glance.</p>
-    <img src="assets/homepage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <p>SMARTi on a tablet</p>
-    <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
-    <p>SMARTi on a phone</p>
-  </div>
-  <br>
-
-  <div>
-    <img src="assets/weatherpage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/wetatherpagephone.jpeg" width="200" style="display: inline-block;">
-    <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
-  </div>
-  <br>
-
-  <div>
-    <img src="assets/lightpage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/lightpagephone.jpeg" width="200" style="display: inline-block;">
-    <p>Light Page - Control all your lights effortlessly from one place.</p>
-  </div>
-  <br>
-
-  <div>
-    <img src="assets/climatepage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/climatepagephone.jpeg" width="200" style="display: inline-block;">
-    <p>Climate Page - Manage your home's temperature and climate controls seamlessly.</p>
-  </div>
-</div>
-
-
-
 SMARTi delivers a complete, hassle-free maintenance experience with a seamless and intuitive dashboard for Home Assistant. By harnessing the full potential of Home Assistant, SMARTi automatically gathers all your devices into a single, auto-populated dashboard—designed for multiple devices and available in multiple languages.
 
 ## That’s right! With SMARTi, you only need one dashboard to meet the needs of your entire household, across all devices.
@@ -165,6 +130,42 @@ Lets say that you want to download another custom card not included with the SMA
       type: js  </pre>
 
 What thsi also means is that the SMARTi integration is now repsonsible for maintining theese cards and keeping them updated, adding/removing them etc. 
+
+
+# Lets look at some examples
+
+<div align="center">
+  <div>
+    <p> Homepage - An overview of your Home at a glance.</p>
+    <img src="assets/homepage.png" width="600" style="display: inline-block; margin-right: 20px;">
+    <p>SMARTi on a tablet</p>
+    <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
+    <p>SMARTi on a phone</p>
+  </div>
+  <br>
+
+  <div>
+    <img src="assets/weatherpage.png" width="600" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/wetatherpagephone.jpeg" width="200" style="display: inline-block;">
+    <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
+  </div>
+  <br>
+
+  <div>
+    <img src="assets/lightpage.png" width="600" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/lightpagephone.jpeg" width="200" style="display: inline-block;">
+    <p>Light Page - Control all your lights effortlessly from one place.</p>
+  </div>
+  <br>
+
+  <div>
+    <img src="assets/climatepage.png" width="600" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/climatepagephone.jpeg" width="200" style="display: inline-block;">
+    <p>Climate Page - Manage your home's temperature and climate controls seamlessly.</p>
+  </div>
+</div>
+
+
 
 # Dependencies:
 
