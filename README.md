@@ -17,7 +17,7 @@
 
 <br>
 
-- Are you **frustrated** with having to update your dashboard every time you add a new device to Home Assistant?  
+- Are you **frustrated** with having to update your dashboard every time you add or remove a device to Home Assistant?  
 <br>
 
 - Do you wish your dashboard could feature a **sleek, professional, and clean design**?  
@@ -35,8 +35,12 @@ If the answer is yes to any one of the questions above, SMARTi is the integratio
 <div align="center">
   <div>
     <img src="assets/homepage.png" width="600" style="display: inline-block; margin-right: 20px;">
+    <p>SMARTi on a phone</p>
     <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
+    <p>SMARTi on a tablet</p>
+    <div align="center">
     <p>Homepage - An overview of your entire Home Assistant setup at a glance.</p>
+    </div>
   </div>
   <br>
 
