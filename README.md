@@ -82,7 +82,9 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 # Versions
 
-SMARTi Comes in a **FREE** (SMARTi Basic) verison and a **PAID** version (SMARTi PRO) which has a monthly subscription cost
+SMARTi Comes in a **FREE** (SMARTi Basic) verison and a **PAID** version (SMARTi PRO) which has a monthly subscription cost.
+
+SMARTi Basic does not require a subscription to be downloaded and installed, but the Pro version does. A subrsctiption can be prucheased at https://smarti.dev
 
 The table below highlights the feature of the SMARTi dashboard and thje differences between the Basic and Pro version:
 # SMARTi Feature Comparison
@@ -122,7 +124,7 @@ A: In order to fully dedicate to an enviroment that is constantly changing and t
     <p>SMARTi Themes</p>
   </div>
   <br>
-
+</div>
 
 
 # Installation
@@ -135,7 +137,7 @@ Pre-requisties:
 
 Before starting you installation, make sure you have the two following lines in you configuration.yaml file:
 <pre> homeassistant:
-        packages: !include_dir_named packages  </pre>
+    packages: !include_dir_named packages  </pre>
 
 Via HACS
 
