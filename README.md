@@ -6,11 +6,7 @@
 </div>
 
 <div align="center">
-  <img src="assets/smarti_logo.png" alt="SMARTi Logo" width="200">
-</div>
-
-<div align="center">
-  <img src="assets/IntroductionImage.png" width="600">
+  <img src="assets/IntroductionImage.png" width="900">
 </div>
 
 <br>
