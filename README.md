@@ -65,7 +65,7 @@ The table below highlights the feature of the SMARTi dashboard and the differenc
 | **Language**              | **English**                                                                                                | **English, French, German, Spanish, Norwegian, Dutch**                                                      |
 |                           | _Description:_ Only English is available in the free version.                                              | _Description:_ Offers support for multiple languages for a global audience.                                  |
 | **Power Control**         | **None**                                                                                                   | **PowerFlow**                                                                                                |
-|                           | _Description:_ No tools for monitoring or managing energy usage.                                           | _Description:_ Includes advanced tools for energy monitoring and management.                                 |
+|                           | _Description:_ No tools for monitoring or managing energy usage.                                           | _Description:_ Coming soon - Advanced tools for energy monitoring and management.                                 |
 | **Themes**                | **Single Theme**                                                                                           | **Multiple Themes**                                                                                          |
 |                           | _Description:_ Only one default theme is available.                                                       | _Description:_ Offers five distinct themes for visual customization.                                         |
 | **Feature Updates**       | **Yearly**                                                                                                 | **Monthly**                                                                                                  |
@@ -74,7 +74,7 @@ The table below highlights the feature of the SMARTi dashboard and the differenc
 |                           | _Description:_ Bugs are addressed every three months in the free version.                                  | _Description:_ Bugs are fixed on an ongoing basis for faster resolutions.                                    |
 
 
-Q: Why is there a monthly subscription cost for the PRO verison?
+Q: Why is there a monthly subscription cost for the Pro verison?
 <br>
 A: In order to fully dedicate to an enviroment that is constantly changing and to provide usefull updates to the SMARTi dashboard and its automations, a monthly cost is needed to properly develop, run, test and deploy the solution.
 
@@ -85,7 +85,7 @@ Installation
 
 Pre-requisties:
 
-* This integration only supports Home Assistant 2024.8 and above. Installing and configuring this integration on a Home Assistant installation with a lower version than this will result in errors and the integration will not work properly.
+* ## This integration only supports Home Assistant 2024.8 and above. Installing and configuring this integration on a Home Assistant installation with a lower version than this will result in errors and the integration will not work properly.
 
 Before starting you installation, make sure you have the two following lines in you configuration.yaml file:
 <pre> homeassistant:
