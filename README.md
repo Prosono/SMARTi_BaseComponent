@@ -14,23 +14,18 @@
 
 
 - Do you find it challenging to create a comprehensive dashboard that **meets the needs** of everyone in your household?  
-
 <br>
-
 - Are you **frustrated** with having to update your dashboard every time you add or remove a device to Home Assistant?  
 <br>
-
 - Do you wish your dashboard could feature a **sleek, professional, and clean design**?  
 <br>
-
 - Are you looking for a **single dashboard solution** that works seamlessly across all your devices—phones, tablets, and desktops? 
 <br>
+- Do you want a higher wife-aproval rating for your Home Assistant setup?
+<br>
 
-- Are you tired of having to update all your custom cards from HACS manually?
 
-
-
-If the answer is yes to any one of the questions above, SMARTi is the integration for you!
+If the answer is **YES** to any one of the questions above, then **SMARTi** is the integration for you!
 
 <div align="center">
   <div>
