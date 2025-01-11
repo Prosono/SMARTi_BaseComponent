@@ -3,39 +3,39 @@
         "step": {
             "user": {
                 "title": "Set up SMARTi",
-                "description": "Select the version of SMARTi you want to configure.",
+                "description": "Select the version of SMARTi you want to configure. You can select the Basic og Pro version. Read more about the differences at our repo",
                 "data": {
                     "version": "Version"
                 }
             },
             "basic_token_choice": {
-                "title": "Basic Version: Token Setup",
-                "description": "Do you already have a token?",
+                "title": "Basic Version: Token Configuration and setup",
+                "description": "SMARTi Basic token generation?",
                 "data": {
-                    "has_token": "Have you generated a token?"
+                    "has_token": "Already received your token? Please click the submit button to enter you email and your SMARTi Basic token"
                 }
             },
             "generate_token": {
                 "title": "Generate Basic Token",
-                "description": "Enter your email address to generate a token for the Basic version. The token will be sent to your email.",
+                "description": "Enter your email address to generate a token for the Basic version. The token will be sent to your email and will be valid for 30 days upon generation.",
                 "data": {
                     "email": "Email Address"
                 }
             },
             "basic_token_input": {
                 "title": "Enter Basic Token",
-                "description": "Input the token you received for the Basic version.",
+                "description": "Please input the token you have received for the Basic version.",
                 "data": {
                     "basic_token": "Basic Token"
                 }
             },
             "pro_link": {
                 "title": "Purchase SMARTi Pro",
-                "description": "Click the link below to purchase SMARTi Pro: {link}"
+                "description": "Click the link below to purchase an active subsription to SMARTi Pro: {link}"
             },
             "pro_token_input": {
                 "title": "Enter Pro Token",
-                "description": "Input the token you received after purchasing SMARTi Pro.",
+                "description": "Input the SMARTi PRO token you received by email after activating SMARTi Pro.",
                 "data": {
                     "pro_token": "Pro Token"
                 }
@@ -52,7 +52,7 @@
             "invalid_subscription": "The provided email does not have an active subscription.",
             "invalid_token": "The provided token is invalid.",
             "token_generation_failed": "Failed to generate token. Please try again.",
-            "unknown_error": "An unknown error occurred."
+            "unknown_error": "An unknown error occurred. Please contact support at support@smarti.dev"
         }
     },
     "title": "SMARTi Integration"
