@@ -44,9 +44,6 @@ If the answer is **YES** to any one of the questions above, then **SMARTi** is t
     <p>SMARTi on a tablet</p>
     <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
     <p>SMARTi on a phone</p>
-    <div align="center">
-
-    </div>
   </div>
   <br>
 
