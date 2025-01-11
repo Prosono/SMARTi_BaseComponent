@@ -81,7 +81,7 @@ A: In order to fully dedicate to an enviroment that is constantly changing and t
 <div align="center">
   <div>
     <p> Homepage - An overview of your Home at a glance.</p>
-    <img src="assets/colors.png" width="900" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/colors2.png" width="900" style="display: inline-block; margin-right: 20px;">
     <p>SMARTi Themes</p>
   </div>
   <br>
@@ -113,7 +113,10 @@ Add this repository as a custom repository:
    - Go to Settings > Devices & Services > Add Integration in Home Assistant.
 Search for SMARTi and select it.
    - You now have to select the SMARTi Basic or the SMARTi Pro option.
-   - After that you now hae the following two choices:
+   - After that you now have the following two choices:
+
+Enter a previousley generated token
+
 
 ### Manual
 
