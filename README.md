@@ -41,7 +41,9 @@ SMARTi delivers a complete, hassle-free maintenance experience with a seamless a
 
 From beautiful animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
 
+<div align="center">
 ![Demo of SMARTi Configuration](assets/smartidemo.gif)
+</div>
 
 # Versions
 
@@ -88,8 +90,10 @@ Pre-requisties:
 * ## This integration only supports Home Assistant 2024.8 and above. Installing and configuring this integration on a Home Assistant installation with a lower version than this will result in errors and the integration will not work properly.
 
 Before starting you installation, make sure you have the two following lines in you configuration.yaml file:
-<pre> homeassistant:
-    packages: !include_dir_named packages  </pre>
+<pre>
+homeassistant:
+    packages: !include_dir_named packages 
+</pre>
 
 Via HACS
 
