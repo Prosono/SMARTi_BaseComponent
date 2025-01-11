@@ -31,6 +31,8 @@
 
 If the answer is **YES** to any one of the questions above, then **SMARTi** is the integration for you!
 
+
+
 <div align="center">
   <div>
     <p> Homepage - An overview of your Home at a glance.</p>
