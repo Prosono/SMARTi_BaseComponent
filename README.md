@@ -10,7 +10,7 @@
 </div>
 
 <div align="center">
-  <img src="assets/mockup.png" alt="SMARTi Logo" width="200">
+  <img src="assets/Mockup.png" width="600">
 </div>
 
 <br>
