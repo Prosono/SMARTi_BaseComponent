@@ -45,10 +45,10 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 SMARTi Comes in a **FREE** (SMARTi Basic) verison and a **PAID** version (SMARTi PRO) which has a monthly subscription cost.
 
-SMARTi Basic does not require a subscription to be downloaded and installed, but the Pro version does. A subrsctiption can be prucheased at https://smarti.dev
+SMARTi Basic does not require a subscription to be downloaded and installed, but the Pro version does. A subrsctiption can be purchased at https://smarti.dev
 
-The table below highlights the feature of the SMARTi dashboard and thje differences between the Basic and Pro version:
-# SMARTi Feature Comparison
+The table below highlights the feature of the SMARTi dashboard and the differences between the Basic and Pro version:
+# SMARTi Feature Basic vs Pro Comparison
 
 | Category                  | SMARTi Basic - Free                                                                                          | SMARTi Pro - 2.99 EUR/month                                                                                  |
 |---------------------------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
@@ -73,19 +73,8 @@ The table below highlights the feature of the SMARTi dashboard and thje differen
 
 
 Q: Why is there a monthly subscription cost for the PRO verison?
-A: In order to fully dedicate to an enviroment that is constantly changing and to provide usefull updates to the usabviliusability ty of the SMARTi dashboard and its automations, a monthly cost is needed to run the developemnt.
-
-
-# Different colors
-
-<div align="center">
-  <div>
-    <p> Homepage - An overview of your Home at a glance.</p>
-    <img src="assets/colors2.png" width="900" style="display: inline-block; margin-right: 20px;">
-    <p>SMARTi Themes</p>
-  </div>
-  <br>
-</div>
+<br>
+A: In order to fully dedicate to an enviroment that is constantly changing and to provide usefull updates to the SMARTi dashboard and its automations, a monthly cost is needed to properly develop, run, test and deploy the solution.
 
 
 # Installation
@@ -115,14 +104,18 @@ Search for SMARTi and select it.
    - You now have to select the SMARTi Basic or the SMARTi Pro option.
    - After that you now have the following two choices:
 
-Enter a previousley generated token
 
+A SMARTi Basic token is generated and sent to you by email upon initial configuration when selecting "I do not have a token" and is valid for 30 days, this will have to be renewd manually after the token expires by setting up the integfration again. 
 
-### Manual
+A SMARTi Pro token must be pruchased forom our website at https://www.smarti.dev/smarti-store/p/smarti-powerflow-xe7ft
+
+After you have selected your version and you have sucessfully entered your token and email, you now have the two following installation options:
+
+- ### Manual
 
 If selecting manual mode when setting up the integration, SMARTi will NOT download any of the required cards from HACS. This will have to be done manually by the end user. The cards required by the SMARTi integration is listed below
 
-### Automatic
+- ### Automatic
 
 If selecting automatic mode when setting up the integraiton, SMARTi will enable .yaml mode for you Home Assistant installation and download all the cards required by the SMARTi dashboard. The also means that your Home Assistant isntalltion will now be in .yaml mode meaning that if you are to download more cards from HACS (or have other cards form HACS installed that is not included in the SMARTi integration), you will have to add theese manually to your configuration.yaml file after installing form HACS. 
 
@@ -132,8 +125,11 @@ Lets say that you want to download another custom card not included with the SMA
 <pre> url: /community_plugin/dual-gauge-card/dual-gauge-card.js 
       type: js  </pre>
 
-What thsi also means is that the SMARTi integration is now repsonsible for maintining theese cards and keeping them updated, adding/removing them etc. 
+What this also means is that the SMARTi integration is now repsonsible for maintining theese cards and keeping them updated, adding/removing them etc. 
 
+We reccomend that you do the automatic installation for the initial instalaltion of the integration to verify that all works as it should. YOu can always uninstall the integration and then re-install it in manual mode if some of your pre-existing dashboard are using cards that the SMARTi integration is not providing. 
+
+## When uninstalling the integration ALL settings, files, dashboards, automations etc related to the SMARTi integration is deleted and your installation will return to its original state. 
 
 # Lets look at some examples
 
