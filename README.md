@@ -37,7 +37,10 @@ If the answer is **YES** to any one of the questions above, then **SMARTi** is t
 
 SMARTi delivers a complete, hassle-free maintenance experience with a seamless and intuitive dashboard for Home Assistant. By harnessing the full potential of Home Assistant, SMARTi automatically gathers all your devices into a single, auto-populated dashboard—designed for multiple devices and available in multiple languages.
 
-## That’s right! With SMARTi, you only need one dashboard to meet the needs of your entire household, across all devices.
+## That’s right! 
+
+### With SMARTi, you only need **one** dashboard to meet the needs of your entire household, 
+## across **all devices**.
 
 From beautiful animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
 
