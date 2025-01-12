@@ -65,13 +65,11 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
   <div>
     <img src="assets/colors5.png" width="900">
+    <p>Want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-instaleld themes to choose from.</p>
   </div>
 </div>
 
 
-<div align="center">
-  <img src="assets/colors5.png" width="900">
-</div>
 
 # Versions
 
