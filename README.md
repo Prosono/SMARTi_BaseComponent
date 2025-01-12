@@ -44,63 +44,34 @@ SMARTi delivers a complete, hassle-free maintenance experience with a seamless a
 From beautiful animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
 
 <div align="center">
-  <style>
-    .responsive-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px; /* Space between images */
-    }
-
-    .responsive-container img {
-      height: auto;
-      max-width: 45%; /* Make sure images scale proportionally */
-      flex: 1 1 auto; /* Allow images to resize flexibly */
-    }
-
-    .full-width-img {
-      width: 100%;
-      max-width: 900px;
-    }
-
-    @media (max-width: 768px) {
-      .responsive-container img {
-        max-width: 100%; /* Stacks images vertically on small screens */
-      }
-    }
-
-    p {
-      text-align: center;
-      margin: 10px 20px;
-    }
-  </style>
 
   <!-- Homepage Section -->
-  <div class="responsive-container">
-    <img src="assets/homepagegif.gif" alt="Homepage Gif">
-    <img src="assets/homepagetablet2.gif" alt="Homepage Tablet Gif">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+    <img src="assets/homepagegif.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
+    <img src="assets/homepagetablet2.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
   </div>
   <br>
 
   <!-- Weather Section -->
-  <div class="responsive-container">
-    <img src="assets/weatherpage.gif" alt="Weather Page Gif">
-    <img src="assets/weatherpagetablet2.gif" alt="Weather Page Tablet Gif">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+    <img src="assets/weatherpage.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
+    <img src="assets/weatherpagetablet2.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
   </div>
   <br>
 
   <!-- Light Page Section -->
-  <div class="responsive-container">
-    <img src="assets/lightpage.gif" alt="Light Page Gif">
-    <img src="assets/lightspagetablet2.gif" alt="Lights Page Tablet Gif">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+    <img src="assets/lightpage.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
+    <img src="assets/lightspagetablet2.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
   </div>
   <br>
 
   <!-- Themes Section -->
   <div>
-    <img src="assets/colors5.png" alt="Color Themes" class="full-width-img">
+    <img src="assets/colors5.png" style="max-width: 100%; height: auto;">
     <p>Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-installed themes to choose from.</p>
   </div>
+
 </div>
 
 
