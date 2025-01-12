@@ -170,40 +170,6 @@ We reccomend that you do the automatic installation for the initial installation
 
 ## When uninstalling the integration ALL settings, files, dashboards, automations etc related to the SMARTi integration is deleted and your installation will return to its original state. 
 
-# Lets look at some examples
-
-<div align="center">
-  <div>
-    <p> Homepage - An overview of your Home at a glance.</p>
-    <img src="assets/homepage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <p>SMARTi on a tablet</p>
-    <img src="assets/homepagephone.jpeg" width="200" style="display: inline-block;">
-    <p>SMARTi on a phone</p>
-  </div>
-  <br>
-
-  <div>
-    <img src="assets/weatherpage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/wetatherpagephone.jpeg" width="200" style="display: inline-block;">
-    <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
-  </div>
-  <br>
-
-  <div>
-    <img src="assets/lightpage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/lightpagephone.jpeg" width="200" style="display: inline-block;">
-    <p>Light Page - Control all your lights effortlessly from one place.</p>
-  </div>
-  <br>
-
-  <div>
-    <img src="assets/climatepage.png" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/climatepagephone.jpeg" width="200" style="display: inline-block;">
-    <p>Climate Page - Manage your home's temperature and climate controls seamlessly.</p>
-  </div>
-</div>
-
-
 
 # Dependencies:
 
@@ -264,6 +230,10 @@ Let me know if you want to customize specific sections or add additional details
 # Disclaimer
 
 This integration adds multiple automations, sensors, entities and helpers to your Home Assistant installation. They are all named "SMARTi_xxx" for easy filtering and not to conflict with existing helpers, entities, automations etc you might already have present and will not affect your current installation. Please do note that if you are bothered by this, then the SMARTi integration is not for you. 
+
+# License
+
+This repo is licensed under the MIT licenese, meaning you can do whatever you want with it, fork it, copy it, modify it, re-distribute it etc, the configuration files it donwloads to your Home Assistant instalaltion is NOT licensed under the same license. After instalaltion, the necessary licenes are placed within the "smartiliceneses" folder
 
 # Support, bugs and reporting
 
