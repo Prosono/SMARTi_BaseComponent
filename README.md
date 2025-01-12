@@ -44,7 +44,7 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 <div align="center">
   <div>
     <img src="assets/homepagegif.gif" width="200" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/homepagetablet.gif" width="600" style="display: inline-block;">
+    <img src="assets/homepagetablet2.gif" width="600" style="display: inline-block;">
     <p>Homepage - An overview of your Home at a glance.</p>
   </div>
   <br>
