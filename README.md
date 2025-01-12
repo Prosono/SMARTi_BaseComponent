@@ -42,6 +42,45 @@ SMARTi delivers a complete, hassle-free maintenance experience with a seamless a
 From beautiful animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
 
 <div align="center">
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <div>
+      <p>Homepage - Demo of SMARTi Configuration</p>
+      <img src="assets/homepagegif.gif" width="300">
+    </div>
+    <div>
+      <p>Weather Page - Demo of SMARTi Configuration</p>
+      <img src="assets/weatherpage.gif" width="300">
+    </div>
+    <div>
+      <p>Light Page - Demo of SMARTi Configuration</p>
+      <img src="assets/lightpage.gif" width="300">
+    </div>
+  </div>
+  <br>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <div>
+      <p>Homepage on Tablet</p>
+      <img src="assets/homepagetablet.gif" width="300">
+    </div>
+    <div>
+      <p>Weather Page on Tablet</p>
+      <img src="assets/weatherpagetablet.gif" width="300">
+    </div>
+    <div>
+      <p>Lights Page on Tablet</p>
+      <img src="assets/lightspagetablet.gif" width="300">
+    </div>
+  </div>
+  <br>
+
+  <div>
+    <img src="assets/colors5.png" width="900">
+  </div>
+</div>
+
+
+<div align="center">
 
 ![Demo of SMARTi Configuration](assets/homepagegif.gif)
 ![Demo of SMARTi Configuration](assets/weatherpage.gif)
