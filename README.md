@@ -61,41 +61,6 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 
 
-<div align="center">
-
-  <!-- Desktop Section -->
-  <div style="display: block;">
-    <h3>Desktop View:</h3>
-    <div>
-      <img src="assets/homepagegif.gif" height="300" style="display: inline-block; margin-right: 20px;">
-      <img src="assets/homepagetablet2.gif" height="300" style="display: inline-block;">
-    </div>
-    <br>
-    <div>
-      <img src="assets/weatherpage.gif" height="300" style="display: inline-block; margin-right: 20px;">
-      <img src="assets/weatherpagetablet2.gif" height="300" style="display: inline-block;">
-    </div>
-    <br>
-    <div>
-      <img src="assets/lightpage.gif" height="300" style="display: inline-block; margin-right: 20px;">
-      <img src="assets/lightspagetablet2.gif" height="300" style="display: inline-block;">
-    </div>
-    <br>
-    <div>
-      <img src="assets/colors5.png" width="900">
-      <p>Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-installed themes to choose from.</p>
-    </div>
-  </div>
-
-  <!-- Phone View Placeholder -->
-  <div style="display: none;">
-    <h3>Phone View</h3>
-    <p>This content is optimized for desktop viewing only.</p>
-  </div>
-
-</div>
-
-
 
 # Versions
 
