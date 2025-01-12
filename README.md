@@ -44,30 +44,88 @@ SMARTi delivers a complete, hassle-free maintenance experience with a seamless a
 From beautiful animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
 
 <div align="center">
+  <style>
+    .responsive-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .responsive-container img {
+      height: auto;
+      max-width: 100%;
+    }
+
+    .full-width-img {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    @media (min-width: 768px) {
+      .responsive-container {
+        flex-wrap: nowrap;
+      }
+
+      .responsive-container img {
+        height: 300px;
+      }
+    }
+
+    p {
+      text-align: center;
+      margin: 10px 20px;
+    }
+  </style>
+
+  <div class="responsive-container">
+    <img src="assets/homepagegif.gif" alt="Homepage Gif">
+    <img src="assets/homepagetablet2.gif" alt="Homepage Tablet Gif">
+  </div>
+  <br>
+
+  <div class="responsive-container">
+    <img src="assets/weatherpage.gif" alt="Weather Page Gif">
+    <img src="assets/weatherpagetablet2.gif" alt="Weather Page Tablet Gif">
+  </div>
+  <br>
+
+  <div class="responsive-container">
+    <img src="assets/lightpage.gif" alt="Light Page Gif">
+    <img src="assets/lightspagetablet2.gif" alt="Lights Page Tablet Gif">
+  </div>
+  <br>
+
+  <div>
+    <img src="assets/colors5.png" alt="Color Themes" class="full-width-img">
+    <p>Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-installed themes to choose from.</p>
+  </div>
+</div>
+
+<div align="center">
   <div>
     <img src="assets/homepagegif.gif" height="300" style="display: inline-block; margin-right: 20px;">
     <img src="assets/homepagetablet2.gif" height="300" style="display: inline-block;">
-    <p>Homepage - An overview of your Home at a glance.</p>
   </div>
   <br>
 
   <div>
     <img src="assets/weatherpage.gif" height="300" style="display: inline-block; margin-right: 20px;">
     <img src="assets/weatherpagetablet2.gif" height="300" style="display: inline-block;">
-    <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
+
   </div>
   <br>
 
   <div>
     <img src="assets/lightpage.gif" height="300" style="display: inline-block; margin-right: 20px;">
     <img src="assets/lightspagetablet2.gif" height="300" style="display: inline-block;">
-    <p>Light Page - Control all your lights effortlessly from one place.</p>
+
   </div>
   <br>
 
   <div>
     <img src="assets/colors5.png" width="900">
-    <p>Want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-instaleld themes to choose from.</p>
+    <p>Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-instaleld themes to choose from.</p>
   </div>
 </div>
 
@@ -173,7 +231,7 @@ We reccomend that you do the automatic installation for the initial installation
 # Usage
 
 ## Have SMARTi **NOT** show devices/entities
-If you want SMARTi to NOT show entities in the dashboards, simply hide them in HOme Assistant and SMARTi will no longer display them.
+If you want SMARTi to NOT show entities in the dashboards, simply hide them in Home Assistant and SMARTi will no longer display them.
 
 ## Set up power measurement sensor
 Since SMARTi uses a more general power sensor, this will have to be set. This can be set under the settings page under "Dynamic Power Sensor". IKf no sensors are present here, just click the button "Update power Sensor Lsit" ANd it will populate with all sensors haveing a power measurement and you can select the proper one. 
