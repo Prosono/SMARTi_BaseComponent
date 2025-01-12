@@ -43,22 +43,22 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 <div align="center">
   <div>
-    <img src="assets/homepagegif.gif" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/homepagetablet.gif" width="200" style="display: inline-block;">
+    <img src="assets/homepagegif.gif" width="200" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/homepagetablet.gif" width="600" style="display: inline-block;">
     <p>Homepage - An overview of your Home at a glance.</p>
   </div>
   <br>
 
   <div>
-    <img src="assets/weatherpage.gif" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/weatherpagetablet.gif" width="200" style="display: inline-block;">
+    <img src="assets/weatherpage.gif" width="200" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/weatherpagetablet.gif" width="600" style="display: inline-block;">
     <p>Weather Page - Real-time weather updates and forecasts beautifully displayed.</p>
   </div>
   <br>
 
   <div>
-    <img src="assets/lightpage.gif" width="600" style="display: inline-block; margin-right: 20px;">
-    <img src="assets/lightspagetablet.gif" width="200" style="display: inline-block;">
+    <img src="assets/lightpage.gif" width="200" style="display: inline-block; margin-right: 20px;">
+    <img src="assets/lightspagetablet.gif" width="600" style="display: inline-block;">
     <p>Light Page - Control all your lights effortlessly from one place.</p>
   </div>
   <br>
