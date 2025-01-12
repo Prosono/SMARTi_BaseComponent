@@ -46,23 +46,23 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 <div align="center">
 
   <!-- Homepage Section -->
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-    <img src="assets/homepagegif.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
-    <img src="assets/homepagetablet2.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
+  <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow: hidden;">
+    <img src="assets/homepagegif.gif" style="max-width: 100%; height: auto; flex: 1;">
+    <img src="assets/homepagetablet2.gif" style="max-width: 100%; height: auto; flex: 1;">
   </div>
   <br>
 
   <!-- Weather Section -->
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-    <img src="assets/weatherpage.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
-    <img src="assets/weatherpagetablet2.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
+  <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow: hidden;">
+    <img src="assets/weatherpage.gif" style="max-width: 100%; height: auto; flex: 1;">
+    <img src="assets/weatherpagetablet2.gif" style="max-width: 100%; height: auto; flex: 1;">
   </div>
   <br>
 
   <!-- Light Page Section -->
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-    <img src="assets/lightpage.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
-    <img src="assets/lightspagetablet2.gif" style="height: auto; max-width: 48%; min-width: 200px; flex: 1;">
+  <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow: hidden;">
+    <img src="assets/lightpage.gif" style="max-width: 100%; height: auto; flex: 1;">
+    <img src="assets/lightspagetablet2.gif" style="max-width: 100%; height: auto; flex: 1;">
   </div>
   <br>
 
