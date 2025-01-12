@@ -47,25 +47,25 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
   <!-- Homepage Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/homepagegif.gif" style="height: 600px; object-fit: contain; aspect-ratio: auto;">
-    <img src="assets/homepagetablet2.gif" style="height: 600px; object-fit: contain; aspect-ratio: auto;">
+    <img src="assets/homepagegif.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/homepagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
 
   <!-- Weather Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/weatherpage.gif" style="height: 600px; object-fit: contain; aspect-ratio: auto;">
-    <img src="assets/weatherpagetablet2.gif" style="height: 600px; object-fit: contain; aspect-ratio: auto;">
+    <img src="assets/weatherpage.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/weatherpagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
 
   <!-- Light Page Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/lightpage.gif" style="height: 600px; object-fit: contain; aspect-ratio: auto;">
-    <img src="assets/lightspagetablet2.gif" style="height: 600px; object-fit: contain; aspect-ratio: auto;">
+    <img src="assets/lightpage.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/lightspagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
 
   <!-- Themes Section -->
   <div>
-    <img src="assets/colors5.png" style="max-width: 90%; height: auto; margin-top: 20px;">
+    <img src="assets/colors5.png" style="max-width: 1000px; height: auto; margin-top: 20px;">
     <p style="text-align: center; max-width: 600px; margin: 0 auto;">Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-installed themes to choose from.</p>
   </div>
 
