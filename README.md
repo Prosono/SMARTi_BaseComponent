@@ -49,11 +49,6 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 </div>
 <br>
 
-<div align="center">
-![Demo of SMARTi Configuration](assets/climatepage.gif)
-![Demo of SMARTi Configuration](assets/mispage.gif)
-![Demo of SMARTi Configuration](assets/securitypage.gif)
-</div>
 
 <div align="center">
   <img src="assets/colors5.png" width="900">
