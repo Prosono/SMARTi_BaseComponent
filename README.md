@@ -47,20 +47,20 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
   <!-- Homepage Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/homepagegif.gif" style="height: 200px; width: auto;">
-    <img src="assets/homepagetablet2.gif" style="height: 200px; width: auto;">
+    <img src="assets/homepagegif.gif" style="height: 200px; object-fit: contain; aspect-ratio: auto;">
+    <img src="assets/homepagetablet2.gif" style="height: 200px; object-fit: contain; aspect-ratio: auto;">
   </div>
 
   <!-- Weather Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/weatherpage.gif" style="height: 200px; width: auto;">
-    <img src="assets/weatherpagetablet2.gif" style="height: 200px; width: auto;">
+    <img src="assets/weatherpage.gif" style="height: 200px; object-fit: contain; aspect-ratio: auto;">
+    <img src="assets/weatherpagetablet2.gif" style="height: 200px; object-fit: contain; aspect-ratio: auto;">
   </div>
 
   <!-- Light Page Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/lightpage.gif" style="height: 200px; width: auto;">
-    <img src="assets/lightspagetablet2.gif" style="height: 200px; width: auto;">
+    <img src="assets/lightpage.gif" style="height: 200px; object-fit: contain; aspect-ratio: auto;">
+    <img src="assets/lightspagetablet2.gif" style="height: 200px; object-fit: contain; aspect-ratio: auto;">
   </div>
 
   <!-- Themes Section -->
