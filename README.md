@@ -170,6 +170,13 @@ We reccomend that you do the automatic installation for the initial installation
 
 ## When uninstalling the integration ALL settings, files, dashboards, automations etc related to the SMARTi integration is deleted and your installation will return to its original state. 
 
+# Usage
+
+## Have SMARTi **NOT** show devices/entities
+If you want SMARTi to NOT show entities in the dashboards, simply hide them in HOme Assistant and SMARTi will no longer display them.
+
+## Set up power measurement sensor
+Since SMARTi uses a more general power sensor, this will have to be set. This can be set under the settings page under "Dynamic Power Sensor". IKf no sensors are present here, just click the button "Update power Sensor Lsit" ANd it will populate with all sensors haveing a power measurement and you can select the proper one. 
 
 # Dependencies:
 
