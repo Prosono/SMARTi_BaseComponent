@@ -46,21 +46,21 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 <div align="center">
 
   <!-- Homepage Section -->
-  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
-    <img src="assets/homepagegif.gif" style="max-width: 45%; height: auto; min-width: 200px;">
-    <img src="assets/homepagetablet2.gif" style="max-width: 45%; height: auto; min-width: 200px;">
+  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    <img src="assets/homepagegif.gif" style="width: 300px; height: auto;">
+    <img src="assets/homepagetablet2.gif" style="width: 300px; height: auto;">
   </div>
 
   <!-- Weather Section -->
-  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
-    <img src="assets/weatherpage.gif" style="max-width: 45%; height: auto; min-width: 200px;">
-    <img src="assets/weatherpagetablet2.gif" style="max-width: 45%; height: auto; min-width: 200px;">
+  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    <img src="assets/weatherpage.gif" style="width: 300px; height: auto;">
+    <img src="assets/weatherpagetablet2.gif" style="width: 300px; height: auto;">
   </div>
 
   <!-- Light Page Section -->
-  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
-    <img src="assets/lightpage.gif" style="max-width: 45%; height: auto; min-width: 200px;">
-    <img src="assets/lightspagetablet2.gif" style="max-width: 45%; height: auto; min-width: 200px;">
+  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    <img src="assets/lightpage.gif" style="width: 300px; height: auto;">
+    <img src="assets/lightspagetablet2.gif" style="width: 300px; height: auto;">
   </div>
 
   <!-- Themes Section -->
