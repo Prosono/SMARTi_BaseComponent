@@ -46,33 +46,31 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 <div align="center">
 
   <!-- Homepage Section -->
-  <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow: hidden;">
-    <img src="assets/homepagegif.gif" style="max-width: 100%; height: auto; flex: 1;">
-    <img src="assets/homepagetablet2.gif" style="max-width: 100%; height: auto; flex: 1;">
+  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+    <img src="assets/homepagegif.gif" style="max-width: 45%; height: auto; min-width: 200px;">
+    <img src="assets/homepagetablet2.gif" style="max-width: 45%; height: auto; min-width: 200px;">
   </div>
-  <br>
 
   <!-- Weather Section -->
-  <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow: hidden;">
-    <img src="assets/weatherpage.gif" style="max-width: 100%; height: auto; flex: 1;">
-    <img src="assets/weatherpagetablet2.gif" style="max-width: 100%; height: auto; flex: 1;">
+  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+    <img src="assets/weatherpage.gif" style="max-width: 45%; height: auto; min-width: 200px;">
+    <img src="assets/weatherpagetablet2.gif" style="max-width: 45%; height: auto; min-width: 200px;">
   </div>
-  <br>
 
   <!-- Light Page Section -->
-  <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow: hidden;">
-    <img src="assets/lightpage.gif" style="max-width: 100%; height: auto; flex: 1;">
-    <img src="assets/lightspagetablet2.gif" style="max-width: 100%; height: auto; flex: 1;">
+  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+    <img src="assets/lightpage.gif" style="max-width: 45%; height: auto; min-width: 200px;">
+    <img src="assets/lightspagetablet2.gif" style="max-width: 45%; height: auto; min-width: 200px;">
   </div>
-  <br>
 
   <!-- Themes Section -->
   <div>
-    <img src="assets/colors5.png" style="max-width: 100%; height: auto;">
-    <p>Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-installed themes to choose from.</p>
+    <img src="assets/colors5.png" style="max-width: 90%; height: auto; margin-top: 20px;">
+    <p style="text-align: center; max-width: 600px; margin: 0 auto;">Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-installed themes to choose from.</p>
   </div>
 
 </div>
+
 
 
 <div align="center">
