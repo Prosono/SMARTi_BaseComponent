@@ -115,27 +115,43 @@ homeassistant:
     packages: !include_dir_named packages 
 </pre>
 
-Via HACS
+Via HACS Installation Guide
 
-Ensure you have HACS installed in your Home Assistant instance.
-Add this repository as a custom repository:
-   - Open HACS in Home Assistant.
-   - Go to Settings > Custom Repositories.
-   - Add the repository URL: https://github.com/Prosono/SMARTi_BaseComponent
-   - Set the category to Integration and click Add.
-   - Search for SMARTi in HACS and click Install.
-   - Restart Home Assistant.
-   - Go to Settings > Devices & Services > Add Integration in Home Assistant.
-Search for SMARTi and select it.
-   - You now have to select the SMARTi Basic or the SMARTi Pro option.
-   - After that you now have the following two choices:
+To install the SMARTi integration via HACS, follow these steps:
 
+    Ensure HACS is Installed
+    Make sure HACS is installed and functioning in your Home Assistant instance.
 
-A SMARTi Basic token is generated and sent to you by email upon initial configuration when selecting "I do not have a token". This token will expire after 30 days, which then requires you to generate a new one by setting up the integration again.
+    Add the SMARTi Repository
+        Open HACS in Home Assistant.
+        Navigate to Settings > Custom Repositories.
+        Add the repository URL: https://github.com/Prosono/SMARTi_BaseComponent.
+        Set the category to Integration and click Add.
 
-A SMARTi Pro token must be purchased from our website at https://www.smarti.dev/smarti-store/p/smarti-powerflow-xe7ft and after a sucessfull payment, will be sent to you by email. 
+    Install SMARTi Integration
+        Search for SMARTi in HACS and click Install.
+        Restart Home Assistant after the installation.
 
-After you have selected your SMARTi version and you have sucessfully entered your token and email, you will have the two following installation options:
+    Add SMARTi Integration
+        Go to Settings > Devices & Services > Add Integration in Home Assistant.
+        Search for SMARTi and select it.
+
+    Select SMARTi Version
+        Choose between SMARTi Basic or SMARTi Pro during configuration.
+
+    Token and Email Requirements
+        SMARTi Basic: A token is generated and sent to your email upon initial configuration if you select "I do not have a token." Note that this token expires after 30 days, requiring reconfiguration to generate a new one.
+        SMARTi Pro: A token must be purchased from our website at https://www.smarti.dev/smarti-store/p/smarti-powerflow-xe7ft. After a successful payment, the token will be sent to your email.
+
+    Enter Your Token and Email
+        After selecting your SMARTi version, enter your token and email to proceed with the installation.
+
+    Choose Installation Options
+    Once your token and email are validated, you will have two installation options:
+        Automatic Installation: Installs all required resources and configures your Home Assistant in YAML mode.
+        Manual Installation: Requires the user to manually install and configure resources, as outlined in the README.
+
+By following these steps, you’ll have the SMARTi integration set up and ready to enhance your Home Assistant experience.
 
 - ### Manual
 
