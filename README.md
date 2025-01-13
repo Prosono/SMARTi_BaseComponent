@@ -99,6 +99,7 @@ The table below highlights the feature of the SMARTi dashboard and the differenc
 
 Q: Why is there a monthly subscription cost for the Pro verison?
 <br>
+
 A: In order to fully dedicate to an enviroment that is constantly changing and to provide usefull updates to the SMARTi dashboard and its automations, a monthly cost is needed to properly develop, run, test and deploy the solution.
 
 
