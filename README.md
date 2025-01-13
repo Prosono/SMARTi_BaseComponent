@@ -277,10 +277,10 @@ For any immediate issues, bugs, issues, or feedback, please contact our support 
 
   <!-- Weather Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/weathergif.gif" style="max-width: 1000px; height: auto;">
-    <img src="assets/weathertablet2.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/weatherpagegif.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/weatherpagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
-  <br<>>
+  <br<>
   <!-- Themes Section -->
 
 </div>
