@@ -115,7 +115,7 @@ homeassistant:
     packages: !include_dir_named packages 
 </pre>
 
-Installation via HACS
+# Installation via HACS
 Prerequisites
 
 Ensure you have HACS installed and running in your Home Assistant instance.
