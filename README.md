@@ -284,8 +284,15 @@ For any immediate issues, bugs, issues, or feedback, please contact our support 
   <br<>
   <!-- Themes Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/lightspagegif.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/lightpagegif.gif" style="max-width: 1000px; height: auto;">
     <img src="assets/lightspagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
   <br<>
+
+   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    <img src="assets/climatepagegif.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/climatepagetablet.gif" style="max-width: 1000px; height: auto;">
+  </div>
+  <br<>
+
 </div>
