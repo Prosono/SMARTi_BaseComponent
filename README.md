@@ -291,7 +291,7 @@ For any immediate issues, bugs, issues, or feedback, please contact our support 
 
    <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
     <img src="assets/climatepage.gif" style="max-width: 1000px; height: auto;">
-    <img src="assets/climatepage3.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/climatepagegif3.gif" style="max-width: 1000px; height: auto;">
   </div>
   <br<>
 
