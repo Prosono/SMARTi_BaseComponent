@@ -270,3 +270,17 @@ This repository is licensed under the MIT license, granting you the freedom to f
 
 If you encounter any non-breaking bugs, please open an issue in the GitHub repository.
 For any immediate issues, bugs, issues, or feedback, please contact our support team at support@smarti.dev. We value your input and strive to continuously improve our products and services.
+
+# More Examples
+
+<div align="center">
+
+  <!-- Weather Section -->
+  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    <img src="assets/weathergif.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/weathertablet2.gif" style="max-width: 1000px; height: auto;">
+  </div>
+  <br<>>
+  <!-- Themes Section -->
+
+</div>
