@@ -62,16 +62,28 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 # Versions
 
-SMARTi Comes in a **FREE** (SMARTi Basic) verison and a **PAID** version (SMARTi PRO) which has a monthly subscription cost.
+## SMARTi Versions
 
-SMARTi Basic does not require a subscription to be downloaded and installed, but the Pro version does. A subrsctiption can be purchased at https://smarti.dev
+SMARTi is available in two versions:
 
-The table below highlights the feature of the SMARTi dashboard and the differences between the Basic and Pro version:
+    FREE: SMARTi Basic
+    PAID: SMARTi Pro (requires a monthly subscription)
+
+SMARTi Basic
+
+SMARTi Basic is completely free to download and use. It provides essential features for managing your Home Assistant setup without requiring a subscription.
+SMARTi Pro
+
+SMARTi Pro unlocks advanced features and enhanced functionality, ideal for power users seeking to maximize the potential of their smart home setup. A subscription is required and can be purchased at:
+https://www.smarti.dev/smarti-store/p/smarti-powerflow-xe7ft
+
 # SMARTi Feature Basic vs Pro Comparison
+
+
 
 | Category                  | SMARTi Basic - Free                                                                                          | SMARTi Pro - 2.99 EUR/month                                                                                  |
 |---------------------------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| **Dashboard**             | **Auto-Populated**                                                                                         | **Auto-Populated** ✅                                                                                          |
+| **Dashboard**             | **Auto-Populated**                                                                                         | **Auto-Populated**                                                                                         |
 |                           | _Description:_ Provides fully automated, dynamic dashboards for a seamless experience.                     | _Description:_ Provides fully automated, dynamic dashboards for a seamless experience.                       |
 | **Dashboard Device Support** | **Desktops, Tablets**                                                                                     | **Desktops, Tablets, Phones**                                                                                |
 |                           | _Description:_ Optimized for use on desktop computers and tablets.                                         | _Description:_ Fully compatible with desktops, tablets, and mobile phones.                                   |
