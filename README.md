@@ -68,7 +68,7 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 </div>
 
-View more examples of the dasdhboardfs at the bottom of the end of the readme.
+View more examples of the dashboards at the end of the readme.
 
 # Versions
 
