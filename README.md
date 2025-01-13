@@ -49,6 +49,7 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 <div align="center">
 
+# Dashboard Snippets
   <!-- Homepage Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
     <img src="assets/homepagegif.gif" style="max-width: 1000px; height: auto;">
