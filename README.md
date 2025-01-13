@@ -121,39 +121,39 @@ Prerequisites
 Ensure you have HACS installed and running in your Home Assistant instance.
 Steps to Install
 
-1. Add the SMARTi Repository
-    Open HACS in Home Assistant.
-    Go to Settings > Custom Repositories.
-    Add the repository URL:
-    https://github.com/Prosono/SMARTi_BaseComponent
-    Set the category to Integration and click Add.
+1. ## Add the SMARTi Repository
+    - Open HACS in Home Assistant.
+    - Go to Settings > Custom Repositories.
+    - Add the repository URL:
+    - https://github.com/Prosono/SMARTi_BaseComponent
+    - Set the category to Integration and click Add.
 
-2. Install SMARTi
-    Search for SMARTi in HACS.
-    Click Install.
-    Restart Home Assistant after the installation is complete.
+2. ## Install SMARTi
+    - Search for SMARTi in HACS.
+    - Click Install.
+    - Restart Home Assistant after the installation is complete.
 
-3. Add the Integration
-    Navigate to Settings > Devices & Services > Add Integration in Home Assistant.
-    Search for SMARTi and select it.
+3. ## Add the Integration
+    - Navigate to Settings > Devices & Services > Add Integration in Home Assistant.
+    - Search for SMARTi and select it.
 
-4. Select Your SMARTi Version
-    Choose between SMARTi Basic or SMARTi Pro during setup.
+4. ## Select Your SMARTi Version
+    - Choose between SMARTi Basic or SMARTi Pro during setup.
 
-5. Token and Email Requirements
-    SMARTi Basic: A token is automatically generated and sent to your email if you select "I do not have a token." Note: The token expires after 30 days and must be renewed by reconfiguring the integration.
-    SMARTi Pro: A token must be purchased from our website:
-    Purchase SMARTi Pro Token
-    Upon successful payment, the token will be sent to your email.
+5. ## Token and Email Requirements
+    - SMARTi Basic: A token is automatically generated and sent to your email if you select "I do not have a token." Note: The token expires after 30 days and must be renewed by reconfiguring the integration.
+    - SMARTi Pro: A token must be purchased from our website:
+    - Purchase SMARTi Pro Token
+    - Upon successful payment, the token will be sent to your email.
 
-6. Enter Your Token and Email
-    After selecting your SMARTi version, enter your token and email to proceed.
+6. ## Enter Your Token and Email
+    - After selecting your SMARTi version, enter your token and email to proceed.
 
-7. Choose Your Installation Mode
-    Automatic Installation:
-    Installs all required resources and switches Home Assistant to YAML mode.
-    Manual Installation:
-    Requires manual installation and configuration of resources. Refer to the Required Cards section below for details.
+7. ## Choose Your Installation Mode
+    - Automatic Installation:
+    - Installs all required resources and switches Home Assistant to YAML mode.
+    - Manual Installation:
+    - Requires manual installation and configuration of resources. Refer to the Required Cards section below for details.
 
 - ### Manual
 
