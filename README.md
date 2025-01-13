@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-  <img src="assets/IntroductionImage.png" width="900">
+  <img src="assets/smartiDashboardPromo.png" width="900">
 </div>
 
 <br>
