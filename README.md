@@ -71,7 +71,7 @@ The table below highlights the feature of the SMARTi dashboard and the differenc
 
 | Category                  | SMARTi Basic - Free                                                                                          | SMARTi Pro - 2.99 EUR/month                                                                                  |
 |---------------------------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| **Dashboard**             | **Auto-Populated**                                                                                         | **Auto-Populated**                                                                                           |
+| **Dashboard**             | **Auto-Populated**                                                                                         | **Auto-Populated** ✅                                                                                          |
 |                           | _Description:_ Provides fully automated, dynamic dashboards for a seamless experience.                     | _Description:_ Provides fully automated, dynamic dashboards for a seamless experience.                       |
 | **Dashboard Device Support** | **Desktops, Tablets**                                                                                     | **Desktops, Tablets, Phones**                                                                                |
 |                           | _Description:_ Optimized for use on desktop computers and tablets.                                         | _Description:_ Fully compatible with desktops, tablets, and mobile phones.                                   |
@@ -102,8 +102,6 @@ A: In order to fully dedicate to an enviroment that is constantly changing and t
 
 
 # Installation
-
-Installation
 
 Pre-requisties:
 
