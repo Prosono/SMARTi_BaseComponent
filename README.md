@@ -44,6 +44,10 @@ SMARTi delivers a complete, hassle-free maintenance experience with a seamless a
 From beautiful animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
 
 <div align="center">
+  <img src="assets/smartimockup3.png" width="900">
+</div>
+
+<div align="center">
 
   <!-- Homepage Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
