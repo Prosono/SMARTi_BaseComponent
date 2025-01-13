@@ -67,16 +67,14 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 SMARTi is available in two versions:
 
 ### FREE: SMARTi Basic
+SMARTi Basic is completely free to download and use. It provides essential features for managing your Home Assistant setup without requiring a subscription.
 
 ### PAID: SMARTi Pro (requires a monthly subscription) at 2.99 EUR/Month
-
-SMARTi Basic
-
-SMARTi Basic is completely free to download and use. It provides essential features for managing your Home Assistant setup without requiring a subscription.
-SMARTi Pro
-
 SMARTi Pro unlocks advanced features and enhanced functionality, ideal for power users seeking to maximize the potential of their smart home setup. A subscription is required and can be purchased at:
 https://www.smarti.dev/smarti-store/p/smarti-powerflow-xe7ft
+
+
+
 
 # SMARTi Feature Basic vs Pro Comparison
 
