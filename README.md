@@ -66,8 +66,9 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 SMARTi is available in two versions:
 
-FREE: SMARTi Basic
-PAID: SMARTi Pro (requires a monthly subscription)
+### FREE: SMARTi Basic
+
+### PAID: SMARTi Pro (requires a monthly subscription) at 2.99 EUR/Month
 
 SMARTi Basic
 
