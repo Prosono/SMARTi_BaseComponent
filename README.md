@@ -59,6 +59,7 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 
 </div>
 
+View more examples of the dasdhboardfs at the bottom of the end of the readme.
 
 # Versions
 
@@ -277,10 +278,14 @@ For any immediate issues, bugs, issues, or feedback, please contact our support 
 
   <!-- Weather Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/weatherpagegif.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/weatherpage.gif" style="max-width: 1000px; height: auto;">
     <img src="assets/weatherpagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
   <br<>
   <!-- Themes Section -->
-
+  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    <img src="assets/lightspagegif.gif" style="max-width: 1000px; height: auto;">
+    <img src="assets/lightspagetablet2.gif" style="max-width: 1000px; height: auto;">
+  </div>
+  <br<>
 </div>
