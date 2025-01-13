@@ -60,8 +60,6 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 </div>
 
 
-
-
 # Versions
 
 SMARTi Comes in a **FREE** (SMARTi Basic) verison and a **PAID** version (SMARTi PRO) which has a monthly subscription cost.
@@ -141,14 +139,20 @@ After you have selected your SMARTi version and you have sucessfully entered you
 
 - ### Manual
 
-If selecting manual mode when setting up the integration, SMARTi will NOT download any of the required cards from HACS. This will have to be done manually by the end user manually or via HACS. The cards required by the SMARTi integration is listed below at the end of this readme.
+If you select manual mode during the setup of the SMARTi integration, none of the required cards will be automatically downloaded from HACS. Instead, it will be the responsibility of the end user to install these cards manually, either by directly downloading them or by using HACS.
+
+A complete list of the cards required for the SMARTi integration can be found in the "Required Cards" section at the end of this README. Please ensure that all listed cards are properly installed to fully utilize the SMARTi dashboard and its features.
 
 - ### Automatic
 
-If selecting automatic mode when setting up the integraiton, SMARTi will enable .yaml mode for your Home Assistant installation and download all the cards required by the SMARTi dashboard. This also means that your Home Assistant instalaltion will now be in .yaml mode ( it is set to storage mode by default) meaning that if you are to download more cards from HACS (or have other cards from HACS installed that is not included in the SMARTi integration - again, check the included cards at the bottom of the readme), you will have to add theese manually to your configuration.yaml file after installing from HACS. 
+If you select automatic mode during the setup of the SMARTi integration, it will automatically enable YAML mode for your Home Assistant installation and download all the cards required for the SMARTi dashboard.
+
+Please note that enabling YAML mode changes the way resources are managed in your Home Assistant setup. By default, Home Assistant operates in storage mode, but with YAML mode enabled, any additional cards you download from HACS (or existing cards not included with the SMARTi integration) must be manually added to your configuration.yaml file after installation.
+
+For a list of cards included with the SMARTi integration, refer to the "Included Cards" section at the bottom of the README. Be sure to follow this process for any extra cards you wish to use to ensure proper functionality.
 
 #### Example:
-Lets say that you want to download another custom card not included with the SMARTi integration - e.g the "lovelace-dual-gauge-card" you will then have to add the following line to your configuration.yaml:
+If you want to download and use another custom card not included with the SMARTi integration, such as the "lovelace-dual-gauge-card", you will need to manually add the following line to your configuration.yaml file:
 
 <pre>
 lovelace:
@@ -158,39 +162,36 @@ resources:
     type: js  
 </pre>
 
-What this also means is that the SMARTi integration is now repsonsible for maintining the supplied cards and keeping them updated, adding/removing them etc. 
+This also means that the SMARTi integration takes full responsibility for managing the provided cards, including updating, adding, and removing them as needed.
 
-We reccomend that you do the automatic installation for the initial installation of the SMARTi integration to verify that everything works as it should. You can always uninstall the integration and then re-install it in manual mode if some of your pre-existing dashboard are using cards that the SMARTi integration is not providing. 
+For the best experience, we recommend using the automatic installation during the initial setup of the SMARTi integration to ensure everything is installed and configured correctly. If you encounter conflicts with pre-existing dashboards that use cards not provided by the SMARTi integration, you can uninstall and re-install the integration in manual mode to maintain compatibility with your custom setup.
 
 ## When uninstalling the integration ALL settings, files, dashboards, automations etc related to the SMARTi integration is deleted and your installation will return to its original state. 
 
 # Usage
 
 ## Have SMARTi **NOT** show devices/entities
-If you want SMARTi to NOT show entities in the dashboards, simply hide them in Home Assistant and SMARTi will no longer display them.
+If you prefer SMARTi to exclude certain entities from appearing on its dashboards, simply hide those entities in your Home Assistant settings. Once hidden, SMARTi will automatically exclude them from display, ensuring a more tailored and clutter-free experience. Make sure to refresh the page once an entity has been hidden in roder to see the reflected changes. 
 
 ## Set up power measurement sensor
 Since SMARTi uses a more general power sensor, this will have to be set. This can be set under the settings page under "Dynamic Power Sensor". IKf no sensors are present here, just click the button "Update power Sensor Lsit" ANd it will populate with all sensors haveing a power measurement and you can select the proper one. 
 
 # Dependencies:
 
-The SMARTi integration does not reqire any integrations to function, but for the full potential usage, it is reccomended to install the following integrations:
+The SMARTi integration does not require any additional integrations to function. However, to unlock its full potential and access advanced features, it is recommended to install the following integrations:
 
 - ## Browser Mod
 <br>
-This integration will allow for some popups to function as designed, but it is mainly used for looking into the active devices showing in the SMARTi navigation bar
+The Browser Mod integration enhances the functionality of SMARTi by enabling certain popups to operate as designed. Additionally, it plays a key role in monitoring and displaying active devices directly within the SMARTi navigation bar, providing a seamless and interactive user experience. While not mandatory, this integration is highly recommended for full feature compatibility.
 
 - ## Alarmo
 <br>
-This integration will allow the user to set up their own alarm system and Alarmo is fully integrated into SMARTi and is required for the alarm panels and alerts to function as designed. 
+The Alarmo integration enables users to set up a customizable and feature-rich alarm system within Home Assistant. Fully integrated into the SMARTi ecosystem, Alarmo is a required component for the proper functionality of SMARTi’s alarm panels and alert systems. This seamless integration ensures that your security features are optimized and operate as intended, providing a reliable and user-friendly alarm solution.
 
 - ## Ping (ICMP)
 <br>
-Adding a ping sensor in the ui caled "smarti_internet" will also provide you with statistics of your internet connection as well as a status icon in the navbar
+By adding a ping sensor named "smarti_internet" in the Home Assistant UI, you can monitor your internet connection with detailed statistics. Additionally, this sensor provides a convenient status icon in the navigation bar, allowing you to quickly view the state of your connection at a glance.
 
-If you encounter any issues, please open an issue in the GitHub repository.
-
-Let me know if you want to customize specific sections or add additional details!
 
 ## Required Cards (cards that must be installed manually if selecting the manual mode):
 
@@ -210,6 +211,7 @@ Let me know if you want to customize specific sections or add additional details
 - Card Mod
 - Card Templater
 - Card Tools
+- Kiosk Mode
 - Home Feed Card
 - Hourly Weather Card
 - Hui Element
@@ -230,12 +232,14 @@ Let me know if you want to customize specific sections or add additional details
 
 # Disclaimer
 
-This integration adds multiple automations, sensors, entities and helpers to your Home Assistant installation. They are all named "SMARTi_xxx" for easy filtering and not to conflict with existing helpers, entities, automations etc you might already have present and will not affect your current installation. Please do note that if you are bothered by this, then the SMARTi integration is not for you. 
+This integration enhances your Home Assistant setup by adding multiple automations, sensors, entities, and helpers. All components are prefixed with "SMARTi_xxx" to ensure easy filtering and to prevent conflicts with any existing items in your installation. Rest assured, the integration is designed to seamlessly coexist with your current setup. However, if this naming convention is a concern for you, the SMARTi integration may not be the right fit.
 
 # License
 
-This repo is licensed under the MIT licenese, meaning you can do whatever you want with it, fork it, copy it, modify it, re-distribute it etc, the configuration files it donwloads to your Home Assistant instalaltion is NOT licensed under the same license. After instalaltion, the necessary licenes are placed within the "smartiliceneses" folder
+This repository is licensed under the MIT license, granting you the freedom to fork, copy, modify, and redistribute its contents as you see fit. However, please note that the configuration files downloaded to your Home Assistant installation are not covered under the same license. Upon installation, the applicable licenses for these configuration files are placed in the "smartilicenses" folder for your reference.
 
 # Support, bugs and reporting
 
-Please report bugs, issues and other things at support@smarti.dev
+
+If you encounter any non-breaking bugs, please open an issue in the GitHub repository.
+For any immediate issues, bugs, issues, or feedback, please contact our support team at support@smarti.dev. We value your input and strive to continuously improve our products and services.
