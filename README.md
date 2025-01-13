@@ -84,6 +84,9 @@ SMARTi Pro unlocks advanced features and enhanced functionality, ideal for power
 https://www.smarti.dev/smarti-store/p/smarti-powerflow-xe7ft
 
 
+# Note
+
+SMARTi does not modify any existing files in yout Home Assistant installation! Everything will remian as is after an installation. If the integration is removed, it will automatically remove all its configuration files, but not touch any of you existing ones.
 
 
 # SMARTi Feature Basic vs Pro Comparison
