@@ -210,6 +210,28 @@ For the best experience, we recommend using the automatic installation during th
 
 # Usage
 
+So you have sucessfully installed the SMARTi dashboard! Congratulations!
+
+You might notice that some text is quite dark and unreadable (if you are using the basic Home Assistant theme)
+
+To change this, we will ahve to do the following:
+
+1. I am used to changing my themes and I have several already installed:
+You simply go into your pesonal Home Assistant settigns and change your theme to one of the SMARTi themes. There are several versions included. Select the dark mode option. 
+
+2. I have never used themes before
+
+In your configruation.yaml file, add the following lines:
+
+<pre>
+frontend:
+  themes: !include_dir_merge_named themes
+</pre>
+
+Restart you Home Asssitant installation and then you simply go into your pesonal Home Assistant settings and change your theme to one of the SMARTi themes. There are several versions included. Select the dark mode option.
+
+
+## How the dasboard works
 SMARTi uses device locations (Areas) and the device domain (Light, switch, humidifier etc) to correcrtly populate your dashboard. 
 
 ## My devices are not showing
@@ -221,6 +243,10 @@ If you prefer SMARTi to exclude certain entities from appearing on its dashboard
 
 ## Set up power measurement sensor
 Since SMARTi uses a more general power sensor, this will have to be set. This can be set under the settings page under "Dynamic Power Sensor". If no sensors are present here, click the button "Update power Sensor Lsit" And it will populate the list with all sensors having a power measurement and you can select the proper one for the correct power measurement.
+
+## Go from Basic to Pro
+
+If you have the Basic version in
 
 # Dependencies:
 
