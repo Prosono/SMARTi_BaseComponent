@@ -206,15 +206,21 @@ This also means that the SMARTi integration takes full responsibility for managi
 
 For the best experience, we recommend using the automatic installation during the initial setup of the SMARTi integration to ensure everything is installed and configured correctly. If you encounter conflicts with pre-existing dashboards that use cards not provided by the SMARTi integration, you can uninstall and re-install the integration in manual mode to maintain compatibility with your custom setup.
 
-## When uninstalling the integration ALL settings, files, dashboards, automations etc related to the SMARTi integration is deleted and your installation will return to its original state. 
+## When uninstalling the integration ALL settings, files, dashboards, automations etc related to the SMARTi integration will be deleted and your installation will return to its original state. 
 
 # Usage
+
+SMARTi uses device locations (Areas) and the device domain (Light, switch, humidifier etc) to correcrtly populate your dashboard. 
+
+## My devices are not showing
+THe SMARTi dashboard is dependant on correct placement of your devices (areas) and type of equipment. If you do not find that your devices are listed in the proper locations, please verify that the devices exists under the "Unassigned Entities" section under the Misc tab and that they are given the correct domain in Home Assistant.
+
 
 ## Have SMARTi **NOT** show devices/entities
 If you prefer SMARTi to exclude certain entities from appearing on its dashboards, simply hide those entities in your Home Assistant settings. Once hidden, SMARTi will automatically exclude them from display, ensuring a more tailored and clutter-free experience. Make sure to refresh the page once an entity has been hidden in roder to see the reflected changes. 
 
 ## Set up power measurement sensor
-Since SMARTi uses a more general power sensor, this will have to be set. This can be set under the settings page under "Dynamic Power Sensor". IKf no sensors are present here, just click the button "Update power Sensor Lsit" ANd it will populate with all sensors haveing a power measurement and you can select the proper one. 
+Since SMARTi uses a more general power sensor, this will have to be set. This can be set under the settings page under "Dynamic Power Sensor". If no sensors are present here, click the button "Update power Sensor Lsit" And it will populate the list with all sensors having a power measurement and you can select the proper one for the correct power measurement.
 
 # Dependencies:
 
