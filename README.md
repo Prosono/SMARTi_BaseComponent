@@ -111,7 +111,7 @@ SMARTi does not modify any existing files in yout Home Assistant installation! E
 |                           | _Description:_ Only one default theme is available.                                                       | _Description:_ Offers five custom-made distinct themes for visual customization.                             |
 | **Kiosk Mode**            | **Not Supported**                                                                                          | **Enabled**                                                                                                  |
 |                           | _Description:_ Kiosk Mode is not available in the free version.                                            | _Description:_ Provides advanced Kiosk Mode, including dynamic header/sidebar visibility and media queries.  |
-| **Token Lifetime**        | **30 Days**                                                                                                | **Continuous (Active Subscription + Remaining Days)**                                                        |
+| **Token Lifetime**        | **Indefinitelys**                                                                                                | **Continuous (Active Subscription + Remaining Days)**                                                        |
 |                           | _Description:_ Tokens are valid indefinitely.     | _Description:_ Tokens remain valid as long as the subscription is active, with additional remaining days.    |
 | **Feature Updates**       | **Yearly**                                                                                                 | **Monthly**                                                                                                  |
 |                           | _Description:_ Features are updated only once per year.                                                   | _Description:_ Features are updated every month with new capabilities.                                       |
@@ -163,7 +163,7 @@ Steps to Install
     - Choose between SMARTi Basic or SMARTi Pro during setup.
 
 5. ## Token and Email Requirements
-    - SMARTi Basic: A token is automatically generated and sent to your email if you select "I do not have a token." Note: The token expires after 30 days and must be renewed by reconfiguring the integration.
+    - SMARTi Basic: A token is automatically generated and sent to your email if you select "I do not have a token."
     - SMARTi Pro: A token must be purchased from our website:
     - Purchase SMARTi Pro Token
     - Upon successful payment, the token will be sent to your email.
