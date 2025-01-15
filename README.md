@@ -187,20 +187,10 @@ A complete list of the cards required for the SMARTi integration can be found in
 
 If you select automatic mode during the setup of the SMARTi integration, it will automatically enable YAML mode for your Home Assistant installation and download all the cards required for the SMARTi dashboard.
 
-Please note that enabling YAML mode changes the way resources are managed in your Home Assistant setup. By default, Home Assistant operates in storage mode, but with YAML mode enabled, any additional cards you download from HACS (or existing cards not included with the SMARTi integration) must be manually added to your configuration.yaml file after installation.
+Please note that enabling YAML mode changes the way resources are managed in your Home Assistant setup. By default, Home Assistant operates in storage mode, but with YAML mode enabled, any additional cards you download from HACS (or existing cards not included with the SMARTi integration) will not be active in your instalaltion.
 
 For a list of cards included with the SMARTi integration, refer to the "Included Cards" section at the bottom of the README. Be sure to follow this process for any extra cards you wish to use to ensure proper functionality.
 
-#### Example:
-If you want to download and use another custom card not included with the SMARTi integration, such as the "lovelace-dual-gauge-card", you will need to manually add the following line to your configuration.yaml file:
-
-<pre>
-lovelace:
-mode: yaml
-resources: 
-    url: /community_plugin/dual-gauge-card/dual-gauge-card.js 
-    type: js  
-</pre>
 
 This also means that the SMARTi integration takes full responsibility for managing the provided cards, including updating, adding, and removing them as needed.
 
@@ -211,6 +201,7 @@ For the best experience, we recommend using the automatic installation during th
 # Usage
 
 So you have sucessfully installed the SMARTi dashboard! Congratulations!
+<br>
 
 You might notice that some text is quite dark and unreadable (if you are using the basic Home Assistant theme)
 
