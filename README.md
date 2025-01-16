@@ -210,7 +210,7 @@ You simply go into your pesonal Home Assistant settigns and change your theme to
 
 2. I have never used themes before
 
-In your configruation.yaml file, add the following lines:
+In your configruation.yaml file, add the following lines to the top of the configuration.yaml:
 
 <pre>
 frontend:
