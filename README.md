@@ -235,6 +235,9 @@ Since SMARTi uses a more general power sensor, this will have to be set. This ca
 ## No Weather forecast in the dashboard 
 The weather forecast is dependant on a sensor called "home" (forecast_home). If you do not have this entity, create one from the met.no integration under "Devices and Services" and simlpy name it "Home".
 
+## There is no calendar!
+The Calendar section is also dependant on a calendar simply named "calendar". If you don't have one, create a new calendar called "calendar".
+
 ## Go from Basic to Pro
 
 If you have the Basic version in
