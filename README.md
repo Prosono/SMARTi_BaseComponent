@@ -86,7 +86,7 @@ https://www.smarti.dev/smarti-store/p/smarti-powerflow-xe7ft
 
 # Note
 
-SMARTi does not modify any existing files in yout Home Assistant installation! Everything will remian as is after an installation. If the integration is removed, it will automatically remove all its configuration files, but not touch any of you existing ones.
+SMARTi does not modify any existing files in yout Home Assistant installation! Everything will remian as is after an installation. If the integration is removed, it will automatically remove all its configuration files, but not touch any of your existing ones.
 
 
 # SMARTi Feature Basic vs Pro Comparison
@@ -240,7 +240,7 @@ The Calendar section is also dependant on a calendar simply named "calendar". If
 
 ## Go from Basic to Pro
 
-If you have the Basic version installed and you have upgraded to the pro version, uninstall the smarti integration and re-install it selecting the "pro" version
+If you have the Basic version installed and you have upgraded to the pro version, uninstall the smarti integration and re-install it selecting the "pro" version.
 
 # Dependencies:
 
