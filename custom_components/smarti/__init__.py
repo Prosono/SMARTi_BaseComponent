@@ -62,13 +62,13 @@ async def async_setup(hass: HomeAssistant, config: dict):
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Set up SMARTi from a config entry."""
-    _LOGGER.info("Setting up SMARTi from config entry.")
+    _LOGGER.info("Setting up SMARTi from config entry...")
 
     # Make sure the domain data dict exists
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = {}
 
     # Grab stored config data (from config_flow)
-    config_data = entry.data
+    config_data = dict(entry.data)  # Make a mutable copy
     email = config_data.get("email")
     token = config_data.get("token")
     version = config_data.get("version", "basic")  # "basic" or "pro"
@@ -76,15 +76,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     # 1) Fetch a *fresh* GitHub PAT on setup/reload
     new_pat = await validate_token_and_get_pat(email, token, version)
     if not new_pat:
-        _LOGGER.warning("Could not get a NEW GitHub PAT. Using existing one.")
+        # If we fail to get a new PAT, just log a warning
+        # and use the old one in config_data.
+        _LOGGER.warning("Could not get a NEW GitHub PAT from backend. Using existing one.")
         github_pat = config_data.get("github_pat")
     else:
-        _LOGGER.info("Fetched a NEW GitHub PAT.")
+        # We got a new PAT; let's permanently store it in the config entry
+        _LOGGER.info("Fetched a NEW GitHub PAT from backend. Overwriting the old one.")
         github_pat = new_pat
+        config_data["github_pat"] = github_pat
 
-        # Overwrite the stored token so we don’t lose it next time we restart
-        new_data = {**config_data, "github_pat": github_pat}
-        hass.config_entries.async_update_entry(entry, data=new_data)
+        # Always overwrite entry.data so the new token persists after reload/restart
+        hass.config_entries.async_update_entry(entry, data=config_data)
 
     # Start the aiohttp session
     session = aiohttp.ClientSession()
@@ -106,7 +109,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Unload a config entry."""
-    _LOGGER.info("Unloading SMARTi config entry.")
+    _LOGGER.info("Unloading SMARTi config entry...")
 
     # Cancel periodic updates
     update_job = hass.data[DOMAIN][entry.entry_id].get("update_job")
@@ -124,7 +127,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
 
 async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Handle cleanup when the SMARTi integration is uninstalled."""
-    _LOGGER.info("Cleaning up directories for SMARTi integration.")
+    _LOGGER.info("Cleaning up directories for SMARTi integration...")
 
     for path in PATHS_TO_CLEAN:
         if os.path.exists(path):
@@ -143,7 +146,6 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ConfigEntry):
     _LOGGER.info(f"Migrating SMARTi entry from version {entry.version}")
 
     current_version = 1
-
     if entry.version == current_version:
         _LOGGER.info("No migration necessary")
         return True
