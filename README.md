@@ -240,7 +240,7 @@ The Calendar section is also dependant on a calendar simply named "calendar". If
 
 ## Go from Basic to Pro
 
-If you have the Basic version in
+If you have the Basic version installed and you have upgraded to the pro version, uninstall the smarti integration and re-install it selecting the "pro" version
 
 # Dependencies:
 
