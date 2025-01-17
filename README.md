@@ -203,7 +203,7 @@ So you have sucessfully installed the SMARTi dashboard! Congratulations!
 
 You might notice that some text is quite dark and unreadable (if you are using the basic Home Assistant theme)
 
-To change this, we will ahve to do the following:
+To change this, we will have to do the following:
 
 1. I am used to changing my themes and I have several already installed:
 You simply go into your pesonal Home Assistant settigns and change your theme to one of the SMARTi themes. There are several versions included. Select the dark mode option. 
