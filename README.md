@@ -132,7 +132,7 @@ Pre-requisties:
 Before starting you installation, make sure you have the two following lines in you configuration.yaml file:
 <pre>
 homeassistant:
-    packages: !include_dir_named packages 
+  packages: !include_dir_named packages 
 </pre>
 
 # Installation via HACS
