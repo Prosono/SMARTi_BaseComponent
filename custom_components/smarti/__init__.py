@@ -3,10 +3,12 @@ import aiohttp
 from datetime import timedelta
 import os
 import shutil
+import asyncio
 
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.event import async_track_time_interval
+from homeassistant.helpers.entity_registry import async_get
 
 from .const import DOMAIN
 from .updater import update_files
@@ -127,17 +129,53 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
 
 async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Handle cleanup when the SMARTi integration is uninstalled."""
-    _LOGGER.info("Cleaning up directories for SMARTi integration...")
+    _LOGGER.info("Cleaning up directories and entities for SMARTi integration...")
 
+    # Cleanup directories
     for path in PATHS_TO_CLEAN:
         if os.path.exists(path):
             try:
-                shutil.rmtree(path)
+                await asyncio.to_thread(shutil.rmtree, path)  # Run rmtree in a thread
                 _LOGGER.info(f"Deleted directory: {path}")
             except Exception as e:
                 _LOGGER.error(f"Failed to delete directory {path}: {e}")
         else:
             _LOGGER.info(f"Directory {path} does not exist, skipping.")
+
+    # Cleanup entities
+    entity_registry = async_get(hass)
+    entities_to_remove = [
+        "input_text.smarti_dynamic_power_sensor_storage",
+        "input_select.smarti_frequency_hz",
+        "input_text.smarti_frequency_storage",
+        "input_select.smarti_home_power_measurement_device",
+        "input_select.language",
+        "input_select.smarti_main_fuse_size",
+        "input_text.smarti_ain_fuse_storage",
+        "input_text.smarti_main_fuse_size",
+        "input_number.smarti_max_power_limit",
+        "input_select.smarti_phases_selection",
+        "input_text.smarti_phases_storage",
+        "input_boolean.smarti_show_climate_tab",
+        "input_boolean.smarti_show_energy_tab",
+        "input_boolean.smarti_show_light_tab",
+        "input_boolean.smarti_show_misc_tab",
+        "input_boolean.smarti_show_security_tab",
+        "input_boolean.smarti_show_weather_tab",
+        "input_text.default_dashboard",
+        "input_button.smarti_update_power_measurement_devices",
+        "input_select.smarti_voltage_level",
+        "input_text.smarti_voltage_level_storage",
+        "sensor.smarti_dynamic_power_kw",
+        "sensor.smarti_hourly_energy_consumed_fixed",
+        "binary_sensor.smarti_shell_protection",
+    ]
+    for entity_id in entities_to_remove:
+        if entity_registry.async_is_registered(entity_id):
+            entity_registry.async_remove(entity_id)
+            _LOGGER.info(f"Removed entity: {entity_id}")
+        else:
+            _LOGGER.info(f"Entity {entity_id} does not exist, skipping.")
 
     _LOGGER.info("Cleanup completed for SMARTi integration.")
 
