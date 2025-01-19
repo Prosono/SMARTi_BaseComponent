@@ -16,7 +16,7 @@ from .updater import update_files
 _LOGGER = logging.getLogger(__name__)
 
 # Interval for periodic updates (e.g., every hour)
-UPDATE_INTERVAL = timedelta(hours=72)
+UPDATE_INTERVAL = timedelta(hours=168)
 
 # Paths to clean up
 PATHS_TO_CLEAN = [
