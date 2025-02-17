@@ -25,7 +25,7 @@
 - Are you looking for a **single dashboard solution** that works seamlessly across all your devices—phones, tablets, and desktops? 
 <br>
 
-- Do you want a higher wife-aproval rating for your Home Assistant setup?
+- Do you want a higher wife-approval rating for your Home Assistant setup?
 <br>
 
 
@@ -125,11 +125,11 @@ A: In order to fully dedicate to an environment that is constantly changing and 
 
 # Installation
 
-Prerequisties:
+Prerequisites:
 
 * ## This integration only supports Home Assistant 2024.8 and above. Installing and configuring this integration on a Home Assistant installation with a lower version than this will result in errors and the integration will not work properly.
 
-Before starting your installation, make sure you have the two following lines in you configuration.yaml file:
+Before starting your installation, make sure you have the two following lines in your configuration.yaml file:
 <pre>
 homeassistant:
   packages: !include_dir_named packages 
@@ -185,7 +185,7 @@ A complete list of the cards required for the SMARTi integration can be found in
 
 If you select automatic mode during the setup of the SMARTi integration, it will automatically enable YAML mode for your Home Assistant installation and download all the cards required for the SMARTi dashboard.
 
-Please note that enabling YAML mode changes the way resources are managed in your Home Assistant setup. By default, Home Assistant operates in storage mode, but with YAML mode enabled, any additional cards you download from HACS (or existing cards not included with the SMARTi integration) will not be active in your installation. **Also if you already have yaml mode enabled in Home Assistant somwhere in your configuration, you must select the manual mode!**
+Please note that enabling YAML mode changes the way resources are managed in your Home Assistant setup. By default, Home Assistant operates in storage mode, but with YAML mode enabled, any additional cards you download from HACS (or existing cards not included with the SMARTi integration) will not be active in your installation. **Also if you already have YAML mode enabled in Home Assistant somwhere in your configuration, you must select the manual mode!**
 
 For a list of cards included with the SMARTi integration, refer to the "Included Cards" section at the bottom of the README. Be sure to follow this process for any extra cards you wish to use to ensure proper functionality.
 
@@ -206,7 +206,7 @@ You might notice that some text is quite dark and unreadable (if you are using t
 To change this, we will have to do the following:
 
 1. I am used to changing my themes and I have several already installed:
-You simply go into your personal Home Assistant settigns and change your theme to one of the SMARTi themes. There are several versions included. Select the dark mode option. 
+You simply go into your personal Home Assistant settings and change your theme to one of the SMARTi themes. There are several versions included. Select the dark mode option. 
 
 2. I have never used themes before
 
@@ -224,7 +224,7 @@ Restart your Home Asssitant installation and then you simply go into your pesona
 SMARTi uses device locations (Areas) and the device domain (Light, switch, humidifier etc) to correctly populate your dashboard. 
 
 ## My devices are not showing
-The SMARTi dashboard is dependant on correct placement of your devices (areas) and type of equipment. If you do not find that your devices are listed in the proper locations, please verify that the devices exists under the "Unassigned Entities" section under the Misc tab and that they are given the correct domain in Home Assistant.
+The SMARTi dashboard is dependent on correct placement of your devices (areas) and type of equipment. If you do not find that your devices are listed in the proper locations, please verify that the devices exists under the "Unassigned Entities" section under the Misc tab and that they are given the correct domain in Home Assistant.
 
 Also, an entity cannot contain an "'" in its name, Like "Linda's Light", it must be named "Lindas Light" instead. 
 
@@ -238,7 +238,7 @@ Since SMARTi uses a more general power sensor, this will have to be set. This ca
 The weather forecast is dependent on a sensor called "home" (forecast_home). If you do not have this entity, create one from the met.no integration under "Devices and Services" and simply name it "Home".
 
 ## There is no calendar!
-The Calendar section is also dependant on a calendar simply named "calendar". If you don't have one, create a new calendar called "calendar".
+The Calendar section is also dependent on a calendar simply named "calendar". If you don't have one, create a new calendar called "calendar".
 
 ## Go from Basic to Pro
 
