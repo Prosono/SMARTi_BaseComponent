@@ -57,13 +57,13 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
     <img src="assets/weatherpage.gif" style="max-width: 1000px; height: auto;">
     <img src="assets/homepagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
-  <br<>
+  <br>
   <!-- Themes Section -->
 
  # Themes 
   <div>
     <img src="assets/colors5.png" style="max-width: 1000px; height: auto; margin-top: 20px;">
-    <p style="text-align: center; max-width: 600px; margin: 0 auto;">Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes 5 pre-installed themes to choose from.</p>
+    <p style="text-align: center; max-width: 600px; margin: 0 auto;">Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes five pre-installed themes to choose from.</p>
   </div>
 
 </div>
@@ -217,14 +217,14 @@ frontend:
   themes: !include_dir_merge_named themes
 </pre>
 
-Restart your Home Asssitant installation and then you simply go into your pesonal Home Assistant settings and change your theme to one of the SMARTi themes. There are several versions included. Select the dark mode option.
+Restart your Home Assistant installation and then you simply go into your personal Home Assistant settings and change your theme to one of the SMARTi themes. There are several versions included. Select the dark mode option.
 
 
 ## How the dashboard works
 SMARTi uses device locations (Areas) and the device domain (Light, switch, humidifier etc) to correctly populate your dashboard. 
 
 ## My devices are not showing
-The SMARTi dashboard is dependent on correct placement of your devices (areas) and type of equipment. If you do not find that your devices are listed in the proper locations, please verify that the devices exists under the "Unassigned Entities" section under the Misc tab and that they are given the correct domain in Home Assistant.
+The SMARTi dashboard is dependent on correct placement of your devices (areas) and type of equipment. If you do not find that your devices are listed in the proper locations, please verify that the devices exist under the "Unassigned Entities" section under the Misc tab and that they are given the correct domain in Home Assistant.
 
 Also, an entity cannot contain an "'" in its name, Like "Linda's Light", it must be named "Lindas Light" instead. 
 
@@ -242,7 +242,7 @@ The Calendar section is also dependent on a calendar simply named "calendar". If
 
 ## Go from Basic to Pro
 
-If you have the Basic version installed and you have upgraded to the pro version, uninstall the smarti integration and re-install it selecting the "pro" version.
+If you have the Basic version installed and you have upgraded to the pro version, uninstall the SMARTi integration and re-install it selecting the "Pro" version.
 
 # Dependencies:
 
