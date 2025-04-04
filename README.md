@@ -260,6 +260,23 @@ The Alarmo integration enables users to set up a customizable and feature-rich a
 <br>
 By adding a ping sensor named "smarti_internet" in the Home Assistant UI, you can monitor your internet connection with detailed statistics. Additionally, this sensor provides a convenient status icon in the navigation bar, allowing you to quickly view the state of your connection at a glance.
 
+# Calendar
+<br>
+The Calendar Poo card finds all your available clanedars and displays the next events for the next 3 days. If you want the icons to appear you have 4 different options:
+
+  - entity: calendar.calendar
+    label: 💼
+
+  - entity: calendar.work
+    label: 🏢
+
+  - entity: calendar.family
+    label: 👪
+
+  - entity: calendar.personal
+    label: 🏠
+
+In order for the Icons to appear, you need to re-name your clanedar to eiwther clanedar.work, calendar.calendar, calendar.family or calendar.personal. THis will then be reflected in the dashboard.
 
 ## Required Cards (cards that must be installed manually if selecting the manual mode):
 
@@ -297,6 +314,7 @@ By adding a ping sensor named "smarti_internet" in the Home Assistant UI, you ca
 - Better Moment Card
 - Maxi Media Player
 - Swipe Card
+- Calendar Card Pro
 
 # Disclaimer
 
