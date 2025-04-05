@@ -262,7 +262,7 @@ By adding a ping sensor named "smarti_internet" in the Home Assistant UI, you ca
 
 # Calendar
 <br>
-The Calendar Poo card finds all your available clanedars and displays the next events for the next 3 days. If you want the icons to appear you have 4 different options:
+The Calendar Pro card finds all your available clanedars and displays the next events for the next 3 days. If you want the icons to appear you have 4 different options:
 
   - entity: calendar.calendar
     label: 💼
