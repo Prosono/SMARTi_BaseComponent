@@ -1,8 +1,8 @@
 {
   "name": "SMARTi",
   "content_in_root": false,
-  "domains": ["smarti"],
-  "domain": "smarti",
   "iot_class": "local_push",
-  "render_readme": true
+  "render_readme": true,
+  "country": "no",
+  "homeassistant": "2024.8.0"
 }
