@@ -44,7 +44,7 @@ SMARTi delivers a complete, hassle-free maintenance experience with a seamless a
 From beautiful animations to advanced power monitoring and control, SMARTi is designed to simplify Home Assistant, offering a more user-friendly experience for everyone in your home.
 
 <div align="center">
-  <img src="assets/smartimockup3.png" width="900">
+  <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/smartimockup3.png" width="900">
 </div>
 
 <div align="center">
@@ -52,17 +52,17 @@ From beautiful animations to advanced power monitoring and control, SMARTi is de
 # Dashboard Snippets
   <!-- Homepage Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/homepagegif.gif" style="max-width: 1000px; height: auto;">
-    <img src="assets/lightpage.gif" style="max-width: 1000px; height: auto;">
-    <img src="assets/weatherpage.gif" style="max-width: 1000px; height: auto;">
-    <img src="assets/homepagetablet2.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/omepagegif.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/lightpage.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/weatherpage.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/homepagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
   <br>
   <!-- Themes Section -->
 
  # Themes 
   <div>
-    <img src="assets/colors5.png" style="max-width: 1000px; height: auto; margin-top: 20px;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/colors5.png" style="max-width: 1000px; height: auto; margin-top: 20px;">
     <p style="text-align: center; max-width: 600px; margin: 0 auto;">Do you want to change the look and feel to make the dashboard more personalized? SMARTi includes five pre-installed themes to choose from.</p>
   </div>
 
@@ -336,20 +336,20 @@ For any immediate issues, bugs, issues, or feedback, please contact our support 
 
   <!-- Weather Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/weatherpage.gif" style="max-width: 1000px; height: auto;">
-    <img src="assets/weatherpagetablet2.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/weatherpage.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/weatherpagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
   <br>
   <!-- Themes Section -->
   <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/lightpage.gif" style="max-width: 1000px; height: auto;">
-    <img src="assets/lightspagetablet2.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/lightpage.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/lightspagetablet2.gif" style="max-width: 1000px; height: auto;">
   </div>
   <br>
 
    <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-    <img src="assets/climatepage.gif" style="max-width: 1000px; height: auto;">
-    <img src="assets/climatepagegif3.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/climatepage.gif" style="max-width: 1000px; height: auto;">
+    <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/climatepagegif3.gif" style="max-width: 1000px; height: auto;">
   </div>
   <br>
 
