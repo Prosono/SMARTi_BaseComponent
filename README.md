@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-  <img src="assets/smartiDashboardPromo.png" width="900">
+  <img src="https://github.com/Prosono/SMARTi_BaseComponent/blob/main/assets/smartiDashboardPromo.png" width="900">
 </div>
 
 <br>
