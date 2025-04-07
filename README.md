@@ -161,13 +161,12 @@ Steps to Install
     - Choose between SMARTi Basic or SMARTi Pro during setup.
 
 5. ## Token and Email Requirements
-
-NOTE: For some email providers the automatic token email will be blocked or put into your spam folder. If you do not receive an email with your token (Basic or Pro), try with another email address or reach out to us at support@smarti.dev so we can retreive and send you your token personally. 
-
     - SMARTi Basic: A token is automatically generated and sent to your email if you select "I do not have a token."
     - SMARTi Pro: A token must be purchased from our website:
     - Purchase SMARTi Pro Token
     - Upon successful payment, the token will be sent to your email.
+
+NOTE: For some email providers the automatic token email will be blocked or put into your spam folder. If you do not receive an email with your token (Basic or Pro), try with another email address or reach out to us at support@smarti.dev so we can retreive and send you your token personally.     
 
 6. ## Enter Your Token and Email
     - After selecting your SMARTi version, enter your token and email to proceed.
