@@ -4,7 +4,7 @@ from datetime import timedelta
 import os
 import shutil
 import asyncio
-
+from homeassistant.helpers import config_validation as cv
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.event import async_track_time_interval
@@ -15,6 +15,8 @@ from .updater import update_files
 
 _LOGGER = logging.getLogger(__name__)
 
+
+CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 # Interval for periodic updates (e.g., every hour)
 UPDATE_INTERVAL = timedelta(hours=168)
 
