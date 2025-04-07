@@ -161,6 +161,9 @@ Steps to Install
     - Choose between SMARTi Basic or SMARTi Pro during setup.
 
 5. ## Token and Email Requirements
+
+NOTE: For some email providers the automatic token email will be blocked or put into your spam folder. If you do not receive an email with your token (Basic or Pro), try with another email address or reach out to us at support@smarti.dev so we can retreive and send you your token personally. 
+
     - SMARTi Basic: A token is automatically generated and sent to your email if you select "I do not have a token."
     - SMARTi Pro: A token must be purchased from our website:
     - Purchase SMARTi Pro Token
@@ -237,8 +240,24 @@ Since SMARTi uses a more general power sensor, this will have to be set. This ca
 ## No Weather forecast in the dashboard 
 The weather forecast is dependent on a sensor called "home" (forecast_home). If you do not have this entity, create one from the met.no integration under "Devices and Services" and simply name it "Home".
 
-## There is no calendar!
-The Calendar section is also dependent on a calendar simply named "calendar". If you don't have one, create a new calendar called "calendar".
+# Calendar
+<br>
+The Calendar Pro card finds all your available clanedars and displays the next events for the next 3 days. If you want the icons to appear you have 4 different options:
+
+  - entity: calendar.calendar
+    label: 💼
+
+  - entity: calendar.work
+    label: 🏢
+
+  - entity: calendar.family
+    label: 👪
+
+  - entity: calendar.personal
+    label: 🏠
+
+In order for the Icons to appear, you need to re-name your clanedar to eiwther clanedar.work, calendar.calendar, calendar.family or calendar.personal. THis will then be reflected in the dashboard.
+
 
 ## Go from Basic to Pro
 
@@ -259,24 +278,6 @@ The Alarmo integration enables users to set up a customizable and feature-rich a
 - ## Ping (ICMP)
 <br>
 By adding a ping sensor named "smarti_internet" in the Home Assistant UI, you can monitor your internet connection with detailed statistics. Additionally, this sensor provides a convenient status icon in the navigation bar, allowing you to quickly view the state of your connection at a glance.
-
-# Calendar
-<br>
-The Calendar Pro card finds all your available clanedars and displays the next events for the next 3 days. If you want the icons to appear you have 4 different options:
-
-  - entity: calendar.calendar
-    label: 💼
-
-  - entity: calendar.work
-    label: 🏢
-
-  - entity: calendar.family
-    label: 👪
-
-  - entity: calendar.personal
-    label: 🏠
-
-In order for the Icons to appear, you need to re-name your clanedar to eiwther clanedar.work, calendar.calendar, calendar.family or calendar.personal. THis will then be reflected in the dashboard.
 
 ## Required Cards (cards that must be installed manually if selecting the manual mode):
 
