@@ -1,3 +1,10 @@
+[![hacs default](https://img.shields.io/badge/hacs-default-orange.svg)](https://github.com/hacs/default)
+[![release](https://img.shields.io/github/v/release/Prosono/SMARTi_BaseComponent?include_prereleases)](https://github.com/Prosono/SMARTi_BaseComponent/releases)
+[![downloads](https://img.shields.io/github/downloads/Prosono/SMARTi_BaseComponent/total)](https://github.com/Prosono/SMARTi_BaseComponent/releases)
+[![build](https://img.shields.io/github/actions/workflow/status/Prosono/SMARTi_BaseComponent/hacs-validation.yaml?label=build)](https://github.com/Prosono/SMARTi_BaseComponent/actions)
+[![translated](https://img.shields.io/badge/translated-100%25-brightgreen)](https://github.com/Prosono/SMARTi_BaseComponent)
+[![GitHub stars](https://img.shields.io/github/stars/Prosono/SMARTi_BaseComponent?style=social)](https://github.com/Prosono/SMARTi_BaseComponent/stargazers)
+
 <div align="center">
 
 # Presenting the SMARTi Integration for Home Assistant  
