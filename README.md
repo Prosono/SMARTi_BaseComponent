@@ -242,7 +242,7 @@ Also, an entity cannot contain an "'" in its name, Like "Linda's Light", it must
 If you prefer SMARTi to exclude certain entities from appearing on its dashboards, simply hide those entities in your Home Assistant settings. Once hidden, SMARTi will automatically exclude them from display, ensuring a more tailored and clutter-free experience. Make sure to refresh the page once an entity has been hidden in order to see the reflected changes. 
 
 ## Set up power measurement sensor
-Since SMARTi uses a more general power sensor, this will have to be set. This can be set under the settings page under "Dynamic Power Sensor". If no sensors are present here, click the button "Update Power Sensor List" And it will populate the list with all sensors having a power measurement and you can select the proper one for the correct power measurement.
+Since SMARTi uses a more general power sensor, this will have to be set by the user. This can be set under the settings page under "Dynamic Power Sensor". If no sensors are present here, click the button "Update Power Sensor List" And it will populate the list with all sensors having a power measurement and you can select the proper one for the correct power measurement.
 
 ## No Weather forecast in the dashboard 
 The weather forecast is dependent on a sensor called "home" (forecast_home). If you do not have this entity, create one from the met.no integration under "Devices and Services" and simply name it "Home".
