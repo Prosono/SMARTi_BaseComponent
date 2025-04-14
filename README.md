@@ -263,7 +263,7 @@ The Calendar Pro card finds all your available clanedars and displays the next e
   - entity: calendar.personal
     label: 🏠
 
-In order for the Icons to appear, you need to re-name your clanedar to eiwther clanedar.work, calendar.calendar, calendar.family or calendar.personal. THis will then be reflected in the dashboard.
+In order for the Icons mentioned above to appear in your calendar on your dashboard, you need to re-name your clanedar to either "calendar.work", "calendar.calendar", "calendar.family" or "calendar.personal". 
 
 
 ## Go from Basic to Pro
