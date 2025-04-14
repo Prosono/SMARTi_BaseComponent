@@ -3,6 +3,7 @@ from homeassistant import config_entries
 import voluptuous as vol
 import aiohttp
 from .const import DOMAIN  # Ensure const.py defines DOMAIN
+from .options_flow import SmartiOptionsFlowHandler
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -230,5 +231,52 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 "automatic_description": "Automatic mode: This option puts your Home Assistant into YAML mode. All necessary custom cards required by SMARTi will be automatically downloaded and configured. Read more about this at our repo",
                 "manual_description": "Manual mode: This option keeps your Home Assistant as-is but will require you to download all cards required by SMARTi yourself (via HACS or manually). Read more about this at our repo",
             },
+            errors=errors,
+        )
+
+    async def async_step_reauth(self, entry_data):
+        """Start reauth flow by asking for updated credentials."""
+        self.email = entry_data.get("email")
+        self.version = entry_data.get("version")
+
+        # Get the config entry object and store it in context
+        entry = self.hass.config_entries.async_get_entry(entry_data["entry_id"])
+        self.context["entry"] = entry
+
+        _LOGGER.info(f"Reauth initiated for {self.email} ({self.version})")
+
+        return await self.async_step_reauth_credentials()      
+
+    async def async_step_reauth_credentials(self, user_input=None):
+        """Collect new token and update existing config entry."""
+        errors = {}
+
+        if user_input is not None:
+            email = user_input["email"]
+            token = user_input["token"]
+            version = self.version
+
+            github_pat = await validate_token_and_get_pat(email, token, version)
+            if github_pat:
+                updated_data = {
+                    **self.context["entry"].data,
+                    "email": email,
+                    "token": token,
+                    "github_pat": github_pat,
+                }
+
+                self.hass.config_entries.async_update_entry(self.context["entry"], data=updated_data)
+                return self.async_abort(reason="reauth_successful")
+            else:
+                errors["base"] = "invalid_token"
+
+        schema = vol.Schema({
+            vol.Required("email", default=self.email): str,
+            vol.Required("token"): str,
+        })
+
+        return self.async_show_form(
+            step_id="reauth_credentials",
+            data_schema=schema,
             errors=errors,
         )

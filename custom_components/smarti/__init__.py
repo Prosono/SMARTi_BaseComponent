@@ -9,6 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.entity_registry import async_get
+from homeassistant.exceptions import ConfigEntryAuthFailed
 
 from .const import DOMAIN
 from .updater import update_files
@@ -52,12 +53,16 @@ async def validate_token_and_get_pat(email, token, integration):
                         return data.get("github_pat")
                     else:
                         _LOGGER.error(f"Validation error data: {data}")
+                        return None
+                elif response.status == 403:
+                    _LOGGER.warning("Token validation failed with 403 - triggering reauthentication.")
+                    raise ConfigEntryAuthFailed("Token is invalid or expired.")
                 else:
                     _LOGGER.error(f"Validation failed for {integration}: {response.status}")
     except aiohttp.ClientError as e:
         _LOGGER.error(f"Error validating token for {integration}: {e}")
 
-    return None  # Return None if validation fails
+    return None
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up the SMARTi integration (YAML-based)."""
@@ -67,6 +72,8 @@ async def async_setup(hass: HomeAssistant, config: dict):
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Set up SMARTi from a config entry."""
     _LOGGER.info("Setting up SMARTi from config entry...")
+
+    entry.add_update_listener(async_reload_entry)
 
     # Make sure the domain data dict exists
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = {}
@@ -86,9 +93,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         github_pat = config_data.get("github_pat")
     else:
         # We got a new PAT; let's permanently store it in the config entry
-        _LOGGER.info("Fetched a NEW GitHub PAT from backend. Overwriting the old one.")
+        _LOGGER.info("Fetched new GitHub PAT. Updating entry.")
         github_pat = new_pat
         config_data["github_pat"] = github_pat
+        hass.config_entries.async_update_entry(entry, data=config_data)
 
         # Always overwrite entry.data so the new token persists after reload/restart
         hass.config_entries.async_update_entry(entry, data=config_data)
@@ -180,6 +188,9 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry):
             _LOGGER.info(f"Entity {entity_id} does not exist, skipping.")
 
     _LOGGER.info("Cleanup completed for SMARTi integration.")
+    
+async def async_reload_entry(hass, entry):
+    await hass.config_entries.async_reload(entry.entry_id)
 
 async def async_migrate_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Handle migration of the config entry if needed."""
@@ -194,3 +205,7 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ConfigEntry):
     hass.config_entries.async_update_entry(entry, version=current_version)
     _LOGGER.info(f"Migration to version {current_version} successful")
     return True
+
+def async_get_options_flow(config_entry):
+    from .options_flow import SmartiOptionsFlowHandler
+    return SmartiOptionsFlowHandler(config_entry)
