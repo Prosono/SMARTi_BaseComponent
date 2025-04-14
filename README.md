@@ -276,15 +276,25 @@ The SMARTi integration does not require any additional integrations to function.
 
 - ## Browser Mod
 <br>
-The Browser Mod integration enhances the functionality of SMARTi by enabling certain popups to operate as designed. Additionally, it plays a key role in monitoring and displaying active devices directly within the SMARTi navigation bar, providing a seamless and interactive user experience. While not mandatory, this integration is highly recommended for full feature compatibility.
+The Browser Mod integration enhances the functionality of SMARTi by enabling certain popups to operate as designed. Additionally, it plays a key role in monitoring and displaying active devices directly within the SMARTi navigation bar, providing a seamless and interactive user experience. While not mandatory, this integration is highly recommended for full feature compatibility. Simply install the Browser Mod integration from HACS and restart Home Assistant for this to take effect. 
 
 - ## Alarmo
 <br>
-The Alarmo integration enables users to set up a customizable and feature-rich alarm system within Home Assistant. Fully integrated into the SMARTi ecosystem, Alarmo is a required component for the proper functionality of SMARTi’s alarm panels and alert systems. This seamless integration ensures that your security features are optimized and operate as intended, providing a reliable and user-friendly alarm solution.
+The Alarmo integration enables users to set up a customizable and feature-rich alarm system within Home Assistant. Fully integrated into the SMARTi ecosystem, Alarmo is a required component for the proper functionality of SMARTi’s alarm panels and alert systems. This seamless integration ensures that your security features are optimized and operate as intended, providing a reliable and user-friendly alarm solution. Simply install the Alarmo integration from HACS and restart Home Assistant for this to take effect. 
 
 - ## Ping (ICMP)
 <br>
 By adding a ping sensor named "smarti_internet" in the Home Assistant UI, you can monitor your internet connection with detailed statistics. Additionally, this sensor provides a convenient status icon in the navigation bar, allowing you to quickly view the state of your connection at a glance.
+
+How to set up the "smarti_internet" sensor:
+  1. Go to "Settings" and then "Devices and services"
+  2. Click on "Add Integration"
+  3. Search for "Ping" and add "Ping(ICMP)"
+  4. Host should be "8.8.8.8" and click "Submit"
+  5. Head on over to the "Entities" tab and find your "8.8.8.8" ping sensor and open it.
+  6. Click on the little cogwheel
+  7. Rename the sensor to "smarti_internet" and save it
+
 
 ## Required Cards (cards that must be installed manually if selecting the manual mode):
 
