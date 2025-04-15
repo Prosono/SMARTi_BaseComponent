@@ -144,9 +144,10 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             if github_pat:
                 _LOGGER.info("Token validated successfully. Integration is ready to use.")
                 self.email = email
-                self.token = token  # Set token for use in the final step
+                self.token = token
                 self.github_pat = github_pat
-                return await self.async_step_mode()  # Automatically move to the next step
+
+                return await self.async_step_mode()
             else:
                 errors["base"] = "invalid_token"
 
@@ -186,8 +187,9 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             if github_pat:
                 _LOGGER.info("Token validated successfully. Integration is ready to use.")
                 self.email = email
-                self.token = token  # Set token for use in the final step
+                self.token = token
                 self.github_pat = github_pat
+
                 return await self.async_step_mode()
             else:
                 errors["base"] = "invalid_token"
@@ -209,11 +211,16 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             mode = user_input["mode"]
+
+            # 🔐 Enforce uniqueness here only
+            await self.async_set_unique_id(self.email)
+            self._abort_if_unique_id_configured()
+
             return self.async_create_entry(
                 title=f"SMARTi {self.version.capitalize()}",
                 data={
                     "email": self.email,
-                    "token": self.token,  # This is now properly set
+                    "token": self.token,
                     "version": self.version,
                     "mode": mode,
                     "github_pat": self.github_pat,
@@ -228,11 +235,12 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="mode",
             data_schema=schema,
             description_placeholders={
-                "automatic_description": "Automatic mode: This option puts your Home Assistant into YAML mode. All necessary custom cards required by SMARTi will be automatically downloaded and configured. Read more about this at our repo",
-                "manual_description": "Manual mode: This option keeps your Home Assistant as-is but will require you to download all cards required by SMARTi yourself (via HACS or manually). Read more about this at our repo",
+                "automatic_description": "Automatic mode: This option puts your Home Assistant into YAML mode...",
+                "manual_description": "Manual mode: This option keeps your Home Assistant as-is...",
             },
             errors=errors,
         )
+
 
     async def async_step_reauth(self, entry_data):
         """Start reauth flow by asking for updated credentials."""
@@ -241,7 +249,7 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         # Get the config entry object and store it in context
         entry = self.hass.config_entries.async_get_entry(entry_data["entry_id"])
-        self.context["entry"] = entry
+        self._reauth_entry = entry
 
         _LOGGER.info(f"Reauth initiated for {self.email} ({self.version})")
 
@@ -259,13 +267,16 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             github_pat = await validate_token_and_get_pat(email, token, version)
             if github_pat:
                 updated_data = {
-                    **self.context["entry"].data,
+                    **self._reauth_entry.data,
                     "email": email,
                     "token": token,
                     "github_pat": github_pat,
                 }
 
-                self.hass.config_entries.async_update_entry(self.context["entry"], data=updated_data)
+                self.hass.config_entries.async_update_entry(
+                    self._reauth_entry,
+                    data=updated_data
+                )
                 return self.async_abort(reason="reauth_successful")
             else:
                 errors["base"] = "invalid_token"

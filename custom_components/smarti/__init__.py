@@ -141,17 +141,21 @@ async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Handle cleanup when the SMARTi integration is uninstalled."""
     _LOGGER.info("Cleaning up directories and entities for SMARTi integration...")
 
+    # 🧹 NEW: Clear the unique ID so it can be reused
+    if entry.unique_id:
+        _LOGGER.info(f"Clearing unique_id: {entry.unique_id}")
+        await hass.config_entries.async_remove(entry.entry_id)
+
     # Cleanup directories
     for path in PATHS_TO_CLEAN:
         if os.path.exists(path):
             try:
-                await asyncio.to_thread(shutil.rmtree, path)  # Run rmtree in a thread
+                await asyncio.to_thread(shutil.rmtree, path)
                 _LOGGER.info(f"Deleted directory: {path}")
             except Exception as e:
                 _LOGGER.error(f"Failed to delete directory {path}: {e}")
         else:
             _LOGGER.info(f"Directory {path} does not exist, skipping.")
-
     # Cleanup entities
     entity_registry = async_get(hass)
     entities_to_remove = [
