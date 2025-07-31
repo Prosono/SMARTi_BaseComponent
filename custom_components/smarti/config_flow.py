@@ -235,8 +235,8 @@ class SmartiConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="mode",
             data_schema=schema,
             description_placeholders={
-                "automatic_description": "Automatic mode: This option puts your Home Assistant into YAML mode...",
-                "manual_description": "Manual mode: This option keeps your Home Assistant as-is...",
+                "automatic_description": "Automatic mode: This option puts your Home Assistant into YAML mode. All necessary custom cards required by SMARTi will be automatically downloaded and configured. Read more about this at our repo",
+                "manual_description": "Manual mode: This option keeps your Home Assistant as-is but will require you to download all cards required by SMARTi yourself (via HACS or manually). Read more about this at our repo",
             },
             errors=errors,
         )
