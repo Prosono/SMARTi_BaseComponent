@@ -2,6 +2,5 @@
   "name": "SMARTi",
   "content_in_root": false,
   "render_readme": true,
-  "country": "no",
   "homeassistant": "2024.8.0"
 }
